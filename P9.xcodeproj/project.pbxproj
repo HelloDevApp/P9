@@ -12,6 +12,7 @@
 		52166DF021E147CD007C5BEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52166DEF21E147CD007C5BEF /* Assets.xcassets */; };
 		52166DF321E147CD007C5BEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52166DF121E147CD007C5BEF /* LaunchScreen.storyboard */; };
 		52166DFE21E147CD007C5BEF /* P9Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52166DFD21E147CD007C5BEF /* P9Tests.swift */; };
+		52166E1021E14DDE007C5BEF /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52166E0F21E14DDE007C5BEF /* CurrencyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,7 @@
 		52166DF921E147CD007C5BEF /* P9Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = P9Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52166DFD21E147CD007C5BEF /* P9Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P9Tests.swift; sourceTree = "<group>"; };
 		52166DFF21E147CD007C5BEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52166E0F21E14DDE007C5BEF /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		52166E0821E14B38007C5BEF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				52166E0F21E14DDE007C5BEF /* CurrencyViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52166DE921E147CC007C5BEF /* AppDelegate.swift in Sources */,
+				52166E1021E14DDE007C5BEF /* CurrencyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
