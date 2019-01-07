@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-986" y="47"/>
         </scene>
-        <!--Item-->
+        <!--Convertir-->
         <scene sceneID="5Bh-aH-hXe">
             <objects>
                 <viewController id="kRc-N5-rHy" customClass="CurrencyViewController" customModule="P9" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,11 +37,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Uv4-JR-oS8"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="2M7-Jv-KEH"/>
+                    <tabBarItem key="tabBarItem" title="Convertir" image="money" id="2M7-Jv-KEH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8u-Cv-beh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-25" y="-445"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="money" width="22.5" height="22.5"/>
+    </resources>
 </document>
