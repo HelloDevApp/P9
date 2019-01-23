@@ -7,16 +7,16 @@
 //
 
 import UIKit
-
+@IBDesignable
 class GradientView: UIView {
     var gradientLayer: CAGradientLayer!
     
-    var firstColor = UIColor(red: 80/255, green: 107/255, blue: 225/255, alpha: 1) {
+    @IBInspectable var firstColor: UIColor = .white {
         didSet {
             setNeedsLayout()
         }
     }
-var secondColor = UIColor(red: 15/255, green: 33/255, blue: 75/255, alpha: 1) {
+    @IBInspectable var secondColor: UIColor = .black {
         didSet {
             setNeedsLayout()
         }
