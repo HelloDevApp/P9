@@ -14,6 +14,7 @@
 		52166DFE21E147CD007C5BEF /* P9Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52166DFD21E147CD007C5BEF /* P9Tests.swift */; };
 		52166E1021E14DDE007C5BEF /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52166E0F21E14DDE007C5BEF /* CurrencyViewController.swift */; };
 		522219A821F0B1AA0058788D /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522219A721F0B1AA0058788D /* GradientView.swift */; };
+		52FA2B4D21F906CF00F32C56 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA2B4C21F906CF00F32C56 /* CustomLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		52166DFF21E147CD007C5BEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52166E0F21E14DDE007C5BEF /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		522219A721F0B1AA0058788D /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		52FA2B4C21F906CF00F32C56 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				52166DEC21E147CC007C5BEF /* Main.storyboard */,
 				52166DF121E147CD007C5BEF /* LaunchScreen.storyboard */,
 				522219A721F0B1AA0058788D /* GradientView.swift */,
+				52FA2B4C21F906CF00F32C56 /* CustomLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				52166DE921E147CC007C5BEF /* AppDelegate.swift in Sources */,
 				52166E1021E14DDE007C5BEF /* CurrencyViewController.swift in Sources */,
 				522219A821F0B1AA0058788D /* GradientView.swift in Sources */,
+				52FA2B4D21F906CF00F32C56 /* CustomLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -46,10 +46,6 @@ class GradientView: UIView {
             setNeedsLayout()
         }
     }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        layoutSubviews()
-    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         layoutSubviews()
