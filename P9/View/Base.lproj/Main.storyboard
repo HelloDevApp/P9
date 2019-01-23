@@ -137,7 +137,7 @@
                                             <constraint firstItem="1NC-zC-vTW" firstAttribute="width" secondItem="fKH-qI-Xpg" secondAttribute="width" id="rSV-qy-0hv"/>
                                         </constraints>
                                     </stackView>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fV-4a-qgU">
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fV-4a-qgU" customClass="CustomPickerView" customModule="P9" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="374" height="176.5"/>
                                     </pickerView>
                                 </subviews>
