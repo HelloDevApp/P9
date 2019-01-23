@@ -22,11 +22,28 @@
                     </tabBar>
                     <connections>
                         <segue destination="kRc-N5-rHy" kind="relationship" relationship="viewControllers" id="gY7-DY-ESL"/>
+                        <segue destination="7Dj-Mb-aIo" kind="relationship" relationship="viewControllers" id="4EU-Ci-eKx"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOd-J2-K2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-986" y="47"/>
+        </scene>
+        <!--Traduction-->
+        <scene sceneID="djE-HZ-YAz">
+            <objects>
+                <viewController id="7Dj-Mb-aIo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qON-cw-DRO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="C1p-gi-TUj"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Traduction" image="translate" id="Hoh-1P-3tD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aTI-dR-WFE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-30" y="424"/>
         </scene>
         <!--Convertir-->
         <scene sceneID="5Bh-aH-hXe">
@@ -172,11 +189,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8u-Cv-beh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28.985507246376812" y="-446.65178571428567"/>
+            <point key="canvasLocation" x="-30" y="-337"/>
         </scene>
     </scenes>
     <resources>
         <image name="iconsReversed" width="180" height="180"/>
         <image name="money" width="22.5" height="22.5"/>
+        <image name="translate" width="22.5" height="22.5"/>
     </resources>
 </document>
