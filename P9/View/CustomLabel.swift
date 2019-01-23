@@ -10,6 +10,20 @@ import UIKit
 
 class CustomLabel: UILabel {
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
     
+    func setup() {
+        layer.backgroundColor = UIColor.clear.cgColor
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.white.cgColor
+        layer.cornerRadius = frame.height / 2
+        layer.shadowRadius = 2
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: -2, height: 2)
+        layer.shadowOpacity = 1
+    }
 
 }
