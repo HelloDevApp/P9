@@ -24,6 +24,7 @@
                     <connections>
                         <segue destination="kRc-N5-rHy" kind="relationship" relationship="viewControllers" id="gY7-DY-ESL"/>
                         <segue destination="7Dj-Mb-aIo" kind="relationship" relationship="viewControllers" id="4EU-Ci-eKx"/>
+                        <segue destination="Nb6-dR-94A" kind="relationship" relationship="viewControllers" id="7bk-N6-wo0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fOd-J2-K2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -179,7 +180,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTI-dR-WFE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-31.199999999999999" y="423.23838080959524"/>
+            <point key="canvasLocation" x="132" y="51"/>
+        </scene>
+        <!--Météo-->
+        <scene sceneID="BGk-zd-zzP">
+            <objects>
+                <viewController id="Nb6-dR-94A" customClass="WeatherViewController" customModule="P9" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b96-1e-puH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.17281076312065125" green="0.43745893239974976" blue="0.48806232213973999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="j1b-WH-clo"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Météo" image="weather" id="Gk1-4d-Qre"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="btK-6A-xCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="836"/>
         </scene>
         <!--Convertir-->
         <scene sceneID="5Bh-aH-hXe">
@@ -318,12 +335,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8u-Cv-beh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30" y="-337"/>
+            <point key="canvasLocation" x="132" y="-710"/>
         </scene>
     </scenes>
     <resources>
         <image name="iconsReversed" width="180" height="180"/>
         <image name="money" width="22.5" height="22.5"/>
         <image name="translate" width="22.5" height="22.5"/>
+        <image name="weather" width="22.5" height="22.5"/>
     </resources>
 </document>

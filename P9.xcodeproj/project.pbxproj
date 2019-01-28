@@ -14,6 +14,7 @@
 		52166DFE21E147CD007C5BEF /* P9Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52166DFD21E147CD007C5BEF /* P9Tests.swift */; };
 		52166E1021E14DDE007C5BEF /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52166E0F21E14DDE007C5BEF /* CurrencyViewController.swift */; };
 		522219A821F0B1AA0058788D /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522219A721F0B1AA0058788D /* GradientView.swift */; };
+		52633E7721FFA81E0065FB61 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52633E7621FFA81E0065FB61 /* WeatherViewController.swift */; };
 		52AA307821F9143000D7BC3C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA307721F9143000D7BC3C /* CustomTextField.swift */; };
 		52B9A57021F917B100D224AC /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9A56F21F917B100D224AC /* CustomPickerView.swift */; };
 		52B9A57221F91B4D00D224AC /* TranlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9A57121F91B4D00D224AC /* TranlateViewController.swift */; };
@@ -42,6 +43,7 @@
 		52166DFF21E147CD007C5BEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52166E0F21E14DDE007C5BEF /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		522219A721F0B1AA0058788D /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		52633E7621FFA81E0065FB61 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		52AA307721F9143000D7BC3C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		52B9A56F21F917B100D224AC /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		52B9A57121F91B4D00D224AC /* TranlateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranlateViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				52166E0F21E14DDE007C5BEF /* CurrencyViewController.swift */,
 				52B9A57121F91B4D00D224AC /* TranlateViewController.swift */,
+				52633E7621FFA81E0065FB61 /* WeatherViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				522219A821F0B1AA0058788D /* GradientView.swift in Sources */,
 				52B9A57021F917B100D224AC /* CustomPickerView.swift in Sources */,
 				52B9A57221F91B4D00D224AC /* TranlateViewController.swift in Sources */,
+				52633E7721FFA81E0065FB61 /* WeatherViewController.swift in Sources */,
 				52FA2B4D21F906CF00F32C56 /* CustomLabel.swift in Sources */,
 				52AA307821F9143000D7BC3C /* CustomTextField.swift in Sources */,
 			);
