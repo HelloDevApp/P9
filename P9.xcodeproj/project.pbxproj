@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520FE15E220B3DFB0099A580 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FE15D220B3DFB0099A580 /* Data.swift */; };
 		52166DE921E147CC007C5BEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52166DE821E147CC007C5BEF /* AppDelegate.swift */; };
 		52166DEE21E147CC007C5BEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52166DEC21E147CC007C5BEF /* Main.storyboard */; };
 		52166DF021E147CD007C5BEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52166DEF21E147CD007C5BEF /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		520FE15D220B3DFB0099A580 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		52166DE521E147CC007C5BEF /* P9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52166DE821E147CC007C5BEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52166DED21E147CC007C5BEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		520FE15C220B3DCE0099A580 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				520FE15D220B3DFB0099A580 /* Data.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		52166DDC21E147CC007C5BEF = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				52166DE821E147CC007C5BEF /* AppDelegate.swift */,
+				520FE15C220B3DCE0099A580 /* Model */,
 				52166E0921E14B47007C5BEF /* View */,
 				52166E0821E14B38007C5BEF /* Controller */,
 				52166DEF21E147CD007C5BEF /* Assets.xcassets */,
@@ -242,6 +253,7 @@
 				52B9A57221F91B4D00D224AC /* TranlateViewController.swift in Sources */,
 				52633E7721FFA81E0065FB61 /* WeatherViewController.swift in Sources */,
 				52FA2B4D21F906CF00F32C56 /* CustomLabel.swift in Sources */,
+				520FE15E220B3DFB0099A580 /* Data.swift in Sources */,
 				52AA307821F9143000D7BC3C /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
