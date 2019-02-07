@@ -32,11 +32,12 @@ enum Currency: String, CaseIterable {
     case hkd
     // Russian Ruble
     case rub
-    
-    func convertToUppercased() -> String {
-        switch self {
-        case .aud,.btc,.cad,.chf,.cop,.eur,.gbp,.hkd,.ils,.rub,.usd:
-            return self.rawValue.uppercased()
+    // allows you to fill in a array containing all the cases of the enumeration
+    static func convertToArray() {
+        //
+        for value in Currency.allCases {
+            // for currencies, we use the uppercased() method to have all the text in capitals.
+            Data.shared.arrayCurrency.append(value.rawValue.uppercased())
         }
     }
 }
@@ -56,21 +57,32 @@ enum Languages: String, CaseIterable {
     case chinese
     // 🇮🇹
     case italian
-    
-    func convertToCapitalized() -> String {
-        switch self {
-        case .chinese,.english,.french,.german,.italian,.spanish,.vietnam:
-            return self.rawValue.capitalized
+    // allows you to fill in a array containing all the cases of the enumeration
+    static func convertToArray() {
+        for value in Languages.allCases {
+            // for languages, we use the capitalized() method to have a capital letter in the first letter
+            Data.shared.arrayLanguage.append(value.rawValue.capitalized)
         }
     }
 }
 
 class Data {
-    
+    // we use a single instance of the Data class
     static let shared = Data()
     
-    var totalNumberOfcurrency = Currency.allCases.count
-    var totalNumberOfLanguages = Languages.allCases.count
+    // the array that is filled using the convertToArray method in the Languages enumeration
+    var arrayLanguage: [String] = []
+    // the array that is filled using the convertToArray method in the Currency enumeration
+    var arrayCurrency: [String] = []
     
-    
+    // allows to fill a array according to the enumeration chosen in parameter
+    func enumCaseToArray(language: Bool?, currency: Bool? ) {
+        if language == true && currency != true {
+            Languages.convertToArray()
+        } else if currency == true && language != true {
+            Currency.convertToArray()
+        } else {
+            return
+        }
+    }
 }
