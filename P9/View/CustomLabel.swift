@@ -15,6 +15,7 @@ class CustomLabel: UILabel {
         setup()
     }
     
+    // setting up of the label
     func setup() {
         layer.backgroundColor = UIColor.clear.cgColor
         layer.borderWidth = 1

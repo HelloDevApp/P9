@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum ListofEnumeration {
+    case Currency, Languages
+}
+
 enum Currency: String, CaseIterable {
     
     // Euro
@@ -44,19 +48,19 @@ enum Currency: String, CaseIterable {
 
 enum Languages: String, CaseIterable {
     // 🇺🇸
-    case english
+    case english = "Anglais"
     // 🇪🇸
-    case spanish
+    case spanish = "Espagnol"
     // 🇫🇷
-    case french
+    case french = "Français"
     // 🇻🇳
-    case vietnam
+    case vietnam = "Vietnamien"
     // 🇩🇪
-    case german
+    case german = "Allemand"
     // 🇨🇳
-    case chinese
+    case chinese = "Chinois"
     // 🇮🇹
-    case italian
+    case italian = "Italien"
     // allows you to fill in a array containing all the cases of the enumeration
     static func convertToArray() {
         for value in Languages.allCases {
@@ -76,13 +80,11 @@ class Data {
     var arrayCurrency: [String] = []
     
     // allows to fill a array according to the enumeration chosen in parameter
-    func enumCaseToArray(language: Bool?, currency: Bool? ) {
-        if language == true && currency != true {
+    func enumCaseToArray(enumeration: ListofEnumeration) {
+        if enumeration == .Languages {
             Languages.convertToArray()
-        } else if currency == true && language != true {
+        } else if enumeration == .Currency {
             Currency.convertToArray()
-        } else {
-            return
         }
     }
 }

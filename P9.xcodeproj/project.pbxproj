@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520E821E22157E7B00EB2FCA /* ExtensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E821D22157E7B00EB2FCA /* ExtensionUIView.swift */; };
+		520E8220221580A500EB2FCA /* ExtensionTranlateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E821F221580A500EB2FCA /* ExtensionTranlateController.swift */; };
+		520E8223221587BB00EB2FCA /* ExtensionCurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E8222221587BB00EB2FCA /* ExtensionCurrencyController.swift */; };
+		520E82252215983A00EB2FCA /* ConverterCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E82242215983A00EB2FCA /* ConverterCurrency.swift */; };
 		520FE15E220B3DFB0099A580 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FE15D220B3DFB0099A580 /* Data.swift */; };
+		520FE160220C878C0099A580 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FE15F220C878C0099A580 /* CustomTextView.swift */; };
 		52166DE921E147CC007C5BEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52166DE821E147CC007C5BEF /* AppDelegate.swift */; };
 		52166DEE21E147CC007C5BEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52166DEC21E147CC007C5BEF /* Main.storyboard */; };
 		52166DF021E147CD007C5BEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52166DEF21E147CD007C5BEF /* Assets.xcassets */; };
@@ -34,7 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		520E821D22157E7B00EB2FCA /* ExtensionUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIView.swift; sourceTree = "<group>"; };
+		520E821F221580A500EB2FCA /* ExtensionTranlateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTranlateController.swift; sourceTree = "<group>"; };
+		520E8222221587BB00EB2FCA /* ExtensionCurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCurrencyController.swift; sourceTree = "<group>"; };
+		520E82242215983A00EB2FCA /* ConverterCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterCurrency.swift; sourceTree = "<group>"; };
 		520FE15D220B3DFB0099A580 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		520FE15F220C878C0099A580 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		52166DE521E147CC007C5BEF /* P9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52166DE821E147CC007C5BEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52166DED21E147CC007C5BEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,10 +82,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		520E82212215818E00EB2FCA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				520E821D22157E7B00EB2FCA /* ExtensionUIView.swift */,
+				520E821F221580A500EB2FCA /* ExtensionTranlateController.swift */,
+				520E8222221587BB00EB2FCA /* ExtensionCurrencyController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		520FE15C220B3DCE0099A580 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				520FE15D220B3DFB0099A580 /* Data.swift */,
+				520E82242215983A00EB2FCA /* ConverterCurrency.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,6 +148,7 @@
 				52166E0F21E14DDE007C5BEF /* CurrencyViewController.swift */,
 				52B9A57121F91B4D00D224AC /* TranlateViewController.swift */,
 				52633E7621FFA81E0065FB61 /* WeatherViewController.swift */,
+				520E82212215818E00EB2FCA /* Extensions */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -137,6 +159,7 @@
 				52166DEC21E147CC007C5BEF /* Main.storyboard */,
 				52166DF121E147CD007C5BEF /* LaunchScreen.storyboard */,
 				522219A721F0B1AA0058788D /* GradientView.swift */,
+				520FE15F220C878C0099A580 /* CustomTextView.swift */,
 				52FA2B4C21F906CF00F32C56 /* CustomLabel.swift */,
 				52AA307721F9143000D7BC3C /* CustomTextField.swift */,
 				52B9A56F21F917B100D224AC /* CustomPickerView.swift */,
@@ -246,12 +269,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520E8220221580A500EB2FCA /* ExtensionTranlateController.swift in Sources */,
+				520E82252215983A00EB2FCA /* ConverterCurrency.swift in Sources */,
+				520E8223221587BB00EB2FCA /* ExtensionCurrencyController.swift in Sources */,
 				52166DE921E147CC007C5BEF /* AppDelegate.swift in Sources */,
 				52166E1021E14DDE007C5BEF /* CurrencyViewController.swift in Sources */,
+				520E821E22157E7B00EB2FCA /* ExtensionUIView.swift in Sources */,
 				522219A821F0B1AA0058788D /* GradientView.swift in Sources */,
 				52B9A57021F917B100D224AC /* CustomPickerView.swift in Sources */,
 				52B9A57221F91B4D00D224AC /* TranlateViewController.swift in Sources */,
 				52633E7721FFA81E0065FB61 /* WeatherViewController.swift in Sources */,
+				520FE160220C878C0099A580 /* CustomTextView.swift in Sources */,
 				52FA2B4D21F906CF00F32C56 /* CustomLabel.swift in Sources */,
 				520FE15E220B3DFB0099A580 /* Data.swift in Sources */,
 				52AA307821F9143000D7BC3C /* CustomTextField.swift in Sources */,
@@ -347,7 +375,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -402,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

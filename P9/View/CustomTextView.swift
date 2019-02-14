@@ -1,21 +1,21 @@
 //
-//  CustomTextField.swift
+//  CustomTextView.swift
 //  P9
 //
-//  Created by Mac Book Pro on 23/01/2019.
+//  Created by Mac Book Pro on 07/02/2019.
 //  Copyright © 2019 dylan. All rights reserved.
 //
 
 import UIKit
 
-class CustomTextField: UITextField {
+class CustomTextView: UITextView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
-
-    // setting up of the textField
+    
+    // setting up of the textView
     func setup() {
         layer.backgroundColor = UIColor.clear.cgColor
         layer.borderWidth = 1
@@ -26,7 +26,5 @@ class CustomTextField: UITextField {
         layer.shadowOffset = CGSize(width: -2, height: 2)
         layer.shadowOpacity = 1
         clipsToBounds = true
-        attributedPlaceholder = NSAttributedString(string: placeholder ?? "Entrez une valeur", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
-
 }
