@@ -10,6 +10,8 @@ import UIKit
 
 class TranlateViewController: UIViewController {
 
+    @IBOutlet weak var languageDestinationLabel: CustomLabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // initialization of the gesture 

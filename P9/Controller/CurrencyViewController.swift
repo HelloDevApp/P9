@@ -10,6 +10,8 @@ import UIKit
 
 class CurrencyViewController: UIViewController {
 
+    @IBOutlet weak var currencyLabelDestination: CustomLabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // initialization of the gesture

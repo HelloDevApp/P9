@@ -162,6 +162,9 @@
                         <viewLayoutGuide key="safeArea" id="C1p-gi-TUj"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Traduction" image="translate" id="Hoh-1P-3tD"/>
+                    <connections>
+                        <outlet property="languageDestinationLabel" destination="wqi-7a-DBb" id="lkv-xI-clx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTI-dR-WFE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -469,6 +472,9 @@
                         <viewLayoutGuide key="safeArea" id="Uv4-JR-oS8"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Convertir" image="money" id="2M7-Jv-KEH"/>
+                    <connections>
+                        <outlet property="currencyLabelDestination" destination="Jxp-0M-Vl3" id="Nzw-KJ-sy6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8u-Cv-beh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
