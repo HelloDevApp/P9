@@ -42,4 +42,8 @@ extension TranlateViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         let attribute = NSAttributedString(string: Data.shared.arrayLanguage[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         return attribute
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        languageDestinationLabel.text = Data.shared.arrayLanguage[row]
+    }
 }

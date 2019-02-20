@@ -25,6 +25,18 @@ extension CurrencyViewController: UITextFieldDelegate {
         if textField.text!.isEmpty {
             textField.attributedPlaceholder = NSAttributedString(string: "Entrez une valeur", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
             self.view.hideKeyboard()
+        } else {
+            validateConversion(textField: textField)
+        }
+    }
+    
+    func validateConversion(textField: UITextField) {
+        
+        if let currentMoney = textField.text {
+            if let currentMoneyDouble = Double(currentMoney) {
+                let result = ConverterCurrency.shared.convert(money: currentMoneyDouble)
+                print(result)
+            }
         }
     }
 }
@@ -47,4 +59,9 @@ extension CurrencyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         let attribute = NSAttributedString(string: Data.shared.arrayCurrency[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         return attribute
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        currencyLabelDestination.text = Data.shared.arrayCurrency[row]
+    }
+    
 }
