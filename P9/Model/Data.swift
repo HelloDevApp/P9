@@ -14,8 +14,6 @@ enum ListofEnumeration {
 
 enum Currency: String, CaseIterable {
     
-    // Euro
-    case eur
     // Cannadian Dollar
     case cad
     // United State Dollard
@@ -51,8 +49,6 @@ enum Languages: String, CaseIterable {
     case english = "Anglais"
     // 🇪🇸
     case spanish = "Espagnol"
-    // 🇫🇷
-    case french = "Français"
     // 🇻🇳
     case vietnam = "Vietnamien"
     // 🇩🇪
