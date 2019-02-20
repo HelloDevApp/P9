@@ -10,8 +10,12 @@ import UIKit
 
 class ConverterCurrency {
     
-    func convert() {
-        
-    }
+    static let shared = ConverterCurrency()
     
+    let currencyDestination = 0.0
+    
+    func convert(money: Double) -> Double {
+        let result = money * currencyDestination
+        return result
+    }
 }
