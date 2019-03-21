@@ -17,6 +17,6 @@ class TranlateViewController: UIViewController {
         // initialization of the gesture 
         view.addGestureToHideKeyboard()
         // we fill the array with the different cases of enumeration
-        Data.shared.enumCaseToArray(enumeration: .Languages)
+        Data.shared.enumCaseToArrayOrDictionnary(enumeration: .Languages)
     }
 }
