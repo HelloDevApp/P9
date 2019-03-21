@@ -48,6 +48,7 @@
 		520E821F221580A500EB2FCA /* ExtensionTranlateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionTranlateController.swift; sourceTree = "<group>"; };
 		520E8222221587BB00EB2FCA /* ExtensionCurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCurrencyController.swift; sourceTree = "<group>"; };
 		520E82242215983A00EB2FCA /* ConverterCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterCurrency.swift; sourceTree = "<group>"; };
+		520E822C221E993F00EB2FCA /* ConverterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterService.swift; sourceTree = "<group>"; };
 		520FE15D220B3DFB0099A580 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		520FE15F220C878C0099A580 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		52166DE521E147CC007C5BEF /* P9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P9.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,6 +295,7 @@
 				520FE160220C878C0099A580 /* CustomTextView.swift in Sources */,
 				52FA2B4D21F906CF00F32C56 /* CustomLabel.swift in Sources */,
 				520FE15E220B3DFB0099A580 /* Data.swift in Sources */,
+				520E822D221E993F00EB2FCA /* ConverterService.swift in Sources */,
 				52AA307821F9143000D7BC3C /* CustomTextField.swift in Sources */,
 				52B0E531223C15E6000D9052 /* Console.swift in Sources */,
 			);
