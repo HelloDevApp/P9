@@ -16,8 +16,7 @@ class Data {
     var arrayLanguages: [String] = []
     // the array that is filled using the convertToArray method in the Currency enumeration
     var arrayCurrencies: [String] = []
-    
-    
+    // contains a dictionary with the full names and rate values of each currencies.
     var currenciesName = [String:String]()
     
     // allows to fill a array according to the enumeration chosen in parameter

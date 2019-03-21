@@ -15,6 +15,7 @@ class CustomPickerView: UIPickerView {
         setup()
     }
 
+    // setting up of the custom pickerView
     func setup() {
         layer.backgroundColor = UIColor.clear.cgColor
         layer.borderWidth = 1

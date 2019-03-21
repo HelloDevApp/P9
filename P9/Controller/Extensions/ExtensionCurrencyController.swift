@@ -31,6 +31,7 @@ extension CurrencyViewController: UITextFieldDelegate {
         textField.attributedPlaceholder = NSAttributedString(string: "Entrez une valeur", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     
+    // method called each time the user adds a character: allows to check if a dot can be added
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let textFieldtext = textField.text else { return false }
@@ -66,8 +67,9 @@ extension CurrencyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         return attribute
     }
     
-    
+    // we update the text of the label each time the selected value of the pickerView changes
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
         let currentCurrency = Data.shared.arrayCurrencies[row]
         currencyLabelDestination.text = currentCurrency
     }
@@ -79,7 +81,9 @@ extension CurrencyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 //====================================
 extension CurrencyViewController {
     
+    // method that configures some details
     func setup() {
+        
         // initialization of the gesture
         view.addGestureToHideKeyboard()
         // we fill the array with the different cases of enumeration
@@ -111,6 +115,7 @@ extension CurrencyViewController {
                         
                         // currencyName.value contains the full name of the currency. example: "Australian dollard"
                         let currentRateName = currencyName.value
+                        
                         // rate.value contains the value of the rate and the name. example: ("dollars" : "0.95903")
                         guard let rateDouble = rate.value as? Double else { return }
                         ConverterCurrency.shared.changeValueOfRateValueDestination(name: currentRateName, rates: rateDouble)

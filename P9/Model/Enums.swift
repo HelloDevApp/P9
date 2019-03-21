@@ -7,13 +7,15 @@
 //
 
 import Foundation
-
+//=====================================================
+//MARK:-----------------All Enums----------------------
+//=====================================================
 enum ListofEnumeration {
     case Currencies, Languages, CurrenciesNames
 }
 
 //=====================================================
-//-------------------Converter-------------------------
+//MARK:-----------------Converter----------------------
 //=====================================================
 enum CurrenciesNames: String, CaseIterable {
     // Cannadian Dollars
@@ -59,7 +61,7 @@ enum Currencies: String, CaseIterable {
 }
 
 //=====================================================
-//-------------------Translate-------------------------
+//MARK:----------------Translate-----------------------
 //=====================================================
 enum Languages: String, CaseIterable {
     // 🇺🇸
@@ -76,33 +78,24 @@ enum Languages: String, CaseIterable {
     case italian = "Italien"
 }
 
-
-
-
-
 //=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-//-+-+-+-+-+-+-Extensions Of Enumerations-+-+-+-+-+-+-+
+//MARK:-+-+-+-+-+-Extensions Of Enumerations-+-+-+-+-+-
 //=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 extension CurrenciesNames {
     
     // allows you to fill in a array containing all the cases of the enumeration
     static func convertToDictionnary() {
-        var i = 0
-        
+        var index = 0
         for nameCaseCurrencies in Currencies.allCases {
-            i += 1
-            var i2 = 0
-            
-            Console.shared.printInfosNameCaseCurrencies(i: i, nameCaseCurrencies: "\(nameCaseCurrencies)")
+            var index2 = 0
+            index += 1
+            Console.shared.printInfosNameCaseCurrencies(i: index, nameCaseCurrencies: "\(nameCaseCurrencies)")
             for nameCaseCurrenciesNames in CurrenciesNames.allCases {
-                i2 += 1
-                
-                Console.shared.printInfoNameCaseCurrenciesNames(i2: i2, nameCaseCurrenciesNames: "\(nameCaseCurrenciesNames)")
-                
+                index2 += 1
+                Console.shared.printInfoNameCaseCurrenciesNames(i2: index2, nameCaseCurrenciesNames: "\(nameCaseCurrenciesNames)")
                 if "\(nameCaseCurrenciesNames)" == nameCaseCurrencies.rawValue {
                     Data.shared.currenciesName[nameCaseCurrencies.rawValue.uppercased()] = nameCaseCurrenciesNames.rawValue
-                    
-                    Console.shared.printInfoValue(nameCaseCurrencies: nameCaseCurrencies.rawValue.uppercased(), nameCurrencyOfCurrenciesNames: nameCaseCurrenciesNames.rawValue.uppercased(), index: i, index2: i2)
+                    Console.shared.printInfoValue(nameCaseCurrencies: nameCaseCurrencies.rawValue.uppercased(), nameCurrencyOfCurrenciesNames: nameCaseCurrenciesNames.rawValue.uppercased(), index: index, index2: index2)
                     break
                 }
             }
@@ -131,4 +124,3 @@ extension Languages {
         }
     }
 }
-

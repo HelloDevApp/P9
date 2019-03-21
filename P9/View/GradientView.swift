@@ -24,24 +24,28 @@ class GradientView: UIView {
         }
     }
     
+    // the horizontal point where the gradient begins
     var startPointX: CGFloat = 0 {
         didSet {
             setNeedsLayout()
         }
     }
     
+    // the vertical point where the gradient begins
     var startPointY: CGFloat = 0.5 {
         didSet {
             setNeedsLayout()
         }
     }
     
+    // the horizontal point where the gradient finish
     var endPointX: CGFloat = 1 {
         didSet {
             setNeedsLayout()
         }
     }
     
+    // the vertical point where the gradient finish
     var endPointY: CGFloat = 0.5 {
         didSet {
             setNeedsLayout()
@@ -63,6 +67,7 @@ class GradientView: UIView {
         return CAGradientLayer.self
     }
     
+    // method that assigns values to the gradient
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer = layer as? CAGradientLayer

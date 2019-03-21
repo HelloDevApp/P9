@@ -15,7 +15,7 @@ class CustomTextField: UITextField {
         setup()
     }
 
-    // setting up of the textField
+    // setting up of the custom textField
     func setup() {
         layer.backgroundColor = UIColor.clear.cgColor
         layer.borderWidth = 1

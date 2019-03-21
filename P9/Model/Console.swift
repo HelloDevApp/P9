@@ -12,6 +12,9 @@ class Console {
     
     static var shared = Console()
     
+    //=====================================================
+    //MARK:------------------Convert-----------------------
+    //=====================================================
     func printDescriptionResultConversion(moneyToConvert: Double, result: Double, nameCurrencyDestination: String) {
     print("\(moneyToConvert) euros font \(result) \(nameCurrencyDestination)")
     }
@@ -43,3 +46,14 @@ class Console {
             + "\(Date(timeIntervalSince1970: TimeInterval(timestamp)))")
     }
 }
+
+//=====================================================
+//MARK:----------------Translate-----------------------
+//=====================================================
+
+
+
+
+//=====================================================
+//MARK:----------------Weather-----------------------
+//=====================================================

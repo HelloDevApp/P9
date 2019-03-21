@@ -33,7 +33,7 @@ class ConverterService {
         var request = URLRequest(url: _urlComplete)
         request.httpMethod = "GET"
         
-        // the task)
+        // the task
         let task = session.dataTask(with: request) { (data, response, error) in
             
                 if let data = data, error == nil {

@@ -8,14 +8,19 @@
 
 import UIKit
 
+//============================================
 // MARK: Text View Setting
+//============================================
 extension TranlateViewController: UITextViewDelegate {
     
+    // this method is called every time the user starts writing 
     public func textViewDidBeginEditing(_ textView: UITextView) {
         textView.text = ""
     }
     
+    // this method is called each time the user has finished writing
     public func textViewDidEndEditing(_ textView: UITextView) {
+        // if the text is empty, a placeholder is assigned
         if textView.text.isEmpty {
             textView.text = "Entrer du texte"
             self.view.hideKeyboard()
@@ -23,7 +28,9 @@ extension TranlateViewController: UITextViewDelegate {
     }
 }
 
+//============================================
 // MARK: Picker VIew Setting
+//============================================
 extension TranlateViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     // number of pickerView components
@@ -43,7 +50,9 @@ extension TranlateViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         return attribute
     }
     
+    // we update the text of the label each time the selected value of the pickerView changes
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        languageDestinationLabel.text = Data.shared.arrayLanguages[row]
+        let currentLanguage = Data.shared.arrayLanguages[row]
+        languageDestinationLabel.text = currentLanguage
     }
 }

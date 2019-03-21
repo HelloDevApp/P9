@@ -8,8 +8,8 @@
 
 import Foundation
 
+// the structure that will receive the JSON values received by the API
 struct Result: Decodable {
-
     var success: Bool?
     var timestamp: Int?
     var base: String?
@@ -17,6 +17,7 @@ struct Result: Decodable {
     var rates: Rates?
 }
 
+// the structure that will receive all the rate values
 struct Rates: Decodable {
     var AUD: Double?
     var BTC: Double?
@@ -28,5 +29,4 @@ struct Rates: Decodable {
     var HKD: Double?
     var ILS: Double?
     var USD: Double?
-    
 }

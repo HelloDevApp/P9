@@ -15,7 +15,7 @@ class CustomTextView: UITextView {
         setup()
     }
     
-    // setting up of the textView
+    // setting up of the custom textView
     func setup() {
         layer.backgroundColor = UIColor.clear.cgColor
         layer.borderWidth = 1
