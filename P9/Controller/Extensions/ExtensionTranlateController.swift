@@ -33,17 +33,17 @@ extension TranlateViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     // number of rows in the component
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Data.shared.arrayLanguage.count
+        return Data.shared.arrayLanguages.count
     }
     
     // title of the selected row
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         // we change the color of the pickerView text and assign it a text
-        let attribute = NSAttributedString(string: Data.shared.arrayLanguage[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        let attribute = NSAttributedString(string: Data.shared.arrayLanguages[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         return attribute
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        languageDestinationLabel.text = Data.shared.arrayLanguage[row]
+        languageDestinationLabel.text = Data.shared.arrayLanguages[row]
     }
 }
