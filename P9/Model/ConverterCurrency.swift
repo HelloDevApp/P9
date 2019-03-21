@@ -12,10 +12,32 @@ class ConverterCurrency {
     
     static let shared = ConverterCurrency()
     
-    let currencyDestination = 0.0
+    // contains the name of the destination currency and also the value of the rate
+    //****** the full name of the currencies is only used in the console for print ********
+    private var _rateValueDestination = (name: "", rates: 0.0)
     
-    func convert(money: Double) -> Double {
-        let result = money * currencyDestination
+    var rateValueDestination: (name:String, rates: Double) {
+        return _rateValueDestination
+    }
+    
+    // allows you to change the values of the tuple rateValueDestination .name and .rates
+    func changeValueOfRateValueDestination(name: String, rates: Double) {
+        _rateValueDestination.name = name
+        _rateValueDestination.rates = rates
+    }
+    
+    // is used to calculate and return the result
+    private func _convert(moneyToConvert: Double) -> Double {
+        // contains the rate of the destination currency
+        let destinationRateValue = rateValueDestination.rates
+        // contains the result of the operation
+        let result = moneyToConvert * destinationRateValue
+        Console.shared.printDescriptionResultConversion(moneyToConvert: moneyToConvert, result: result, nameCurrencyDestination: rateValueDestination.name)
         return result
+    }
+    
+    // simply returns the private method convert() 'included in the CurrencyController extension'
+    func convert(moneyToConvert: Double) -> Double {
+        return _convert(moneyToConvert: moneyToConvert)
     }
 }

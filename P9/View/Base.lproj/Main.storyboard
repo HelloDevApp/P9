@@ -408,6 +408,9 @@
                                             <constraint firstAttribute="width" secondItem="Cyb-3z-7Dh" secondAttribute="height" id="XSF-6e-WyR"/>
                                         </constraints>
                                         <state key="normal" image="iconsReversed"/>
+                                        <connections>
+                                            <action selector="actionValidateButton:" destination="kRc-N5-rHy" eventType="touchUpInside" id="cCu-eu-dXb"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rkn-U3-NEA">
                                         <rect key="frame" x="173.5" y="0.0" width="106.5" height="67.5"/>
@@ -473,7 +476,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Convertir" image="money" id="2M7-Jv-KEH"/>
                     <connections>
+                        <outlet property="CurrentMoneyTextField" destination="US1-AN-Goc" id="8Ms-5D-yX7"/>
                         <outlet property="currencyLabelDestination" destination="Jxp-0M-Vl3" id="Nzw-KJ-sy6"/>
+                        <outlet property="pickerView" destination="2fV-4a-qgU" id="zgf-PK-qdf"/>
+                        <outlet property="resultTextField" destination="UPd-di-tEX" id="YBD-dX-AvW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8u-Cv-beh" userLabel="First Responder" sceneMemberID="firstResponder"/>
