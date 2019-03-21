@@ -11,6 +11,7 @@
 		520E8220221580A500EB2FCA /* ExtensionTranlateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E821F221580A500EB2FCA /* ExtensionTranlateController.swift */; };
 		520E8223221587BB00EB2FCA /* ExtensionCurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E8222221587BB00EB2FCA /* ExtensionCurrencyController.swift */; };
 		520E82252215983A00EB2FCA /* ConverterCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E82242215983A00EB2FCA /* ConverterCurrency.swift */; };
+		520E822D221E993F00EB2FCA /* ConverterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E822C221E993F00EB2FCA /* ConverterService.swift */; };
 		520FE15E220B3DFB0099A580 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FE15D220B3DFB0099A580 /* Data.swift */; };
 		520FE160220C878C0099A580 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FE15F220C878C0099A580 /* CustomTextView.swift */; };
 		52166DE921E147CC007C5BEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52166DE821E147CC007C5BEF /* AppDelegate.swift */; };
@@ -25,6 +26,7 @@
 		52AA307821F9143000D7BC3C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA307721F9143000D7BC3C /* CustomTextField.swift */; };
 		52B9A57021F917B100D224AC /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9A56F21F917B100D224AC /* CustomPickerView.swift */; };
 		52B9A57221F91B4D00D224AC /* TranlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9A57121F91B4D00D224AC /* TranlateViewController.swift */; };
+		52C5617D222815DD005821EE /* ConverterAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5617C222815DD005821EE /* ConverterAPIResult.swift */; };
 		52FA2B4D21F906CF00F32C56 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA2B4C21F906CF00F32C56 /* CustomLabel.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,7 @@
 		52AA307721F9143000D7BC3C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		52B9A56F21F917B100D224AC /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		52B9A57121F91B4D00D224AC /* TranlateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranlateViewController.swift; sourceTree = "<group>"; };
+		52C5617C222815DD005821EE /* ConverterAPIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterAPIResult.swift; sourceTree = "<group>"; };
 		52FA2B4C21F906CF00F32C56 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -273,6 +276,7 @@
 				520E82252215983A00EB2FCA /* ConverterCurrency.swift in Sources */,
 				520E8223221587BB00EB2FCA /* ExtensionCurrencyController.swift in Sources */,
 				52166DE921E147CC007C5BEF /* AppDelegate.swift in Sources */,
+				52C5617D222815DD005821EE /* ConverterAPIResult.swift in Sources */,
 				52166E1021E14DDE007C5BEF /* CurrencyViewController.swift in Sources */,
 				520E821E22157E7B00EB2FCA /* ExtensionUIView.swift in Sources */,
 				522219A821F0B1AA0058788D /* GradientView.swift in Sources */,
