@@ -23,6 +23,7 @@
 		522219A821F0B1AA0058788D /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522219A721F0B1AA0058788D /* GradientView.swift */; };
 		52633E7721FFA81E0065FB61 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52633E7621FFA81E0065FB61 /* WeatherViewController.swift */; };
 		52633E7922021FD30065FB61 /* cityscape.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52633E7822021FD30065FB61 /* cityscape.ttf */; };
+		52677D582245149C009A8C60 /* TranslaterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52677D572245149C009A8C60 /* TranslaterService.swift */; };
 		529107BE2242B8E3006C9DE6 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529107BD2242B8E3006C9DE6 /* Enums.swift */; };
 		52AA307821F9143000D7BC3C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA307721F9143000D7BC3C /* CustomTextField.swift */; };
 		52B0E531223C15E6000D9052 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0E530223C15E6000D9052 /* Console.swift */; };
@@ -64,6 +65,7 @@
 		522219A721F0B1AA0058788D /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		52633E7621FFA81E0065FB61 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		52633E7822021FD30065FB61 /* cityscape.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = cityscape.ttf; sourceTree = "<group>"; };
+		52677D572245149C009A8C60 /* TranslaterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslaterService.swift; sourceTree = "<group>"; };
 		529107BD2242B8E3006C9DE6 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		52AA307721F9143000D7BC3C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		52B0E530223C15E6000D9052 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				520E822C221E993F00EB2FCA /* ConverterService.swift */,
+				52677D572245149C009A8C60 /* TranslaterService.swift */,
 				52C5617C222815DD005821EE /* ConverterAPIResult.swift */,
 				52B0E532223C38B8000D9052 /* API_Key.swift */,
 			);
@@ -299,6 +302,7 @@
 				52166DE921E147CC007C5BEF /* AppDelegate.swift in Sources */,
 				52C5617D222815DD005821EE /* ConverterAPIResult.swift in Sources */,
 				52166E1021E14DDE007C5BEF /* CurrencyViewController.swift in Sources */,
+				52677D582245149C009A8C60 /* TranslaterService.swift in Sources */,
 				520E821E22157E7B00EB2FCA /* ExtensionUIView.swift in Sources */,
 				522219A821F0B1AA0058788D /* GradientView.swift in Sources */,
 				52B9A57021F917B100D224AC /* CustomPickerView.swift in Sources */,
