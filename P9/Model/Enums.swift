@@ -132,3 +132,17 @@ extension Languages {
         }
     }
 }
+
+extension SpecialCharactersSign {
+    // allows you to fill in a dictionary with the names of the usual characters and the corresponding hexadecimal codes
+    static func createDictionnaryOfSpecialCharactersSignAndCodes() {
+        for character in SpecialCharactersSign.allCases {
+            for characterCode in SpecialCharactersCodes.allCases {
+                if "\(character)" == "\(characterCode)" {
+                    Data.shared.dictOfSpecialCharactersAndCodes[character.rawValue] = characterCode.rawValue
+                    break
+                }
+            }
+        }
+    }
+}
