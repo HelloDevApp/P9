@@ -90,14 +90,17 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8K5-vo-LPf">
-                                        <rect key="frame" x="121.5" y="15" width="37" height="37.5"/>
+                                        <rect key="frame" x="109" y="3" width="62" height="61.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="8K5-vo-LPf" secondAttribute="height" id="5UT-xU-ret"/>
                                         </constraints>
                                         <state key="normal" image="iconsReversed"/>
+                                        <connections>
+                                            <action selector="buttonTranslateAction" destination="7Dj-Mb-aIo" eventType="touchUpInside" id="txv-1y-Rph"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="72e-W6-CyV">
-                                        <rect key="frame" x="173.5" y="0.0" width="106.5" height="67.5"/>
+                                        <rect key="frame" x="186" y="0.0" width="94" height="67.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anglais" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqi-7a-DBb" customClass="CustomLabel" customModule="P9" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="106.5" height="21.5"/>
@@ -164,6 +167,9 @@
                     <tabBarItem key="tabBarItem" title="Traduction" image="translate" id="Hoh-1P-3tD"/>
                     <connections>
                         <outlet property="languageDestinationLabel" destination="wqi-7a-DBb" id="lkv-xI-clx"/>
+                        <outlet property="pickerViewTargetLang" destination="Ea1-SU-z5b" id="yf8-oG-Xda"/>
+                        <outlet property="resultTextView" destination="8WT-pN-Haa" id="Cmc-fs-hEV"/>
+                        <outlet property="textToTranslate" destination="rvf-pJ-nmK" id="iEf-OQ-Nec"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aTI-dR-WFE" userLabel="First Responder" sceneMemberID="firstResponder"/>

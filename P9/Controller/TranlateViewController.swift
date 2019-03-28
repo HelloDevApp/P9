@@ -10,7 +10,13 @@ import UIKit
 
 class TranlateViewController: UIViewController {
 
+    @IBOutlet weak var pickerViewTargetLang: CustomPickerView!
+    
     @IBOutlet weak var languageDestinationLabel: CustomLabel!
+    
+    @IBOutlet weak var textToTranslate: CustomTextView!
+    
+    @IBOutlet weak var resultTextView: CustomTextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
