@@ -6,8 +6,6 @@
 //  Copyright © 2019 dylan. All rights reserved.
 //
 
-import UIKit
-
 class ConverterCurrency {
     
     static let shared = ConverterCurrency()

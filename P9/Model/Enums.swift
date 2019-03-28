@@ -6,13 +6,6 @@
 //  Copyright © 2019 dylan. All rights reserved.
 //
 
-import Foundation
-//=====================================================
-//MARK:-----------------All Enums----------------------
-//=====================================================
-enum ListofEnumeration {
-    case Currencies, Languages, CurrenciesNames
-}
 
 //=====================================================
 //MARK:-----------------Converter----------------------
@@ -84,25 +77,14 @@ enum Languages: String, CaseIterable {
 extension CurrenciesNames {
     
     // allows you to fill in a array containing all the cases of the enumeration
-    static func convertToDictionnary() {
-        var index = 0
-        for nameCaseCurrencies in Currencies.allCases {
-            var index2 = 0
-            index += 1
-            Console.shared.printInfosNameCaseCurrencies(i: index, nameCaseCurrencies: "\(nameCaseCurrencies)")
-            for nameCaseCurrenciesNames in CurrenciesNames.allCases {
-                index2 += 1
-                Console.shared.printInfoNameCaseCurrenciesNames(i2: index2, nameCaseCurrenciesNames: "\(nameCaseCurrenciesNames)")
-                if "\(nameCaseCurrenciesNames)" == nameCaseCurrencies.rawValue {
-                    Data.shared.currenciesName[nameCaseCurrencies.rawValue.uppercased()] = nameCaseCurrenciesNames.rawValue
-                    Console.shared.printInfoValue(nameCaseCurrencies: nameCaseCurrencies.rawValue.uppercased(), nameCurrencyOfCurrenciesNames: nameCaseCurrenciesNames.rawValue.uppercased(), index: index, index2: index2)
-                    break
-                }
-            }
+    static func convertEnumCaseToDictionnary() {
+        for currencyName in CurrenciesNames.allCases {
+            Data.shared.dictOfCurrenciesNamesShortAndFull["\(currencyName)".uppercased()] = currencyName.rawValue
         }
-        print(Data.shared.currenciesName.sorted(by: <))
+        print("\n",Data.shared.dictOfCurrenciesNamesShortAndFull.sorted(by: <),"\n")
     }
 }
+
 
 extension Currencies {
     // allows you to fill in a array containing all the cases of the enumeration

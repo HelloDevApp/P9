@@ -6,7 +6,6 @@
 //  Copyright © 2019 dylan. All rights reserved.
 //
 
-import Foundation
 
 // the structure that will receive the JSON values received by the API
 struct Result: Decodable {

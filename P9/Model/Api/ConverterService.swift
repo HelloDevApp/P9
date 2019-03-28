@@ -17,12 +17,13 @@ class ConverterService {
     private let _url = URL(string: "http://data.fixer.io/api/")!
     
     //parameters request
-    private let _parameters = "latest?access_key=\(APIKey.shared.apiKey)&symbols=CAD,EUR,USD,BTC,AUD,GBP,ILS,CHF,COP,HKD"
+    private let _parameters = "latest?access_key=\(APIKey.shared.apiKeyConverter)&symbols=CAD,EUR,USD,BTC,AUD,GBP,ILS,CHF,COP,HKD"
     
     // complete URL
     private var _urlComplete: URL {
         return URL(string: "\(_url)\(_parameters)")!
     }
+    
     // the session
     let session = URLSession(configuration: .default)
     
@@ -36,21 +37,21 @@ class ConverterService {
         // the task
         let task = session.dataTask(with: request) { (data, response, error) in
             
-                if let data = data, error == nil {
-                    // we decode the JSON
-                    let dataJSON = try? JSONDecoder().decode(Result.self, from: data)
-                    // we check that the dataJSON is not nil
-                    guard let responseJSON = dataJSON else { return }
-                    // we check that the rates is not nil
-                    guard responseJSON.rates != nil else { return }
-                    // we get the time of update of the rates
-                    self.getUpdateDateOfRates(responseJSON: responseJSON)
-                    // we call the method that will create the structure with the received values 
-                    if let ratesStruct = self.createStructWithValuesOfResponseJson(responseJSON: responseJSON) {
-                        callback(true, ratesStruct)
-                    }
-                callback(false, nil)
+            guard let data = data, error == nil else { callback(false, nil); return }
+            // we decode the JSON
+            let dataJSON = try? JSONDecoder().decode(Result.self, from: data)
+            // we check that the dataJSON is not nil
+            guard let responseJSON = dataJSON else { callback(false, nil); return }
+            // we check that the rates is not nil
+            guard responseJSON.rates != nil else { callback(false, nil); return }
+            // we get the time of update of the rates
+            self.getUpdateDateOfRates(responseJSON: responseJSON)
+            // we call the method that will create the structure with the received values
+            if let ratesStruct = self.createStructWithResponseOfJson(responseJSON: responseJSON) {
+                callback(true, ratesStruct)
+                return
             }
+            callback(false, nil)
         }
         task.resume()
     }
@@ -63,7 +64,7 @@ class ConverterService {
     }
     
     // allows to create a structure with all the values received by the JSON
-    private func createStructWithValuesOfResponseJson(responseJSON: Result) -> Rates? {
+    private func createStructWithResponseOfJson(responseJSON: Result) -> Rates? {
         
         guard let rates = responseJSON.rates else { return nil }
         // we initialize a structure with the values received by 'api'

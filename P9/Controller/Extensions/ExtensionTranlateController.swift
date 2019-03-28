@@ -9,7 +9,7 @@
 import UIKit
 
 //============================================
-// MARK: Text View Setting
+// MARK:---------Text View Settings-----------
 //============================================
 extension TranlateViewController: UITextViewDelegate {
     
@@ -29,7 +29,7 @@ extension TranlateViewController: UITextViewDelegate {
 }
 
 //============================================
-// MARK: Picker VIew Setting
+// MARK:---------Picker View Settings---------
 //============================================
 extension TranlateViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     

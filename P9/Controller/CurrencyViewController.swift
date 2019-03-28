@@ -72,6 +72,7 @@ class CurrencyViewController: UIViewController {
             self._requestIsLaunch = true
         }
     }
+    
     // allows you to launch a conversion and update the text with the result of the conversion
     private func _launchConvert(moneyDouble: Double) {
         // performs the conversion and returns the result
@@ -79,6 +80,7 @@ class CurrencyViewController: UIViewController {
         // update of the display
         self.updateTextFieldWithResult(result: result)
     }
+    
     // allows you to change the text of the textField to display the result
     private func updateTextFieldWithResult(result: Double) {
         resultTextField.text = "\(result)"
