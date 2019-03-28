@@ -57,18 +57,44 @@ enum Currencies: String, CaseIterable {
 //MARK:----------------Translate-----------------------
 //=====================================================
 enum Languages: String, CaseIterable {
-    // 🇺🇸
-    case english = "Anglais"
-    // 🇪🇸
-    case spanish = "Espagnol"
-    // 🇻🇳
-    case vietnam = "Vietnamien"
-    // 🇩🇪
-    case german = "Allemand"
-    // 🇨🇳
-    case chinese = "Chinois"
-    // 🇮🇹
-    case italian = "Italien"
+    // 🇺🇸 english
+    case en = "Anglais"
+    // 🇪🇸 spanish
+    case es = "Espagnol"
+    // 🇻🇳 vietnam
+    case vi = "Vietnamien"
+    // 🇩🇪 german
+    case de = "Allemand"
+    // 🇨🇳 korean
+    case ko = "Koréen"
+    // 🇮🇹 italian
+    case it = "Italien"
+}
+
+enum SpecialCharactersCodes: String, CaseIterable {
+    // '
+    case apostrophe = "%27"
+    // #
+    case hashtag = "%23"
+    //
+    case space = "%20"
+    // Ç
+    case cCedillaUppercase = "%c7"
+    // ç
+    case cCedilla = "%e7"
+}
+
+enum SpecialCharactersSign: String, CaseIterable {
+    // '
+    case apostrophe = "’"
+    // #
+    case hashtag = "#"
+    //
+    case space = " "
+    // Ç
+    case cCedillaUppercase = "Ç"
+    // ç
+    case cCedilla = "ç"
 }
 
 //=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
