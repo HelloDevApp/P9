@@ -26,6 +26,19 @@ extension TranlateViewController: UITextViewDelegate {
             self.view.hideKeyboard()
         }
     }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if textView == textToTranslate {
+            let allowedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ,.:=()[]?!@+-/’#Çç'"
+            let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
+            let typedCharacterSet = CharacterSet(charactersIn: text)
+            let alphabet = allowedCharacterSet.isSuperset(of: typedCharacterSet)
+            if textView.text.first != "^" && textView.text.first != "`" && textView.text.first != "'" {
+                return alphabet
+            }
+        }
+        return false
+    }
 }
 
 //============================================
