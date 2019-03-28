@@ -14,9 +14,22 @@ class TranlateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // initialization of the gesture 
-        view.addGestureToHideKeyboard()
-        // we fill the array with the different cases of enumeration
-        Data.shared.enumCaseToArrayOrDictionnary(enumeration: .Languages)
+        setup()
+        languageDestinationLabel.text = Languages.allCases[Languages.allCases.count/2].rawValue
+    }
+    
+    @IBAction func buttonTranslateAction() {
+        
+        guard let textToTranslate =  textToTranslate.text else { return }
+        guard textToTranslate.isEmpty == false, textToTranslate != "" else { return }
+        guard textToTranslate != "Entrer du texte" else { return }
+        TranslaterService.shared.textToTranslate = textToTranslate
+        TranslaterService.shared.getTranslation { (success, translatedText) in
+            guard success else { print("pas de success"); return }
+            guard let translatedText = translatedText else { print("pas de reponse"); return }
+            DispatchQueue.main.async {
+            self.resultTextView.text = translatedText
+            }
+        }
     }
 }
