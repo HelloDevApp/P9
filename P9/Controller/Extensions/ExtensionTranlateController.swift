@@ -56,13 +56,13 @@ extension TranlateViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     // number of rows in the component
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Data.shared.arrayLanguages.count
+        return Languages.allCases.count
     }
     
     // title of the selected row
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         // we change the color of the pickerView text and assign it a text
-        let attribute = NSAttributedString(string: Data.shared.arrayLanguages[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        let attribute = NSAttributedString(string: Languages.allCases[row].rawValue, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         return attribute
     }
     
