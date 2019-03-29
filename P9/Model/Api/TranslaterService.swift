@@ -38,4 +38,26 @@ class TranslaterService {
         }
         task.resume()
     }
+    
+    func replaceMultipleCharactersForRequest() {
+        for character in textToTranslate {
+            for (key, value) in Data.shared.dictOfSpecialCharactersAndCodes {
+                let keyCharacter = Character(key)
+                if character == keyCharacter {
+                    textToTranslate = textToTranslate.replacingOccurrences(of: key, with: value)
+                    break
+                }
+            }
+        }
+        print(textToTranslate)
+    }
+    
+    func replaceCharactersOfTranslatedText(translatedText: String) -> String {
+        var translatedText = translatedText
+        if translatedText.contains("&#39;") {
+            translatedText = translatedText.replacingOccurrences(of: "&#39;", with: "'")
+            return translatedText
+        }
+        return translatedText
+    }
 }
