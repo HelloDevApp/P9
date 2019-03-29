@@ -46,6 +46,9 @@ extension TranlateViewController: UITextViewDelegate {
 //============================================
 extension TranlateViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
+    override func viewDidAppear(_ animated: Bool) {
+        pickerViewTargetLang.selectRow(Languages.allCases.count / 2, inComponent: 0, animated: false)
+    }
     // number of pickerView components
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
