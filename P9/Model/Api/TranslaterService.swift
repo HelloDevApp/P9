@@ -54,8 +54,10 @@ class TranslaterService {
     
     func replaceCharactersOfTranslatedText(translatedText: String) -> String {
         var translatedText = translatedText
-        if translatedText.contains("&#39;") {
-            translatedText = translatedText.replacingOccurrences(of: "&#39;", with: "'")
+        let findValue = "&#39;"
+        let replaceValue = "'"
+        if translatedText.contains(findValue) {
+            translatedText = translatedText.replacingOccurrences(of: findValue, with: replaceValue)
             return translatedText
         }
         return translatedText
