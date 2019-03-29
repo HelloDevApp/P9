@@ -1,15 +1,19 @@
 //
-//  ConverterCurrency.swift
+//  Converter.swift
 //  P9
 //
 //  Created by Mac Book Pro on 14/02/2019.
 //  Copyright © 2019 dylan. All rights reserved.
 //
 
-class ConverterCurrency {
+class Converter {
     
-    static let shared = ConverterCurrency()
+    static let shared = Converter()
     
+    // the array that is filled using the convertToArray method in the Currency enumeration
+    var arrayCurrencies: [String] = []
+    //
+    var dictOfCurrenciesNamesShortAndFull = [String:String]()
     // contains the full name of the destination currency and also the value of the rate
     private var _rateValueDestination = (name: "", rates: 0.0)
     
@@ -22,9 +26,9 @@ class ConverterCurrency {
     // is used to calculate and return the result
     private func _convert(moneyToConvert: Double) -> Double {
         // contains the rate of the destination currency
-        let destinationRateValue = _rateValueDestination.rates
+        let rateValueDestination = _rateValueDestination.rates
         // contains the result of the operation
-        let result = moneyToConvert * destinationRateValue
+        let result = moneyToConvert * rateValueDestination
         Console.shared.printDescriptionResultConversion(moneyToConvert: moneyToConvert, result: result, nameCurrencyDestination: _rateValueDestination.name)
         return result
     }

@@ -56,20 +56,20 @@ extension CurrencyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     // number of rows in the component
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Data.shared.arrayCurrencies.count
+        return Converter.shared.arrayCurrencies.count
     }
     
     // title of the selected row
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         // we change the color of the pickerView text and assign it a text
-        let attribute = NSAttributedString(string: Data.shared.arrayCurrencies[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        let attribute = NSAttributedString(string: Converter.shared.arrayCurrencies[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         return attribute
     }
     
     // we update the text of the label each time the selected value of the pickerView changes
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        let currentCurrency = Data.shared.arrayCurrencies[row]
+        let currentCurrency = Converter.shared.arrayCurrencies[row]
         currencyLabelDestination.text = currentCurrency
     }
     
@@ -89,7 +89,7 @@ extension CurrencyViewController {
         Currencies.convertToArray()
         CurrenciesNames.convertEnumCaseToDictionnary()
         // we add the text that corresponding to position of pickerView
-        currencyLabelDestination.text = Data.shared.arrayCurrencies[Data.shared.arrayCurrencies.count/2]
+        currencyLabelDestination.text = Converter.shared.arrayCurrencies[Converter.shared.arrayCurrencies.count/2]
     }
     
     // add a value rate and names currency in rateValueDestination property
@@ -98,7 +98,7 @@ extension CurrencyViewController {
         // (allows to make comparisons with the name of a variable for example: if mirror.label == currentNameCurrency)
         let mirrorRates = Mirror(reflecting: reflect)
         // contains a array with the names of all currencies (in file Data.swift)
-        let currenciesName = Data.shared.dictOfCurrenciesNamesShortAndFull.sorted(by: <)
+        let currenciesName = Converter.shared.dictOfCurrenciesNamesShortAndFull.sorted(by: <)
         // we scan the values in the array to find a match with the selected currency
         for rate in mirrorRates.children {
             // rate.label contains the short name of the currency
@@ -110,7 +110,7 @@ extension CurrencyViewController {
                         let currentRateName = currencyName.value
                         // rate.value contains the value of the rate and the name. example: ("dollars" : "0.95903")
                         guard let rateDouble = rate.value as? Double else { return }
-                        ConverterCurrency.shared.changeValueOfRateValueDestination(name: currentRateName, rates: rateDouble)
+                        Converter.shared.changeValueOfRateValueDestination(name: currentRateName, rates: rateDouble)
                     }
                 }
             }

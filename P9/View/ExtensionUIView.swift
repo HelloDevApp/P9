@@ -8,6 +8,9 @@
 
 import UIKit
 
+//=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+//MARK:-+-+-+-+-+--+-+-+-Extension-+-+-+-+-+--+-+-+-+-
+//=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
 extension UIView {
     
     // allows you to add a gesture associated with closing the keyboard

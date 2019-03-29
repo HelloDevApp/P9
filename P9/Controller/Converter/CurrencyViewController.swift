@@ -76,7 +76,7 @@ class CurrencyViewController: UIViewController {
     // allows you to launch a conversion and update the text with the result of the conversion
     private func _launchConvert(moneyDouble: Double) {
         // performs the conversion and returns the result
-        let result = ConverterCurrency.shared.convert(moneyToConvert: moneyDouble)
+        let result = Converter.shared.convert(moneyToConvert: moneyDouble)
         // update of the display
         self.updateTextFieldWithResult(result: result)
     }

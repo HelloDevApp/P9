@@ -12,13 +12,11 @@ class TranslaterService {
     
     static var shared = TranslaterService()
     
-    var textToTranslate = ""
-    var targetLang = ""
     let url = URL(string: "https://translation.googleapis.com/language/translate/v2")!
     
     func getTranslation(callback: @escaping (Bool, Translation?) -> Void) {
         
-        let parameters = "?key=\(APIKey.shared.apiKeyTranslater)&q=\(textToTranslate)&target=\(targetLang)&source=fr"
+        let parameters = "?key=\(APIKey.shared.apiKeyTranslater)&q=\(Translater.shared.textToTranslate)&target=\(Translater.shared.targetLang)&source=fr"
         print(parameters)
         guard let urlComplete = URL(string: "\(url)\(parameters)") else { print("erreur ulrComplete"); return }
         print(urlComplete)
@@ -40,16 +38,16 @@ class TranslaterService {
     }
     
     func replaceMultipleCharactersForRequest() {
-        for character in textToTranslate {
-            for (key, value) in Data.shared.dictOfSpecialCharactersAndCodes {
+        for character in Translater.shared.textToTranslate {
+            for (key, value) in Translater.shared.dictOfSpecialCharactersAndCodes {
                 let keyCharacter = Character(key)
                 if character == keyCharacter {
-                    textToTranslate = textToTranslate.replacingOccurrences(of: key, with: value)
+                    Translater.shared.textToTranslate = Translater.shared.textToTranslate.replacingOccurrences(of: key, with: value)
                     break
                 }
             }
         }
-        print(textToTranslate)
+        print(Translater.shared.textToTranslate)
     }
     
     func replaceCharactersOfTranslatedText(translatedText: String) -> String {

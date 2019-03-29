@@ -32,7 +32,7 @@ class TranlateViewController: UIViewController {
         guard let textToTranslate = textToTranslate.text else { print("no success1"); return }
         guard textToTranslate.isEmpty == false, textToTranslate != "" else { print("no success2"); return }
         guard textToTranslate != "Entrer du texte" else { print("no success3"); return }
-        TranslaterService.shared.textToTranslate = textToTranslate
+        Translater.shared.textToTranslate = textToTranslate
         TranslaterService.shared.replaceMultipleCharactersForRequest()
         launchRequest()
     }
@@ -40,8 +40,8 @@ class TranlateViewController: UIViewController {
     func setup() {
         view.addGestureToHideKeyboard()
         SpecialCharactersSign.createDictionnaryOfSpecialCharactersSignAndCodes()
-        TranslaterService.shared.targetLang = "\(Languages.allCases[Languages.allCases.count/2])"
-        print(TranslaterService.shared.targetLang)
+        Translater.shared.targetLang = "\(Languages.allCases[Languages.allCases.count/2])"
+        print(Translater.shared.targetLang)
     }
     
     func launchRequest() {
