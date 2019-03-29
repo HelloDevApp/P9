@@ -61,7 +61,7 @@ class TranlateViewController: UIViewController {
     }
 }
 
-// a voir avec mentor si preferable cette methode ou garder le changement de valeur dans la methode setup et lorsque le pickerView change de selection
+
 //    func getTargetLang() {
 //        for nameCase in Languages.allCases {
 //            if nameCase.rawValue == languageDestinationLabel.text {
