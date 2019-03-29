@@ -70,23 +70,31 @@ enum Languages: String, CaseIterable {
     // 🇮🇹 italian
     case it = "Italien"
 }
-
 enum SpecialCharactersCodes: String, CaseIterable {
-    // '
-    case apostrophe = "%27"
-    // #
-    case hashtag = "%23"
-    //
-    case space = "%20"
-    // Ç
-    case cCedillaUppercase = "%c7"
-    // ç
-    case cCedilla = "%e7"
+    case apostrophe, apostrophe1, apostophe2, hashtag, space, cCedillaUppercase, cCedilla
+    var value: String {
+        switch self {
+        case .apostrophe, .apostrophe1, .apostophe2:
+            return "%27"
+        case .hashtag:
+            return "%23"
+        case .space:
+            return "%20"
+        case .cCedillaUppercase:
+            return "%c7"
+        case .cCedilla:
+            return "%e7"
+        }
+    }
 }
 
 enum SpecialCharactersSign: String, CaseIterable {
     // '
     case apostrophe = "’"
+    // ‘
+    case apostrophe1 = "‘"
+    // "
+    case apostrophe2 = "\""
     // #
     case hashtag = "#"
     //
@@ -139,7 +147,7 @@ extension SpecialCharactersSign {
         for character in SpecialCharactersSign.allCases {
             for characterCode in SpecialCharactersCodes.allCases {
                 if "\(character)" == "\(characterCode)" {
-                    Data.shared.dictOfSpecialCharactersAndCodes[character.rawValue] = characterCode.rawValue
+                    Data.shared.dictOfSpecialCharactersAndCodes[character.rawValue] = characterCode.value
                     break
                 }
             }
