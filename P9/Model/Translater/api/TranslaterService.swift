@@ -16,7 +16,9 @@ class TranslaterService {
     
     func getTranslation(callback: @escaping (Bool, Translation?) -> Void) {
         
-        let parameters = "?key=\(APIKey.shared.apiKeyTranslater)&q=\(Translater.shared.textToTranslate)&target=\(Translater.shared.targetLang)&source=fr"
+        guard let textEncoded = Translater.shared.textToTranslate.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed) else { callback(false, nil); return }
+        let parameters = "?key=\(APIKey.shared.apiKeyTranslater)&q=\(textEncoded)&target=\(Translater.shared.targetLang)&source=fr"
+        
         print(parameters)
         guard let urlComplete = URL(string: "\(url)\(parameters)") else { print("erreur ulrComplete"); return }
         print(urlComplete)
@@ -30,24 +32,9 @@ class TranslaterService {
             guard let json_Data = json.data else { print("erreur3"); callback(false, nil); return }
             guard let json_Data_Translations = json_Data.translations else { print("erreur json data translations nil"); callback(false, nil); return }
             guard let translation_Last = json_Data_Translations.last else { print("erreur  translations last nil"); callback(false, nil); return }
-            guard let translation = translation_Last.translatedText else { print("tranlation nil"); callback(false, nil); return }
-            let translations = Translation(translatedText: translation)
-            callback(true, translations)
+            callback(true, translation_Last)
         }
         task.resume()
-    }
-    
-    func replaceMultipleCharactersForRequest() {
-        for character in Translater.shared.textToTranslate {
-            for (key, value) in Translater.shared.dictOfSpecialCharactersAndCodes {
-                let keyCharacter = Character(key)
-                if character == keyCharacter {
-                    Translater.shared.textToTranslate = Translater.shared.textToTranslate.replacingOccurrences(of: key, with: value)
-                    break
-                }
-            }
-        }
-        print(Translater.shared.textToTranslate)
     }
     
     func replaceCharactersOfTranslatedText(translatedText: String) -> String {

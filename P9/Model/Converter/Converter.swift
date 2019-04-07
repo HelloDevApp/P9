@@ -10,15 +10,13 @@ class Converter {
     
     static let shared = Converter()
     
-    // the array that is filled using the convertToArray method in the Currency enumeration
-    var arrayCurrencies: [String] = []
     //
     var dictOfCurrenciesNamesShortAndFull = [String:String]()
     // contains the full name of the destination currency and also the value of the rate
     private var _rateValueDestination = (name: "", rates: 0.0)
     
     // allows you to change the values of the tuple rateValueDestination .name and .rates
-    func changeValueOfRateValueDestination(name: String, rates: Double) {
+    func changeValueOfRateDestination(name: String, rates: Double) {
         _rateValueDestination.name = name
         _rateValueDestination.rates = rates
     }

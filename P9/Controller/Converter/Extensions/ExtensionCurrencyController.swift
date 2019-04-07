@@ -27,7 +27,7 @@ extension CurrencyViewController: UITextFieldDelegate {
         // we check that the text is empty
         guard textFieldText.isEmpty else { return }
         
-        textField.attributedPlaceholder = NSAttributedString(string: "Entrez une valeur", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        textField.attributedPlaceholder = NSAttributedString(string: "Entrer une valeur", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     
     // method called each time the user adds a character: allows to check if a dot can be added
@@ -56,42 +56,39 @@ extension CurrencyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     // number of rows in the component
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Converter.shared.arrayCurrencies.count
+        return Currencies.allCases.count
     }
     
     // title of the selected row
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         // we change the color of the pickerView text and assign it a text
-        let attribute = NSAttributedString(string: Converter.shared.arrayCurrencies[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        let attribute = NSAttributedString(string: Currencies.allCases[row].rawValue.uppercased(), attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         return attribute
     }
-    
+        
     // we update the text of the label each time the selected value of the pickerView changes
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        let currentCurrency = Converter.shared.arrayCurrencies[row]
+        let currentCurrency = Currencies.allCases[row].rawValue.uppercased()
         currencyLabelDestination.text = currentCurrency
     }
-    
 }
-
+    
 //==================================================
 // MARK: -----------General Setting Method----------
 //==================================================
 extension CurrencyViewController {
-    
+        
     // method that configures some details
     func setup() {
-        
+            
         // initialization of the gesture
         view.addGestureToHideKeyboard()
         // we fill the array with the different cases of enumeration
-        Currencies.convertToArray()
         CurrenciesNames.convertEnumCaseToDictionnary()
         // we add the text that corresponding to position of pickerView
-        currencyLabelDestination.text = Converter.shared.arrayCurrencies[Converter.shared.arrayCurrencies.count/2]
+        currencyLabelDestination.text = Currencies.allCases[Currencies.allCases.count/2].rawValue.uppercased()
     }
-    
+        
     // add a value rate and names currency in rateValueDestination property
     func affectValueRateAndNameCurrency(currentCurrencyName: String, reflect: Rates) {
         // we create a mirror that reflects all the properties of the Rates structure
@@ -110,7 +107,7 @@ extension CurrencyViewController {
                         let currentRateName = currencyName.value
                         // rate.value contains the value of the rate and the name. example: ("dollars" : "0.95903")
                         guard let rateDouble = rate.value as? Double else { return }
-                        Converter.shared.changeValueOfRateValueDestination(name: currentRateName, rates: rateDouble)
+                    Converter.shared.changeValueOfRateDestination(name: currentRateName, rates: rateDouble)
                     }
                 }
             }

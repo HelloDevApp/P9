@@ -20,6 +20,20 @@ class Translater {
     var dictOfSpecialCharactersAndCodes = [String:String]()
     
     var textToTranslate = ""
-    var targetLang = ""
+    private var _targetLang = ""
     
+    var targetLang: String {
+        return _targetLang
+    }
+    
+    
+    func getTargetLang(forSetup: Bool, row: Int?) {
+        guard forSetup == false && row != nil else {
+            guard row == nil else { return }
+            _targetLang = "\(Languages.allCases[Languages.allCases.count/2])"
+            return
+        }
+        guard let row = row else { return }
+        _targetLang = "\(Languages.allCases[row])"
+    }
 }

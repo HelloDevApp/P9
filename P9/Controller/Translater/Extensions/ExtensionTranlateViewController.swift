@@ -69,7 +69,7 @@ extension TranlateViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     // we update the text of the label each time the selected value of the pickerView changes
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let currentLanguage = Languages.allCases[row].rawValue
-        Translater.shared.targetLang = "\(Languages.allCases[row])"
+        Translater.shared.getTargetLang(forSetup: false, row: row)
         print(Translater.shared.targetLang)
         languageDestinationLabel.text = currentLanguage
     }

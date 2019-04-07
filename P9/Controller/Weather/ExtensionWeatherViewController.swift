@@ -10,4 +10,18 @@ import Foundation
 
 extension WeatherViewController {
     
+    func setup() {
+        
+        cityLeft.text = "Ville"
+        dateLeft.text = "../../...."
+        currentTempLeft.text = "..°"
+        descriptionLeft.text = "Description: .."
+        humidityLeft.text = "Humidité: ..%"
+        
+        cityRight.text = "Ville"
+        dateRight.text = "../../...."
+        currentTempRight.text = "..°"
+        descriptionRight.text = "Description: .."
+        humdidityRight.text = "Humidité: ..%"
+    }
 }

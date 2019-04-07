@@ -28,19 +28,16 @@ class TranlateViewController: UIViewController {
     }
     
     @IBAction func buttonTranslateAction() {
-//        getTargetLang()
         guard let textToTranslate = textToTranslate.text else { print("no success1"); return }
         guard textToTranslate.isEmpty == false, textToTranslate != "" else { print("no success2"); return }
         guard textToTranslate != "Entrer du texte" else { print("no success3"); return }
         Translater.shared.textToTranslate = textToTranslate
-        TranslaterService.shared.replaceMultipleCharactersForRequest()
         launchRequest()
     }
     
     func setup() {
         view.addGestureToHideKeyboard()
-        SpecialCharactersSign.createDictionnaryOfSpecialCharactersSignAndCodes()
-        Translater.shared.targetLang = "\(Languages.allCases[Languages.allCases.count/2])"
+        Translater.shared.getTargetLang(forSetup: true, row: nil)
         print(Translater.shared.targetLang)
     }
     
@@ -53,6 +50,7 @@ class TranlateViewController: UIViewController {
             guard let translatedText = translations.translatedText else { return }
             let translatedTextFinal = TranslaterService.shared.replaceCharactersOfTranslatedText(translatedText: translatedText)
             
+            
             DispatchQueue.main.async {
                 self.resultTextView.text = translatedTextFinal
                 print(translatedTextFinal)
@@ -60,12 +58,3 @@ class TranlateViewController: UIViewController {
         }
     }
 }
-
-
-//    func getTargetLang() {
-//        for nameCase in Languages.allCases {
-//            if nameCase.rawValue == languageDestinationLabel.text {
-//                print("\(nameCase)")
-//            }
-//        }
-//    }

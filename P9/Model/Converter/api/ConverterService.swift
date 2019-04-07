@@ -41,17 +41,13 @@ class ConverterService {
             // we decode the JSON
             let dataJSON = try? JSONDecoder().decode(Result.self, from: data)
             // we check that the dataJSON is not nil
-            guard let responseJSON = dataJSON else { callback(false, nil); return }
+            guard let json = dataJSON else { callback(false, nil); return }
             // we check that the rates is not nil
-            guard responseJSON.rates != nil else { callback(false, nil); return }
+            guard let rates = json.rates else { callback(false, nil); return }
             // we get the time of update of the rates
-            self.getUpdateDateOfRates(responseJSON: responseJSON)
-            // we call the method that will create the structure with the received values
-            if let ratesStruct = self.createStructWithResponseOfJson(responseJSON: responseJSON) {
-                callback(true, ratesStruct)
-                return
-            }
-            callback(false, nil)
+            self.getUpdateDateOfRates(responseJSON: json)
+            callback(true, rates)
+            return
         }
         task.resume()
     }
@@ -61,14 +57,5 @@ class ConverterService {
         
         guard let timestamp = responseJSON.timestamp else { return }
         Console.shared.printLastUpdateRate(timestamp: timestamp)
-    }
-    
-    // allows to create a structure with all the values received by the JSON
-    private func createStructWithResponseOfJson(responseJSON: Result) -> Rates? {
-        
-        guard let rates = responseJSON.rates else { return nil }
-        // we initialize a structure with the values received by 'api'
-        let ratesStruct = Rates(AUD: rates.AUD, BTC: rates.BTC, CAD: rates.CAD, CHF: rates.CHF, COP: rates.COP, EUR: rates.EUR, GBP: rates.GBP, HKD: rates.HKD, ILS: rates.ILS, USD: rates.USD)
-        return ratesStruct
     }
 }

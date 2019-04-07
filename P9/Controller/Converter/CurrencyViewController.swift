@@ -19,6 +19,7 @@ class CurrencyViewController: UIViewController {
     // the textField used to display the result of the conversion
     @IBOutlet weak var resultTextField: CustomTextField!
     
+    var moneyDouble = 0.0
     // boolean variable that allows to determine if the request has been launched
     private var _requestIsLaunch = false
     // a variable of the Rates type which will be a mirror containing the values of each rate received by the API
@@ -38,9 +39,9 @@ class CurrencyViewController: UIViewController {
         // we unwrap and assign the value of the current currency in the label to a constant
         guard let currentCurrency = self.currencyLabelDestination.text else { return }
         // we check that the textField contains a value
-        guard let money = self.CurrentMoneyTextField.text else { return }
-        // we check that this value can be converted type Double
-        guard let moneyDouble = Double(money) else { return }
+        guard let money = self.currentMoneyTextField.text else { return }
+         convertStringToDouble(number: money)
+        
         
         // this code block is executed after the first conversion and allows to economise the number of requests launched
         guard _requestIsLaunch == false else {
@@ -66,7 +67,7 @@ class CurrencyViewController: UIViewController {
             self.affectValueRateAndNameCurrency(currentCurrencyName: currentCurrency, reflect: rates)
             // we come back in the main queue
             DispatchQueue.main.async {
-                self._launchConvert(moneyDouble: moneyDouble)
+                self._launchConvert(moneyDouble: self.moneyDouble)
             }
             // we pass the value to true while the application is open
             self._requestIsLaunch = true
@@ -83,6 +84,15 @@ class CurrencyViewController: UIViewController {
     
     // allows you to change the text of the textField to display the result
     private func updateTextFieldWithResult(result: Double) {
+        if result < 0 { print("erreur") }
         resultTextField.text = "\(result)"
+    }
+    
+    //
+    func convertStringToDouble(number: String) {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale.current
+        guard let numberFormatted = numberFormatter.number(from: number) else { return }
+        moneyDouble = numberFormatted.doubleValue
     }
 }
