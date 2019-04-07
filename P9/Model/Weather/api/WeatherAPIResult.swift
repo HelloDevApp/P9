@@ -8,54 +8,56 @@
 
 import Foundation
 
-struct WeatherAPIResult: Decodable {
-    let coord: Coord?
-    let weather: [Weather]?
-    let base: String?
-    let main: Main?
-    let visibility: Int?
-    let wind: Wind?
-    let clouds: Clouds?
-    let dt: Int?
-    let sys: Sys?
-    let id: Int
+struct WeatherAPIResult: Codable {
+    let cnt: Int
+    let list: [List]
+}
+
+struct List: Codable {
+    let coord: Coord
+    let sys: Sys
+    let weather: [Weather]
+    let main: Main
+    let visibility: Int
+    let wind: Wind
+    let clouds: Clouds
+    let dt, id: Int
     let name: String
-    let cod: Int
 }
 
-struct Coord: Decodable {
-    let lon: Double?
-    let lat: Double?
+struct Clouds: Codable {
+    let all: Int
 }
 
-struct Weather: Decodable {
-    let id: Int?
-    let main: String?
-    let description: String?
-    let icon: String?
+struct Coord: Codable {
+    let lon, lat: Double
 }
 
-struct Main: Decodable {
-    let temp: Double?
-    let pressure: Int?
-    let humidity: Int?
-    let temp_min: Double?
-    let temp_max: Double?
+struct Main: Codable {
+    let temp: Double
+    let pressure, humidity: Int
+    let tempMin, tempMax: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case temp, pressure, humidity
+        case tempMin = "temp_min"
+        case tempMax = "temp_max"
+    }
 }
 
-struct Wind: Decodable {
-    let speed: Double?
-    let deg: Int?
-}
-struct Clouds: Decodable {
-    let all: Int?
+struct Sys: Codable {
+    let type, id: Int
+    let message: Double
+    let country: String
+    let sunrise, sunset: Int
 }
 
-struct Sys: Decodable {
-    let type: Int?
-    let id: Int?
-    let message: Double?
-    let country: String?
-    let sunrise: Int?
-    let sunset: Int?
+struct Weather: Codable {
+    let id: Int
+    let main, description, icon: String
+}
+
+struct Wind: Codable {
+    let speed: Double
+    let deg: Int
 }
