@@ -353,6 +353,20 @@
                         <viewLayoutGuide key="safeArea" id="j1b-WH-clo"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Météo" image="weather" id="Gk1-4d-Qre"/>
+                    <connections>
+                        <outlet property="cityLeft" destination="rWH-yU-6E7" id="sXB-D4-dqC"/>
+                        <outlet property="cityRight" destination="krD-TK-6Wm" id="Qeu-nb-hir"/>
+                        <outlet property="currentTempLeft" destination="gAG-XU-nh0" id="g7F-FA-3hE"/>
+                        <outlet property="currentTempRight" destination="hXy-Mz-ZiU" id="ejc-g5-b0h"/>
+                        <outlet property="dateLeft" destination="tq3-mv-UMH" id="mLZ-TL-NRE"/>
+                        <outlet property="dateRight" destination="Xo8-FH-k1P" id="6u3-bL-qjs"/>
+                        <outlet property="descriptionLeft" destination="Dp8-Ji-a1j" id="mP3-Wa-IID"/>
+                        <outlet property="descriptionRight" destination="fDe-g8-sBh" id="hBn-Ey-Rya"/>
+                        <outlet property="humdidityRight" destination="Sv4-03-qBV" id="12c-G8-9yX"/>
+                        <outlet property="humidityLeft" destination="s4c-YV-wl8" id="WSu-Oh-8zA"/>
+                        <outlet property="iconLeft" destination="8bX-By-De7" id="dIj-2a-S4o"/>
+                        <outlet property="iconRight" destination="FwX-sa-yCb" id="c8J-q5-KW1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btK-6A-xCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
