@@ -30,14 +30,3 @@ enum Currencies: String, CaseIterable {
     // Hong Kong Dollars
     case hkd
 }
-
-extension Currencies {
-    // allows you to fill in a array containing all the cases of the enumeration
-    static func convertToArray() {
-        //
-        for value in Currencies.allCases {
-            // for currencies, we use the uppercased() method to have all the text in capitals.
-            Converter.shared.arrayCurrencies.append(value.rawValue.uppercased())
-        }
-    }
-}

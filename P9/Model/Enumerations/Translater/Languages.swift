@@ -19,7 +19,7 @@ enum Languages: String, CaseIterable {
     // 🇩🇪 german
     case de = "Allemand"
     // 🇨🇳 korean
-    case ko = "Koréen"
+    case ko = "Coréen"
     // 🇮🇹 italian
     case it = "Italien"
 }

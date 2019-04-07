@@ -37,8 +37,6 @@
 		52E4B69B224E6E10008DCFA8 /* CurrenciesNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E4B69A224E6E10008DCFA8 /* CurrenciesNames.swift */; };
 		52E4B69E224E6E71008DCFA8 /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E4B69D224E6E71008DCFA8 /* Currencies.swift */; };
 		52E4B6A1224E6EC9008DCFA8 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E4B6A0224E6EC9008DCFA8 /* Languages.swift */; };
-		52E4B6A3224E6F4B008DCFA8 /* SpecialCharactersSign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E4B6A2224E6F4B008DCFA8 /* SpecialCharactersSign.swift */; };
-		52E4B6A5224E6F97008DCFA8 /* SpecialCharactersCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E4B6A4224E6F97008DCFA8 /* SpecialCharactersCodes.swift */; };
 		52FA2B4D21F906CF00F32C56 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52FA2B4C21F906CF00F32C56 /* CustomLabel.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,8 +85,6 @@
 		52E4B69A224E6E10008DCFA8 /* CurrenciesNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesNames.swift; sourceTree = "<group>"; };
 		52E4B69D224E6E71008DCFA8 /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		52E4B6A0224E6EC9008DCFA8 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
-		52E4B6A2224E6F4B008DCFA8 /* SpecialCharactersSign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialCharactersSign.swift; sourceTree = "<group>"; };
-		52E4B6A4224E6F97008DCFA8 /* SpecialCharactersCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialCharactersCodes.swift; sourceTree = "<group>"; };
 		52FA2B4C21F906CF00F32C56 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -331,8 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				52E4B6A0224E6EC9008DCFA8 /* Languages.swift */,
-				52E4B6A2224E6F4B008DCFA8 /* SpecialCharactersSign.swift */,
-				52E4B6A4224E6F97008DCFA8 /* SpecialCharactersCodes.swift */,
 			);
 			path = Translater;
 			sourceTree = "<group>";
@@ -471,14 +465,12 @@
 				520E821E22157E7B00EB2FCA /* ExtensionUIView.swift in Sources */,
 				522219A821F0B1AA0058788D /* GradientView.swift in Sources */,
 				52B9A57021F917B100D224AC /* CustomPickerView.swift in Sources */,
-				52E4B6A3224E6F4B008DCFA8 /* SpecialCharactersSign.swift in Sources */,
 				52B9A57221F91B4D00D224AC /* TranlateViewController.swift in Sources */,
 				52B0E533223C38B8000D9052 /* API_Key.swift in Sources */,
 				52E4B69B224E6E10008DCFA8 /* CurrenciesNames.swift in Sources */,
 				52633E7721FFA81E0065FB61 /* WeatherViewController.swift in Sources */,
 				520FE160220C878C0099A580 /* CustomTextView.swift in Sources */,
 				52FA2B4D21F906CF00F32C56 /* CustomLabel.swift in Sources */,
-				52E4B6A5224E6F97008DCFA8 /* SpecialCharactersCodes.swift in Sources */,
 				520E822D221E993F00EB2FCA /* ConverterService.swift in Sources */,
 				52AA307821F9143000D7BC3C /* CustomTextField.swift in Sources */,
 				52B0E531223C15E6000D9052 /* Console.swift in Sources */,
