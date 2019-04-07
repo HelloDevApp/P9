@@ -482,8 +482,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Convertir" image="money" id="2M7-Jv-KEH"/>
                     <connections>
-                        <outlet property="CurrentMoneyTextField" destination="US1-AN-Goc" id="8Ms-5D-yX7"/>
                         <outlet property="currencyLabelDestination" destination="Jxp-0M-Vl3" id="Nzw-KJ-sy6"/>
+                        <outlet property="currentMoneyTextField" destination="US1-AN-Goc" id="Slu-PP-3i2"/>
                         <outlet property="pickerView" destination="2fV-4a-qgU" id="zgf-PK-qdf"/>
                         <outlet property="resultTextField" destination="UPd-di-tEX" id="YBD-dX-AvW"/>
                     </connections>

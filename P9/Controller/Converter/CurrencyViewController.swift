@@ -13,7 +13,7 @@ class CurrencyViewController: UIViewController {
     // the pickerView of the converter part
     @IBOutlet weak var pickerView: CustomPickerView!
     // the textfield which contains the amount to be converted
-    @IBOutlet weak var CurrentMoneyTextField: CustomTextField!
+    @IBOutlet weak var currentMoneyTextField: CustomTextField!
     // label that contains the chosen currency
     @IBOutlet weak var currencyLabelDestination: CustomLabel!
     // the textField used to display the result of the conversion
