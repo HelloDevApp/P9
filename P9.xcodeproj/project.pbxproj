@@ -25,6 +25,7 @@
 		52633E7922021FD30065FB61 /* cityscape.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52633E7822021FD30065FB61 /* cityscape.ttf */; };
 		52677D582245149C009A8C60 /* TranslaterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52677D572245149C009A8C60 /* TranslaterService.swift */; };
 		52777010224FCBFE00D48E3C /* Translater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5277700F224FCBFE00D48E3C /* Translater.swift */; };
+		527770162250047700D48E3C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527770152250047700D48E3C /* Weather.swift */; };
 		52AA307821F9143000D7BC3C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA307721F9143000D7BC3C /* CustomTextField.swift */; };
 		52B0E531223C15E6000D9052 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0E530223C15E6000D9052 /* Console.swift */; };
 		52B0E533223C38B8000D9052 /* API_Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0E532223C38B8000D9052 /* API_Key.swift */; };
@@ -73,6 +74,7 @@
 		52633E7822021FD30065FB61 /* cityscape.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = cityscape.ttf; sourceTree = "<group>"; };
 		52677D572245149C009A8C60 /* TranslaterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslaterService.swift; sourceTree = "<group>"; };
 		5277700F224FCBFE00D48E3C /* Translater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translater.swift; sourceTree = "<group>"; };
+		527770152250047700D48E3C /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		52AA307721F9143000D7BC3C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		52B0E530223C15E6000D9052 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		52B0E532223C38B8000D9052 /* API_Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Key.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 		52E4B68C224E69D4008DCFA8 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				527770152250047700D48E3C /* Weather.swift */,
 				52777014224FCEB300D48E3C /* api */,
 			);
 			path = Weather;
@@ -457,6 +460,7 @@
 				52C5617D222815DD005821EE /* ConverterAPIResult.swift in Sources */,
 				52E4B689224E6162008DCFA8 /* WeatherAPIResult.swift in Sources */,
 				52E4B69E224E6E71008DCFA8 /* Currencies.swift in Sources */,
+				527770162250047700D48E3C /* Weather.swift in Sources */,
 				52166E1021E14DDE007C5BEF /* CurrencyViewController.swift in Sources */,
 				52495291224D85B7009E9DDF /* TranslaterAPIResult.swift in Sources */,
 				52777010224FCBFE00D48E3C /* Translater.swift in Sources */,
