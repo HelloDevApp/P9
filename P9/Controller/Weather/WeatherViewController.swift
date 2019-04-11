@@ -30,140 +30,54 @@ class WeatherViewController: UIViewController {
     }
     
     func getWeather() {
+        
         WheatherService.shared.getWeather { (success, weatherResult, iconURL)   in
-            guard success else { return }
-            guard let weatherResult = weatherResult else { return }
-            guard let iconURLLeft = iconURL[0] else { return }
-            guard let iconURLRigth = iconURL[1] else { return }
+            guard success else { self.alert(message: Error_.noSuccess.rawValue, title: Error_.oupps.rawValue); return }
+            guard let weatherResult = weatherResult else {
+                self.alert(message: Error_.noResult.rawValue, title: Error_.oupps.rawValue)
+                return
+            }
+            self.updateView(weatherResult: weatherResult)
+            guard let iconURLLeft = iconURL[0], let iconURLRigth = iconURL[1] else {
+                self.alert(message: Error_.noIcon.rawValue, title: Error_.oupps.rawValue)
+                return
+            }
             self.getIcon(from: iconURLLeft, for: self.iconLeft)
             self.getIcon(from: iconURLRigth, for: self.iconRight)
-            self.updateView(weatherResult: weatherResult)
         }
     }
     
     func getIcon(from url: URL, for imageView: UIImageView) {
         WheatherService.shared.getIcon(from: url) { (icon) in
-            let icon = icon
-            DispatchQueue.main.async {
-                imageView.image = icon
+            if let icon = icon {
+                DispatchQueue.main.async {
+                    imageView.image = icon
+                }
+            } else {
+                self.alert(message: Error_.noIcon.rawValue, title: Error_.oupps.rawValue)
+                
             }
         }
     }
     
     func updateView(weatherResult: WeatherAPIResult) {
         
-        let date = returnCurrentDate()
+        updateDate()
         
-        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        var cityLeft: String?
-        var tempLeft: String?
-        var humidityLeft: String?
-        var descriptionLeft = "Description:"
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        var cityRight: String?
-        var tempRight: String?
-        var humidityRight: String?
-        var descriptionRight = "Description:"
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-        guard let weatherResult = weatherResult.list else { return }
-        //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        guard let weatherResult = weatherResult.list else {
+            alert(message: Error_.noResult.rawValue, title: Error_.oupps.rawValue)
+            return
+        }
         let resultLeft = weatherResult[0]
-        // city name left
-        if let resultCityLeft = resultLeft.name {
-            cityLeft = resultCityLeft
-        }
-        // {main} left
-        if let resultMainLeft = resultLeft.main {
-            // temp left
-            if let resultTempLeft = resultMainLeft.temp {
-                let tempLeftInt = Int(resultTempLeft)
-                tempLeft = String(tempLeftInt)
-            }
-            // humidity left
-            if let resultHumidityLeft = resultMainLeft.humidity {
-                humidityLeft = String(resultHumidityLeft)
-            }
-        }
-        // Weather left
-        if let resultWeather = resultLeft.weather {
-            // weather Last left
-            if let resultWeatherLast = resultWeather.last {
-                // description left
-                if let description = resultWeatherLast.description {
-                    descriptionLeft = description
-                }
-            }
-        }
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-        //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        let resultRight = weatherResult[1]
-        // city name right
-        if let resultCityRight = resultRight.name {
-            cityRight = resultCityRight
-        }
-        // {main} right
-        if let resultMainRight = resultRight.main {
-            // temp right
-            if let resultTempRight = resultMainRight.temp {
-                let tempRightInt = Int(resultTempRight)
-                tempRight = String(tempRightInt)
-            }
-            // humidity right
-            if let resultHumidityRight = resultMainRight.humidity {
-                humidityRight = String(resultHumidityRight)
-            }
-        }
-        // Weather right
-        if let resultWeatherRight = resultRight.weather {
-            // weather Last right
-            if let resultWeatherRightLast = resultWeatherRight.last {
-                // description right
-                if let descriptionRightUnwrapped = resultWeatherRightLast.description {
-                    descriptionRight = descriptionRightUnwrapped
-                }
-            }
-        }
-        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+        updateCity(result: resultLeft, leftOrRight: cityLeft)
+        updateTemp(result: resultLeft, labelTemp: currentTempLeft)
+        updateHumidity(result: resultLeft, labelHumidity: humidityLeft)
+        updateDescription(result: resultLeft, descriptionLabel: descriptionLeft)
         
-        DispatchQueue.main.async {
-            //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-            self.cityLeft.text = cityLeft
-            self.dateLeft.text = date
-            self.descriptionLeft.text = descriptionLeft.capitalized
-            if let tempLeft = tempLeft {
-                self.currentTempLeft.text = "\(tempLeft)°"
-            }
-            if let humidityLeft = humidityLeft {
-                self.humidityLeft.text = "Humidité: \(humidityLeft)%"
-            }
-            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-            //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-            //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-            //RIGHT
-            self.cityRight.text = cityRight
-            self.dateRight.text = date
-            self.descriptionRight.text = descriptionRight.capitalized
-            if let tempRight = tempRight {
-                self.currentTempRight.text = "\(tempRight)°"
-            }
-            if let humidityRight = humidityRight {
-                self.humdidityRight.text = "Humidité: \(humidityRight)%"
-            }
-            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        }
-    }
-    // returns the current date in a custom format
-    func returnCurrentDate() -> String {
-        let currentDate = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy HH:mm"
-        let date = formatter.string(from: currentDate)
-        return date
+        let resultRight = weatherResult[1]
+        updateCity(result: resultRight, leftOrRight: cityRight)
+        updateTemp(result: resultRight, labelTemp: currentTempRight)
+        updateHumidity(result: resultRight, labelHumidity: humdidityRight)
+        updateDescription(result: resultRight, descriptionLabel: descriptionRight)
     }
 }

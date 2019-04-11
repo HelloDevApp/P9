@@ -58,9 +58,15 @@ class CurrencyViewController: UIViewController {
         // this code block is executed only one time until the application is closed
         ConverterService.shared.getRates { (success, rates)  in
             // we check that the request has been processed correctly
-            guard success else { return }
+            guard success else {
+                self.alert(message: Error_.noSuccess.rawValue, title: Error_.oupps.rawValue)
+                return
+            }
             // we check that the unwrapping of the rates is done correctly
-            guard let rates = rates else { return }
+            guard let rates = rates else {
+                self.alert(message: Error_.noRates.rawValue, title: Error_.oupps.rawValue)
+                return
+            }
             // the rates values are assigned to the mirorStructRates
             self._mirorStructRates = rates
             // a name and a rate are assigned to rateValueDestination(nameCurrency: String, rate: Double?) depending on the currency chosen
@@ -84,7 +90,7 @@ class CurrencyViewController: UIViewController {
     
     // allows you to change the text of the textField to display the result
     private func updateTextFieldWithResult(result: Double) {
-        if result < 0 { print("erreur") }
+        if result < 0 { print("erreur"); return }
         resultTextField.text = "\(result)"
     }
     
@@ -92,7 +98,10 @@ class CurrencyViewController: UIViewController {
     func convertStringToDouble(number: String) {
         let numberFormatter = NumberFormatter()
         numberFormatter.locale = Locale.current
-        guard let numberFormatted = numberFormatter.number(from: number) else { return }
+        guard let numberFormatted = numberFormatter.number(from: number) else {
+            alert(message: Error_.problemConvert.rawValue, title: Error_.oupps.rawValue)
+            return
+        }
         moneyDouble = numberFormatted.doubleValue
     }
 }
