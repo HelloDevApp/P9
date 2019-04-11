@@ -38,12 +38,15 @@ class WheatherService {
             guard let data = data, error == nil else { callback(false, nil, [nil]); return }
                 
             guard let json = try? JSONDecoder().decode(WeatherAPIResult.self, from: data) else { callback(false, nil, [nil]); return }
-            guard let lastIconLeft = json.list?[0].weather?.last else { callback(true,json,[nil]); return }
-            guard let lastIconRight = json.list?[1].weather?.last else { return }
-            guard let iconCodeLeft = lastIconLeft.icon else { callback(true, json, [nil]); return }
-            guard let iconCodeRight = lastIconRight.icon else { callback(true, json, [nil]); return }
+            
+            guard let firstIconLeft = json.list?[0].weather?.first else { callback(true,json,[nil]); return }
+            guard let firstIconRight = json.list?[1].weather?.first else { return }
+            guard let iconCodeLeft = firstIconLeft.icon else { callback(true, json, [nil]); return }
+            guard let iconCodeRight = firstIconRight.icon else { callback(true, json, [nil]); return }
+            
             let iconURLLeft = URL(string: "http://openweathermap.org/img/w/\(iconCodeLeft).png")
             let iconURLRight = URL(string: "http://openweathermap.org/img/w/\(iconCodeRight).png")
+            
             callback(true, json, [iconURLLeft,iconURLRight])
         }
         task?.resume()
