@@ -15,8 +15,6 @@ enum Currencies: String, CaseIterable {
     case cad
     // United State Dollars
     case usd
-    // Bitcoins
-    case btc
     // Australian Dollars
     case aud
     // British Pound Sterling
