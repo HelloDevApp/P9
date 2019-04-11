@@ -27,16 +27,30 @@ extension CurrencyViewController: UITextFieldDelegate {
         // we check that the text is empty
         guard textFieldText.isEmpty else { return }
         
-        textField.attributedPlaceholder = NSAttributedString(string: "Entrer une valeur", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        textField.attributedPlaceholder = NSAttributedString(string: PLACEHOLDER_CONVERTER, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     
     // method called each time the user adds a character: allows to check if a dot can be added
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let textFieldtext = textField.text else { return false }
-        guard string == "." else { return true }
-        guard !textFieldtext.contains(".") else { return false }
-        guard textFieldtext.count != 0 else { return false }
+        
+        guard textFieldtext.count < 13 else {
+            alert(message: Error_.ValueTooLong.rawValue, title: Error_.oupps.rawValue)
+            return false
+        }
+        guard string == POINT else {
+            return true
+        }
+        guard !textFieldtext.contains(POINT) else {
+            alert(message: Error_.pointAlreadyExists.rawValue, title: Error_.oupps.rawValue)
+            return false
+        }
+        guard textFieldtext.count != 0 else {
+            alert(message: Error_.startWithPoint.rawValue, title: Error_.oupps.rawValue)
+            return false
+            
+        }
         return true
     }
 }

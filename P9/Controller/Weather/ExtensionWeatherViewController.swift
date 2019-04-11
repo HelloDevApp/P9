@@ -13,17 +13,17 @@ extension WeatherViewController {
     
     func setup() {
         
-        cityLeft.text = "Ville"
-        dateLeft.text = "../../...."
-        currentTempLeft.text = "..°"
-        descriptionLeft.text = "Description: .."
-        humidityLeft.text = "Humidité: ..%"
+        cityLeft.text = DEFAULT_CITY
+        dateLeft.text = DEFAULT_DATE
+        currentTempLeft.text = DEFAULT_TEMP
+        descriptionLeft.text = DEFAULT_DESCR
+        humidityLeft.text = DEFAULT_HUMIDITY
 
-        cityRight.text = "Ville"
-        dateRight.text = "../../...."
-        currentTempRight.text = "..°"
-        descriptionRight.text = "Description: .."
-        humdidityRight.text = "Humidité: ..%"
+        cityRight.text = DEFAULT_CITY
+        dateRight.text = DEFAULT_DATE
+        currentTempRight.text = DEFAULT_TEMP
+        descriptionRight.text = DEFAULT_DESCR
+        humdidityRight.text = DEFAULT_HUMIDITY
     }
     
     func updateCity(result: List, leftOrRight city: CustomLabel) {
@@ -50,7 +50,7 @@ extension WeatherViewController {
     func returnCurrentDate() -> String {
         let currentDate = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy HH:mm"
+        formatter.dateFormat = DATE_FORMAT
         let date = formatter.string(from: currentDate)
         return date
     }
@@ -68,7 +68,7 @@ extension WeatherViewController {
         }
         let tempInt = Int(resultTemp)
         DispatchQueue.main.async {
-            labelTemp.text = String(tempInt) + "°"
+            labelTemp.text = String(tempInt) + DEGREES
         }
     }
     
@@ -105,7 +105,7 @@ extension WeatherViewController {
             return
         }
             DispatchQueue.main.async {
-                labelHumidity.text = "Humidité: " + String(result) + "%"
+                labelHumidity.text = HUMIDITY + String(result) + PURCENT
             }
     }
 }

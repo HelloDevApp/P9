@@ -22,14 +22,14 @@ extension TranlateViewController: UITextViewDelegate {
     public func textViewDidEndEditing(_ textView: UITextView) {
         // if the text is empty, a placeholder is assigned
         if textView.text.isEmpty {
-            textView.text = "Entrer du texte"
+            textView.text = PLACEHOLDER_TRANSLATER
             self.view.hideKeyboard()
         }
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         if textView == textToTranslate {
-            let allowedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ,.:=()[]?!@+-/’#Çç'"
+            let allowedCharacters = ALLOWED_CHARACTERS
             let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
             let typedCharacterSet = CharacterSet(charactersIn: text)
             let alphabet = allowedCharacterSet.isSuperset(of: typedCharacterSet)

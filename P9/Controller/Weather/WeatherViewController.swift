@@ -32,7 +32,11 @@ class WeatherViewController: UIViewController {
     func getWeather() {
         
         WheatherService.shared.getWeather { (success, weatherResult, iconURL)   in
-            guard success else { self.alert(message: Error_.noSuccess.rawValue, title: Error_.oupps.rawValue); return }
+            guard success else {
+                
+                self.alert(message: Error_.noSuccess.rawValue, title: Error_.oupps.rawValue)
+                return
+            }
             guard let weatherResult = weatherResult else {
                 self.alert(message: Error_.noResult.rawValue, title: Error_.oupps.rawValue)
                 return

@@ -39,8 +39,8 @@ class TranslaterService {
     
     func replaceCharactersOfTranslatedText(translatedText: String) -> String {
         var translatedText = translatedText
-        let findValue = "&#39;"
-        let replaceValue = "'"
+        let findValue = APOSTROPHE_CODE
+        let replaceValue = APOSTROPHE
         if translatedText.contains(findValue) {
             translatedText = translatedText.replacingOccurrences(of: findValue, with: replaceValue)
             return translatedText

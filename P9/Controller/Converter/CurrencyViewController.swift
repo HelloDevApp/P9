@@ -40,7 +40,11 @@ class CurrencyViewController: UIViewController {
         guard let currentCurrency = self.currencyLabelDestination.text else { return }
         // we check that the textField contains a value
         guard let money = self.currentMoneyTextField.text else { return }
-         convertStringToDouble(number: money)
+        
+        let isConvertible = convertStringToDouble(number: money)
+        guard isConvertible else {
+            return
+        }
         
         
         // this code block is executed after the first conversion and allows to economise the number of requests launched
@@ -95,13 +99,14 @@ class CurrencyViewController: UIViewController {
     }
     
     //
-    func convertStringToDouble(number: String) {
+    func convertStringToDouble(number: String) -> Bool {
         let numberFormatter = NumberFormatter()
         numberFormatter.locale = Locale.current
         guard let numberFormatted = numberFormatter.number(from: number) else {
-            alert(message: Error_.problemConvert.rawValue, title: Error_.oupps.rawValue)
-            return
+            alert(message: Error_.isEmpty.rawValue, title: Error_.oupps.rawValue)
+            return false
         }
         moneyDouble = numberFormatted.doubleValue
+        return true
     }
 }

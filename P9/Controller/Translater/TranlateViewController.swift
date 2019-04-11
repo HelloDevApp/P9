@@ -28,9 +28,18 @@ class TranlateViewController: UIViewController {
     }
     
     @IBAction func buttonTranslateAction() {
-        guard let textToTranslate = textToTranslate.text else { print("no success1"); return }
-        guard textToTranslate.isEmpty == false, textToTranslate != "" else { print("no success2"); return }
-        guard textToTranslate != "Entrer du texte" else { print("no success3"); return }
+        guard let textToTranslate = textToTranslate.text else {
+            alert(message: Error_.isEmpty.rawValue, title: Error_.oupps.rawValue)
+            return
+        }
+        guard textToTranslate.isEmpty == false, textToTranslate != "" else {
+            alert(message: Error_.isEmpty.rawValue, title: Error_.oupps.rawValue)
+            return
+        }
+        guard textToTranslate != PLACEHOLDER_TRANSLATER else {
+            alert(message: Error_.isEmpty.rawValue, title: Error_.oupps.rawValue)
+            return
+        }
         Translater.shared.textToTranslate = textToTranslate
         launchRequest()
     }
@@ -45,9 +54,21 @@ class TranlateViewController: UIViewController {
         
         TranslaterService.shared.getTranslation { (success, translations) in
             
-            guard success else { return }
-            guard let translations = translations else { return }
-            guard let translatedText = translations.translatedText else { return }
+            guard success else {
+                self.alert(message: Error_.noSuccess.rawValue, title: Error_.oupps.rawValue)
+                return
+                
+            }
+            guard let translations = translations else {
+                self.alert(message: Error_.noResult.rawValue, title: Error_.oupps.rawValue)
+                return
+                
+            }
+            guard let translatedText = translations.translatedText else {
+                self.alert(message: Error_.noResult.rawValue, title: Error_.oupps.rawValue)
+                return
+                
+            }
             let translatedTextFinal = TranslaterService.shared.replaceCharactersOfTranslatedText(translatedText: translatedText)
             
             

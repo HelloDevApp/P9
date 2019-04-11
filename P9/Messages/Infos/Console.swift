@@ -15,11 +15,14 @@ class Console {
     //=====================================================
     //MARK:------------------Convert-----------------------
     //=====================================================
+    
+    // allows you to display the result of the operation in the console
     func printDescriptionResultConversion(moneyToConvert: Double, result: Double, nameCurrencyDestination: String) {
         print("\(moneyToConvert) euros est égal à: \(result) \(nameCurrencyDestination)")
 
     }
     
+    // allows you to display the last date of the rate update in the console
     func printLastUpdateRate(timestamp: Int) {
         print("le taux a été mis a jour le: \n"
             + "\(Date(timeIntervalSince1970: TimeInterval(timestamp)))")
