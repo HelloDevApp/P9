@@ -28,13 +28,23 @@ extension TranlateViewController: UITextViewDelegate {
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
-        if textView == textToTranslate {
-            let allowedCharacters = ALLOWED_CHARACTERS
-            let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
-            let typedCharacterSet = CharacterSet(charactersIn: text)
-            let alphabet = allowedCharacterSet.isSuperset(of: typedCharacterSet)
-            if textView.text.first != "^" && textView.text.first != "`" && textView.text.first != "'" {
+        guard textView == textToTranslate else { return false }
+        
+        let allowedCharacters = ALLOWED_CHARACTERS
+        let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
+        let typedCharacterSet = CharacterSet(charactersIn: text)
+        let alphabet = allowedCharacterSet.isSuperset(of: typedCharacterSet)
+        
+        if textView.text.first != "^" && textView.text.first != "`" && textView.text.first != "'" {
+            //
+            if textView.text.count + text.count < 100 {
                 return alphabet
+            } else {
+                if text == "" {
+                    return alphabet
+                } else {
+                    return false
+                }
             }
         }
         return false

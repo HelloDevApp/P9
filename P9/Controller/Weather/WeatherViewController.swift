@@ -33,7 +33,6 @@ class WeatherViewController: UIViewController {
         
         WheatherService.shared.getWeather { (success, weatherResult, iconURL)   in
             guard success else {
-                
                 self.alert(message: Error_.noSuccess.rawValue, title: Error_.oupps.rawValue)
                 return
             }

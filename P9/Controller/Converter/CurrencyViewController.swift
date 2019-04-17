@@ -30,22 +30,24 @@ class CurrencyViewController: UIViewController {
         setup()
     }
     
-    // 
+    // the action related to the button
     @IBAction func actionValidateButton(_ sender: Any) {
+        
         launchRequest()
     }
     
+    // allows you to launch the request
     private func launchRequest() {
         // we unwrap and assign the value of the current currency in the label to a constant
         guard let currentCurrency = self.currencyLabelDestination.text else { return }
         // we check that the textField contains a value
         guard let money = self.currentMoneyTextField.text else { return }
-        
+        //returns true if the conversion is ok. returns false if conversion is not possible.
         let isConvertible = convertStringToDouble(number: money)
+        // we check that the return value is true
         guard isConvertible else {
             return
         }
-        
         
         // this code block is executed after the first conversion and allows to economise the number of requests launched
         guard _requestIsLaunch == false else {
@@ -98,10 +100,12 @@ class CurrencyViewController: UIViewController {
         resultTextField.text = "\(result)"
     }
     
-    //
+    // allows to convert the parameter number to a decimal number if possible
     func convertStringToDouble(number: String) -> Bool {
+        // the formatter
         let numberFormatter = NumberFormatter()
         numberFormatter.locale = Locale.current
+        // we check that number is convertible
         guard let numberFormatted = numberFormatter.number(from: number) else {
             alert(message: Error_.isEmpty.rawValue, title: Error_.oupps.rawValue)
             return false

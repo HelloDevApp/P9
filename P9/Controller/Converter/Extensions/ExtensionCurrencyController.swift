@@ -32,20 +32,23 @@ extension CurrencyViewController: UITextFieldDelegate {
     
     // method called each time the user adds a character: allows to check if a dot can be added
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
+        // we create a constant equal to the text of the textfield if possible
         guard let textFieldtext = textField.text else { return false }
-        
+        // we check that the total number of characters is smaller than 13
         guard textFieldtext.count < 13 else {
             alert(message: Error_.ValueTooLong.rawValue, title: Error_.oupps.rawValue)
             return false
         }
+        // we check that the character is a point
         guard string == POINT else {
             return true
         }
+        // we check that the number does not contain a point
         guard !textFieldtext.contains(POINT) else {
             alert(message: Error_.pointAlreadyExists.rawValue, title: Error_.oupps.rawValue)
             return false
         }
+        // we check that the total number of characters is not empty
         guard textFieldtext.count != 0 else {
             alert(message: Error_.startWithPoint.rawValue, title: Error_.oupps.rawValue)
             return false

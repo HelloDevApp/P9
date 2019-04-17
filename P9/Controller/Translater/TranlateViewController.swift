@@ -18,6 +18,8 @@ class TranlateViewController: UIViewController {
     
     @IBOutlet weak var resultTextView: CustomTextView!
     
+    @IBOutlet weak var buttonTranslation: UIButton!
+    
     // contains the value of the case located in the middle of the language array.
     var languagesCountDivideByTwo = Languages.allCases[Languages.allCases.count/2].rawValue
     
@@ -28,14 +30,18 @@ class TranlateViewController: UIViewController {
     }
     
     @IBAction func buttonTranslateAction() {
+        buttonTranslation.isEnabled = false
+        // we check that the text is not nil.
         guard let textToTranslate = textToTranslate.text else {
             alert(message: Error_.isEmpty.rawValue, title: Error_.oupps.rawValue)
             return
         }
+        // we check that the text is not emppty
         guard textToTranslate.isEmpty == false, textToTranslate != "" else {
             alert(message: Error_.isEmpty.rawValue, title: Error_.oupps.rawValue)
             return
         }
+        // we check that the text is different from the placeholder
         guard textToTranslate != PLACEHOLDER_TRANSLATER else {
             alert(message: Error_.isEmpty.rawValue, title: Error_.oupps.rawValue)
             return
@@ -50,32 +56,41 @@ class TranlateViewController: UIViewController {
         print(Translater.shared.targetLang)
     }
     
+    // allows you to launch the request
     func launchRequest() {
         
         TranslaterService.shared.getTranslation { (success, translations) in
-            
+            // we check that the request has been successfully completed
             guard success else {
                 self.alert(message: Error_.noSuccess.rawValue, title: Error_.oupps.rawValue)
+                self.buttonTranslation.isEnabled = true
                 return
-                
             }
+            
+            // we check that we have the translation structure
             guard let translations = translations else {
                 self.alert(message: Error_.noResult.rawValue, title: Error_.oupps.rawValue)
                 return
-                
             }
-            guard let translatedText = translations.translatedText else {
-                self.alert(message: Error_.noResult.rawValue, title: Error_.oupps.rawValue)
-                return
-                
-            }
-            let translatedTextFinal = TranslaterService.shared.replaceCharactersOfTranslatedText(translatedText: translatedText)
+            self.updateView(translations: translations)
             
+        }
+    }
+    
+    func updateView(translations: Translation) {
+        
+        // we check that the structure contains a translation
+        guard let translatedText = translations.translatedText else {
+            self.alert(message: Error_.noResult.rawValue, title: Error_.oupps.rawValue)
+            return
             
-            DispatchQueue.main.async {
-                self.resultTextView.text = translatedTextFinal
-                print(translatedTextFinal)
-            }
+        }
+        // the final text after replacing the special characters
+        let translatedTextFinal = TranslaterService.shared.replaceCharactersOfTranslatedText(translatedText: translatedText)
+        DispatchQueue.main.async {
+            self.resultTextView.text = translatedTextFinal
+            self.buttonTranslation.isEnabled = true
+            print(translatedTextFinal)
         }
     }
 }

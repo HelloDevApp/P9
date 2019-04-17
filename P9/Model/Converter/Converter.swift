@@ -10,9 +10,10 @@ class Converter {
     
     static let shared = Converter()
     
-    //
+    // the dictionary which will contain the abbreviated names and full names of each currency
     var dictOfCurrenciesNamesShortAndFull = [String:String]()
-    // contains the full name of the destination currency and also the value of the rate
+    
+    // ccontains the full name and rate of the destination currency
     private var _rateValueDestination = (name: "", rates: 0.0)
     
     // allows you to change the values of the tuple rateValueDestination .name and .rates
@@ -31,7 +32,7 @@ class Converter {
         return result
     }
     
-    // simply returns the private method convert() 'included in the CurrencyController extension'
+    // simply returns the private method convert()
     func convert(moneyToConvert: Double) -> Double {
         return _convert(moneyToConvert: moneyToConvert)
     }

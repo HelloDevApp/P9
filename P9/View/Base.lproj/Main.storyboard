@@ -166,6 +166,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Traduction" image="translate" id="Hoh-1P-3tD"/>
                     <connections>
+                        <outlet property="buttonTranslation" destination="8K5-vo-LPf" id="Cja-U0-QsX"/>
                         <outlet property="languageDestinationLabel" destination="wqi-7a-DBb" id="lkv-xI-clx"/>
                         <outlet property="pickerViewTargetLang" destination="Ea1-SU-z5b" id="yf8-oG-Xda"/>
                         <outlet property="resultTextView" destination="8WT-pN-Haa" id="Cmc-fs-hEV"/>
