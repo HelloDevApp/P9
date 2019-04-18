@@ -30,5 +30,47 @@ class P9Tests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testGivenUpdateRatesValues_ThenResultIsNotNil() {
+        
+    }
+    
+    func testGivenMoneyToTranslateEqualTen_WhenLaunchConvert_ThenWeCheckThatTheResultIsCorrect() {
+        
+        let moneyToConvert = 10.0
+        Converter.shared.changeValueOfRateDestination(name: "moneyTest", rates: 2.0)
+        
+        let result = Converter.shared.convert(moneyToConvert: moneyToConvert)
+        
+        XCTAssert(result == 20.0)
+    }
+    
+    func testWhenGetTargetLangForSetup_ThenTargetLangEqualToMiddleArrayRowLanguages() {
+        
+        Translater.shared.getTargetLang(forSetup: true, row: nil)
+        
+        XCTAssert(Translater.shared.targetLang == "\(Languages.allCases[Languages.allCases.count/2])")
+    }
+    
+    func testWhenGetTargetLang_ThenTargetLangEqualToChooseRow() {
+        
+        Translater.shared.getTargetLang(forSetup: false, row: 0)
+        
+        XCTAssert(Translater.shared.targetLang == "\(Languages.allCases[0])")
+    }
+    
+    func testGivenInitDictEmpty_WhenConvertEnumCaseToDictionnary_ThenNumberOfElementsIsDifferentOfZero() {
+        
+        Converter.shared.dictOfCurrenciesNamesShortAndFull = [String:String]()
+        
+        
+        CurrenciesNames.convertEnumCaseToDictionnary()
 
+        XCTAssert(Converter.shared.dictOfCurrenciesNamesShortAndFull.count > 0)
+    }
+    
+    func testCountryWeather() {
+        
+        XCTAssert(Weather_.shared.country.count == 2)
+    }
 }
