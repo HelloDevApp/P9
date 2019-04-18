@@ -34,20 +34,21 @@ class WheatherService {
 
         task?.cancel()
         task = session.dataTask(with: request) { (data, response, error) in
-            
-            guard let data = data, error == nil else { callback(false, nil, [nil]); return }
+            DispatchQueue.main.async {
+                guard let data = data, error == nil else { callback(false, nil, [nil]); return }
                 
-            guard let json = try? JSONDecoder().decode(WeatherAPIResult.self, from: data) else { callback(false, nil, [nil]); return }
-            
-            guard let firstIconLeft = json.list?[0].weather?.first else { callback(true,json,[nil]); return }
-            guard let firstIconRight = json.list?[1].weather?.first else { return }
-            guard let iconCodeLeft = firstIconLeft.icon else { callback(true, json, [nil]); return }
-            guard let iconCodeRight = firstIconRight.icon else { callback(true, json, [nil]); return }
-            
-            let iconURLLeft = URL(string: "http://openweathermap.org/img/w/\(iconCodeLeft).png")
-            let iconURLRight = URL(string: "http://openweathermap.org/img/w/\(iconCodeRight).png")
-            
-            callback(true, json, [iconURLLeft,iconURLRight])
+                guard let json = try? JSONDecoder().decode(WeatherAPIResult.self, from: data) else { callback(false, nil, [nil]); return }
+                
+                guard let firstIconLeft = json.list?[0].weather?.first else { callback(true,json,[nil]); return }
+                guard let firstIconRight = json.list?[1].weather?.first else { return }
+                guard let iconCodeLeft = firstIconLeft.icon else { callback(true, json, [nil]); return }
+                guard let iconCodeRight = firstIconRight.icon else { callback(true, json, [nil]); return }
+                
+                let iconURLLeft = URL(string: "http://openweathermap.org/img/w/\(iconCodeLeft).png")
+                let iconURLRight = URL(string: "http://openweathermap.org/img/w/\(iconCodeRight).png")
+                
+                callback(true, json, [iconURLLeft,iconURLRight])
+            }
         }
         task?.resume()
     }
@@ -56,12 +57,13 @@ class WheatherService {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             
-            guard let response = response as? HTTPURLResponse else { callback(nil); return }
-            guard response.statusCode == 200 else { callback(nil); return }
-            guard let data = data, error == nil else { callback(nil); return }
-            guard let icon = UIImage(data: data) else { callback(nil); return }
-            
-            callback(icon)
+            DispatchQueue.main.async {
+                guard let response = response as? HTTPURLResponse else { callback(nil); return }
+                guard response.statusCode == 200 else { callback(nil); return }
+                guard let data = data, error == nil else { callback(nil); return }
+                guard let icon = UIImage(data: data) else { callback(nil); return }
+                callback(icon)
+            }
             
         } .resume()
     }

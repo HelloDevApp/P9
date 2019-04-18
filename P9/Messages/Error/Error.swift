@@ -8,7 +8,8 @@
 
 import Foundation
 
-enum Error_: String {
+
+enum ErrorMessages: String {
     
     case oupps = "Oups"
     case noSuccess = "La requête a echoué."

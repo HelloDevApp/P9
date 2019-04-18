@@ -7,38 +7,31 @@
 //
 
 import Foundation
-//=====================================================
-// PLACEHOLDERS
-let PLACEHOLDER_CONVERTER = "Entrer une valeur:"
-let PLACEHOLDER_TRANSLATER = "Entrer du texte:"
-//=====================================================
 
-//=====================================================
-// DEFAULT VALUE
-let DEFAULT_CITY = "Ville"
-let DEFAULT_DATE = "../../...."
-let DEFAULT_TEMP = "..°"
-let DEFAULT_DESCR = "Description: .."
-let DEFAULT_HUMIDITY = "Humidité: ..%"
-//=====================================================
-
-
-//=====================================================
-// WORDS
-let HUMIDITY = "Humidité: "
-//=====================================================
-
-//=====================================================
-// CHARACTERS
-let POINT = "."
-let DEGREES = "°"
-let PURCENT = "%"
-let APOSTROPHE = "'"
-let APOSTROPHE_CODE = "&#39;"
-//=====================================================
-
-//=====================================================
-// OTHERS
-let DATE_FORMAT = "dd/MM/yyyy HH:mm"
-let ALLOWED_CHARACTERS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ,.:=()[]?!@+-/’#Çç'"
-//=====================================================
+struct Constants {
+    
+    // PLACEHOLDERS
+    static let placeholderConverter = "Entrer une valeur:"
+    static let placeholderTranslater = "Entrer du texte:"
+    
+    // DEFAULT VALUE
+    static let defaultCity = "Ville"
+    static let defaultDate = "../../...."
+    static let defaultTemp = "..°"
+    static let defaultDescr = "Description: .."
+    static let defaultHumidity = "Humidité: ..%"
+    
+    // WORDS
+    static let humidity = "Humidité: "
+    
+    // CHARACTERS
+    static let point = "."
+    static let degrees = "°"
+    static let purcent = "%"
+    static let apostrophe = "'"
+    static let apostropheCode = "&#39;"
+    
+    // OTHERS
+    static let dateFormat = "dd/MM/yyyy HH:mm"
+    static let allowedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ,.:=()[]?!@+-/’#Çç'"
+}

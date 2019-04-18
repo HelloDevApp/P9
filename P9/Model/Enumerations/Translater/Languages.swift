@@ -23,16 +23,3 @@ enum Languages: String, CaseIterable {
     // 🇮🇹 italian
     case it = "Italien"
 }
-
-//=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-//MARK:-+-+-+-+-+--+-+-+-Extensions-+-+-+-+-+--+-+-+-+-
-//=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
-extension Languages {
-    // allows you to fill in a array containing all the cases of the enumeration
-    static func convertToArray() {
-        for value in Languages.allCases {
-            // for languages, we use the capitalized() method to have a capital letter in the first letter
-            Translater.shared.arrayLanguages.append(value.rawValue.capitalized)
-        }
-    }
-}

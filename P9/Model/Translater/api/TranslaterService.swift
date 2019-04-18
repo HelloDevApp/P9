@@ -27,40 +27,41 @@ class TranslaterService {
         let request = URLRequest(url: urlComplete)
         
         task = session.dataTask(with: request) { (data, response, error) in
-            guard let data = data, error == nil else {
-                print("data nil || error")
-                callback(false, nil)
-                return }
-            
-            guard let json = try? JSONDecoder().decode(TranslaterAPIResult.self, from: data) else {
-                print("erreur json decoder"); callback(false,nil)
-                return
+            DispatchQueue.main.async {
+                guard let data = data, error == nil else {
+                    print("data nil || error")
+                    callback(false, nil)
+                    return }
+                
+                guard let json = try? JSONDecoder().decode(TranslaterAPIResult.self, from: data) else {
+                    print("erreur json decoder"); callback(false,nil)
+                    return
+                }
+                guard let json_Data = json.data else {
+                    print("erreur json data")
+                    callback(false, nil)
+                    return
+                }
+                guard let json_Data_Translations = json_Data.translations else {
+                    print("erreur json data translations nil")
+                    callback(false, nil)
+                    return
+                }
+                guard let translation_Last = json_Data_Translations.last else {
+                    print("erreur  translations last nil")
+                    callback(false, nil)
+                    return
+                }
+                callback(true, translation_Last)
             }
-            guard let json_Data = json.data else {
-                print("erreur json data")
-                callback(false, nil)
-                return
-            }
-            guard let json_Data_Translations = json_Data.translations else {
-                print("erreur json data translations nil")
-                callback(false, nil)
-                return
-            }
-            guard let translation_Last = json_Data_Translations.last else {
-                print("erreur  translations last nil")
-                callback(false, nil)
-                return
-            }
-            
-            callback(true, translation_Last)
         }
         task?.resume()
     }
     
     func replaceCharactersOfTranslatedText(translatedText: String) -> String {
         var translatedText = translatedText
-        let findValue = APOSTROPHE_CODE
-        let replaceValue = APOSTROPHE
+        let findValue = Constants.apostropheCode
+        let replaceValue = Constants.apostrophe
         if translatedText.contains(findValue) {
             translatedText = translatedText.replacingOccurrences(of: findValue, with: replaceValue)
             return translatedText

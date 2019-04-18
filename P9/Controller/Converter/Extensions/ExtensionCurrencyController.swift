@@ -27,7 +27,7 @@ extension CurrencyViewController: UITextFieldDelegate {
         // we check that the text is empty
         guard textFieldText.isEmpty else { return }
         
-        textField.attributedPlaceholder = NSAttributedString(string: PLACEHOLDER_CONVERTER, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        textField.attributedPlaceholder = NSAttributedString(string: Constants.placeholderConverter, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
     
     // method called each time the user adds a character: allows to check if a dot can be added
@@ -36,21 +36,21 @@ extension CurrencyViewController: UITextFieldDelegate {
         guard let textFieldtext = textField.text else { return false }
         // we check that the total number of characters is smaller than 13
         guard textFieldtext.count < 13 else {
-            alert(message: Error_.ValueTooLong.rawValue, title: Error_.oupps.rawValue)
+            alert(message: ErrorMessages.ValueTooLong.rawValue, title: ErrorMessages.oupps.rawValue)
             return false
         }
         // we check that the character is a point
-        guard string == POINT else {
+        guard string == Constants.point else {
             return true
         }
         // we check that the number does not contain a point
-        guard !textFieldtext.contains(POINT) else {
-            alert(message: Error_.pointAlreadyExists.rawValue, title: Error_.oupps.rawValue)
+        guard !textFieldtext.contains(Constants.point) else {
+            alert(message: ErrorMessages.pointAlreadyExists.rawValue, title: ErrorMessages.oupps.rawValue)
             return false
         }
         // we check that the total number of characters is not empty
         guard textFieldtext.count != 0 else {
-            alert(message: Error_.startWithPoint.rawValue, title: Error_.oupps.rawValue)
+            alert(message: ErrorMessages.startWithPoint.rawValue, title: ErrorMessages.oupps.rawValue)
             return false
             
         }

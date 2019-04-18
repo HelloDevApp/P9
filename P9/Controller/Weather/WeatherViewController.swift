@@ -10,12 +10,15 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
+    // Left Outlets
     @IBOutlet weak var cityLeft: CustomLabel!
     @IBOutlet weak var dateLeft: UILabel!
     @IBOutlet weak var iconLeft: UIImageView!
     @IBOutlet weak var currentTempLeft: UILabel!
     @IBOutlet weak var descriptionLeft: CustomLabel!
     @IBOutlet weak var humidityLeft: CustomLabel!
+    
+    // Right Outlets
     @IBOutlet weak var cityRight: CustomLabel!
     @IBOutlet weak var dateRight: UILabel!
     @IBOutlet weak var iconRight: UIImageView!
@@ -33,16 +36,16 @@ class WeatherViewController: UIViewController {
         
         WheatherService.shared.getWeather { (success, weatherResult, iconURL)   in
             guard success else {
-                self.alert(message: Error_.noSuccess.rawValue, title: Error_.oupps.rawValue)
+                self.alert(message: ErrorMessages.noSuccess.rawValue, title: ErrorMessages.oupps.rawValue)
                 return
             }
             guard let weatherResult = weatherResult else {
-                self.alert(message: Error_.noResult.rawValue, title: Error_.oupps.rawValue)
+                self.alert(message: ErrorMessages.noResult.rawValue, title: ErrorMessages.oupps.rawValue)
                 return
             }
             self.updateView(weatherResult: weatherResult)
             guard let iconURLLeft = iconURL[0], let iconURLRigth = iconURL[1] else {
-                self.alert(message: Error_.noIcon.rawValue, title: Error_.oupps.rawValue)
+                self.alert(message: ErrorMessages.noIcon.rawValue, title: ErrorMessages.oupps.rawValue)
                 return
             }
             self.getIcon(from: iconURLLeft, for: self.iconLeft)
@@ -53,11 +56,9 @@ class WeatherViewController: UIViewController {
     func getIcon(from url: URL, for imageView: UIImageView) {
         WheatherService.shared.getIcon(from: url) { (icon) in
             if let icon = icon {
-                DispatchQueue.main.async {
-                    imageView.image = icon
-                }
+                imageView.image = icon
             } else {
-                self.alert(message: Error_.noIcon.rawValue, title: Error_.oupps.rawValue)
+                self.alert(message: ErrorMessages.noIcon.rawValue, title: ErrorMessages.oupps.rawValue)
                 
             }
         }
@@ -68,7 +69,7 @@ class WeatherViewController: UIViewController {
         updateDate()
         
         guard let weatherResult = weatherResult.list else {
-            alert(message: Error_.noResult.rawValue, title: Error_.oupps.rawValue)
+            alert(message: ErrorMessages.noResult.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
         let resultLeft = weatherResult[0]

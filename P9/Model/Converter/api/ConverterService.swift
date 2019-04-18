@@ -36,18 +36,19 @@ class ConverterService {
         
         // the task
         let task = session.dataTask(with: request) { (data, response, error) in
-            
-            guard let data = data, error == nil else { callback(false, nil); return }
-            // we decode the JSON
-            let dataJSON = try? JSONDecoder().decode(Result.self, from: data)
-            // we check that the dataJSON is not nil
-            guard let json = dataJSON else { callback(false, nil); return }
-            // we check that the rates is not nil
-            guard let rates = json.rates else { callback(false, nil); return }
-            // we get the time of update of the rates
-            self.getUpdateDateOfRates(responseJSON: json)
-            callback(true, rates)
-            return
+            DispatchQueue.main.async {
+                guard let data = data, error == nil else { callback(false, nil); return }
+                // we decode the JSON
+                let dataJSON = try? JSONDecoder().decode(Result.self, from: data)
+                // we check that the dataJSON is not nil
+                guard let json = dataJSON else { callback(false, nil); return }
+                // we check that the rates is not nil
+                guard let rates = json.rates else { callback(false, nil); return }
+                // we get the time of update of the rates
+                self.getUpdateDateOfRates(responseJSON: json)
+                callback(true, rates)
+                return
+            }
         }
         task.resume()
     }

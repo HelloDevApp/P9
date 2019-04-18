@@ -22,7 +22,7 @@ extension TranlateViewController: UITextViewDelegate {
     public func textViewDidEndEditing(_ textView: UITextView) {
         // if the text is empty, a placeholder is assigned
         if textView.text.isEmpty {
-            textView.text = PLACEHOLDER_TRANSLATER
+            textView.text = Constants.placeholderTranslater
             self.view.hideKeyboard()
         }
     }
@@ -30,7 +30,7 @@ extension TranlateViewController: UITextViewDelegate {
         
         guard textView == textToTranslate else { return false }
         
-        let allowedCharacters = ALLOWED_CHARACTERS
+        let allowedCharacters = Constants.allowedCharacters
         let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
         let typedCharacterSet = CharacterSet(charactersIn: text)
         let alphabet = allowedCharacterSet.isSuperset(of: typedCharacterSet)

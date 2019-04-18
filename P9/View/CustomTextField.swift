@@ -26,7 +26,7 @@ class CustomTextField: UITextField {
         layer.shadowOffset = CGSize(width: -2, height: 2)
         layer.shadowOpacity = 1
         clipsToBounds = true
-        attributedPlaceholder = NSAttributedString(string: placeholder ?? PLACEHOLDER_CONVERTER, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        attributedPlaceholder = NSAttributedString(string: placeholder ?? Constants.placeholderConverter, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
     }
 
 }
