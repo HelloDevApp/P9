@@ -19,11 +19,9 @@ struct Result: Decodable {
 // the structure that will receive all the rate values
 struct Rates: Decodable {
     var AUD: Double?
-    var BTC: Double?
     var CAD: Double?
     var CHF: Double?
     var COP: Double?
-    var EUR: Double?
     var GBP: Double?
     var HKD: Double?
     var ILS: Double?

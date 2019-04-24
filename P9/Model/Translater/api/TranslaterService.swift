@@ -12,43 +12,62 @@ class TranslaterService {
     
     static var shared = TranslaterService()
     
+    private init() {}
+    
     let url = URL(string: "https://translation.googleapis.com/language/translate/v2")!
+    
+    private var session = URLSession(configuration: .default)
+    
     var task: URLSessionDataTask?
+    
+    init(session: URLSession) {
+        self.session = session
+    }
     
     func getTranslation(callback: @escaping (Bool, Translation?) -> Void) {
         
-        guard let textEncoded = Translater.shared.textToTranslate.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed) else { callback(false, nil); return }
+        guard let textEncoded = Translater.shared.textToTranslate.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed) else {
+            callback(false, nil)
+            return
+        }
         let parameters = "?key=\(APIKey.shared.apiKeyTranslater)&q=\(textEncoded)&target=\(Translater.shared.targetLang)&source=fr"
         
-        print(parameters)
-        guard let urlComplete = URL(string: "\(url)\(parameters)") else { print("erreur ulrComplete"); return }
-        print(urlComplete)
-        let session = URLSession(configuration: .default)
+        guard let urlComplete = URL(string: "\(url)\(parameters)") else {
+            print(ErrorMessages.errorURLComplete_Translater)
+            return
+        }
+        
         let request = URLRequest(url: urlComplete)
         
         task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
-                    print("data nil || error")
+                    print(ErrorMessages.errorDataNilOrError_Translater)
                     callback(false, nil)
-                    return }
-                
+                    return
+                }
+                guard let response = response as? HTTPURLResponse else {
+                    print(ErrorMessages.errorResponseIsNotHTTPURLResponse_Translater)
+                    callback(false, nil)
+                    return
+                }
+                guard response.statusCode != 500 else {
+                    print((ErrorMessages.errorStatusCode500_Translater))
+                    callback(true, nil)
+                    return
+                }
+                guard response.statusCode == 200 else {
+                    print(ErrorMessages.errorStatusCode400_Translater)
+                    callback(false, nil)
+                    return
+                }
                 guard let json = try? JSONDecoder().decode(TranslaterAPIResult.self, from: data) else {
-                    print("erreur json decoder"); callback(false,nil)
+                    print(ErrorMessages.errorJSONDecoder_Translater)
+                    callback(false,nil)
                     return
                 }
-                guard let json_Data = json.data else {
-                    print("erreur json data")
-                    callback(false, nil)
-                    return
-                }
-                guard let json_Data_Translations = json_Data.translations else {
-                    print("erreur json data translations nil")
-                    callback(false, nil)
-                    return
-                }
-                guard let translation_Last = json_Data_Translations.last else {
-                    print("erreur  translations last nil")
+                guard let translation_Last = json.data?.translations?.last else {
+                    print(ErrorMessages.errorTranslationLastNIL_Translater)
                     callback(false, nil)
                     return
                 }

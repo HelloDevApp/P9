@@ -13,6 +13,7 @@ class ConverterService {
     
     static let shared = ConverterService()
     
+    private init() {}
     //URL base
     private let _url = URL(string: "http://data.fixer.io/api/")!
     
@@ -25,7 +26,11 @@ class ConverterService {
     }
     
     // the session
-    let session = URLSession(configuration: .default)
+    private var session = URLSession(configuration: .default)
+    
+    init(session: URLSession) {
+        self.session = session
+    }
     
     // allow send request
     func getRates(callback: @escaping (Bool, Rates?) -> Void) {
@@ -37,13 +42,48 @@ class ConverterService {
         // the task
         let task = session.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
-                guard let data = data, error == nil else { callback(false, nil); return }
+                
+                guard let data = data, error == nil else {
+                    print(ErrorMessages.errorDataNilOrError_Converter)
+                    callback(false, nil)
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse else {
+                    print(ErrorMessages.errorResponseIsNotHTTPURLResponse_Converter)
+                    callback(true, nil)
+                    return
+                }
+                
+                guard response.statusCode != 500 else {
+                    print(ErrorMessages.errorStatusCode500_Converter)
+                    callback(true, nil)
+                    return
+                }
+                
+                guard response.statusCode == 200 else {
+                    print(ErrorMessages.errorStatusCode400_Converter)
+                    callback(false, nil)
+                    return
+                }
+                
                 // we decode the JSON
                 let dataJSON = try? JSONDecoder().decode(Result.self, from: data)
+                
                 // we check that the dataJSON is not nil
-                guard let json = dataJSON else { callback(false, nil); return }
+                guard let json = dataJSON else {
+                    print(ErrorMessages.errorJSONDecoder_Converter)
+                    callback(false, nil)
+                    return
+                }
+                
                 // we check that the rates is not nil
-                guard let rates = json.rates else { callback(false, nil); return }
+                guard let rates = json.rates else {
+                    print(ErrorMessages.errorJSONRatesIsNil_Converter)
+                    callback(false, nil)
+                    return
+                }
+                
                 // we get the time of update of the rates
                 self.getUpdateDateOfRates(responseJSON: json)
                 callback(true, rates)
@@ -56,7 +96,10 @@ class ConverterService {
     // retrieve the date of the last update of the rates
     private func getUpdateDateOfRates(responseJSON: Result) {
         
-        guard let timestamp = responseJSON.timestamp else { return }
+        guard let timestamp = responseJSON.timestamp else {
+            print(ErrorMessages.noTimestamp)
+            return
+        }
         Console.shared.printLastUpdateRate(timestamp: timestamp)
     }
 }

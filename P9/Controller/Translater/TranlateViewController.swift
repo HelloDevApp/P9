@@ -69,7 +69,7 @@ class TranlateViewController: UIViewController {
             
             // we check that we have the translation structure
             guard let translations = translations else {
-                self.alert(message: ErrorMessages.noResult.rawValue, title: ErrorMessages.oupps.rawValue)
+                self.alert(message: ErrorMessages.noTranslations.rawValue, title: ErrorMessages.oupps.rawValue)
                 return
             }
             self.updateView(translations: translations)
@@ -81,7 +81,7 @@ class TranlateViewController: UIViewController {
         
         // we check that the structure contains a translation
         guard let translatedText = translations.translatedText else {
-            self.alert(message: ErrorMessages.noResult.rawValue, title: ErrorMessages.oupps.rawValue)
+            self.alert(message: ErrorMessages.noTranslations.rawValue, title: ErrorMessages.oupps.rawValue)
             return
             
         }

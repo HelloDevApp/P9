@@ -35,19 +35,26 @@ class WeatherViewController: UIViewController {
     func getWeather() {
         
         WheatherService.shared.getWeather { (success, weatherResult, iconURL)   in
+            
             guard success else {
                 self.alert(message: ErrorMessages.noSuccess.rawValue, title: ErrorMessages.oupps.rawValue)
                 return
             }
+            
             guard let weatherResult = weatherResult else {
                 self.alert(message: ErrorMessages.noResult.rawValue, title: ErrorMessages.oupps.rawValue)
                 return
             }
+            
+            // update of view elements except icons
             self.updateView(weatherResult: weatherResult)
+            
             guard let iconURLLeft = iconURL?[0], let iconURLRigth = iconURL?[1] else {
                 self.alert(message: ErrorMessages.noIcon.rawValue, title: ErrorMessages.oupps.rawValue)
                 return
             }
+            
+            // update of icons in the view
             self.getIcon(from: iconURLLeft, for: self.iconLeft)
             self.getIcon(from: iconURLRigth, for: self.iconRight)
         }
@@ -56,7 +63,9 @@ class WeatherViewController: UIViewController {
     func getIcon(from url: URL, for imageView: UIImageView) {
         WheatherService.shared.getIcon(from: url) { (icon) in
             if let icon = icon {
-                guard let icon = UIImage(data: icon) else { return }
+                guard let icon = UIImage(data: icon) else {
+                    return
+                }
                 imageView.image = icon
             } else {
                 self.alert(message: ErrorMessages.noIcon.rawValue, title: ErrorMessages.oupps.rawValue)
@@ -66,18 +75,21 @@ class WeatherViewController: UIViewController {
     
     func updateView(weatherResult: WeatherAPIResult) {
         
+        // retrieve the current date
         updateDate()
         
         guard let weatherResult = weatherResult.list else {
             alert(message: ErrorMessages.noResult.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
+        // 'Paris' result
         let resultLeft = weatherResult[0]
         updateCity(result: resultLeft, leftOrRight: cityLeft)
         updateTemp(result: resultLeft, labelTemp: currentTempLeft)
         updateHumidity(result: resultLeft, labelHumidity: humidityLeft)
         updateDescription(result: resultLeft, descriptionLabel: descriptionLeft)
         
+        // 'New York' result
         let resultRight = weatherResult[1]
         updateCity(result: resultRight, leftOrRight: cityRight)
         updateTemp(result: resultRight, labelTemp: currentTempRight)

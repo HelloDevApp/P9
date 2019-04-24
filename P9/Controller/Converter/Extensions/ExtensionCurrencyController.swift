@@ -32,22 +32,27 @@ extension CurrencyViewController: UITextFieldDelegate {
     
     // method called each time the user adds a character: allows to check if a dot can be added
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         // we create a constant equal to the text of the textfield if possible
         guard let textFieldtext = textField.text else { return false }
+        
         // we check that the total number of characters is smaller than 13
         guard textFieldtext.count < 13 else {
             alert(message: ErrorMessages.ValueTooLong.rawValue, title: ErrorMessages.oupps.rawValue)
             return false
         }
+        
         // we check that the character is a point
         guard string == Constants.point else {
             return true
         }
+        
         // we check that the number does not contain a point
         guard !textFieldtext.contains(Constants.point) else {
             alert(message: ErrorMessages.pointAlreadyExists.rawValue, title: ErrorMessages.oupps.rawValue)
             return false
         }
+        
         // we check that the total number of characters is not empty
         guard textFieldtext.count != 0 else {
             alert(message: ErrorMessages.startWithPoint.rawValue, title: ErrorMessages.oupps.rawValue)
@@ -100,8 +105,10 @@ extension CurrencyViewController {
             
         // initialization of the gesture
         view.addGestureToHideKeyboard()
+        
         // we fill the array with the different cases of enumeration
         CurrenciesNames.convertEnumCaseToDictionnary()
+        
         // we add the text that corresponding to position of pickerView
         currencyLabelDestination.text = Currencies.allCases[Currencies.allCases.count/2].rawValue.uppercased()
     }
@@ -122,9 +129,9 @@ extension CurrencyViewController {
                     if currentCurrencyName == currencyName.key {
                         // currencyName.value contains the full name of the currency. example: "Australian dollard"
                         let currentRateName = currencyName.value
-                        // rate.value contains the value of the rate and the name. example: ("dollars" : "0.95903")
+                        // rate.value contains the value of the rate. example: ("dollars" : (rate.value = "0.95903)")
                         guard let rateDouble = rate.value as? Double else { return }
-                    Converter.shared.changeValueOfRateDestination(name: currentRateName, rate: rateDouble)
+                        Converter.shared.changeValueOfRateDestination(name: currentRateName, rate: rateDouble)
                     }
                 }
             }

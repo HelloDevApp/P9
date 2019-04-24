@@ -12,6 +12,7 @@ import UIKit
 extension WeatherViewController {
     
     func setup() {
+        
         // Left
         cityLeft.text = Constants.defaultCity
         dateLeft.text = Constants.defaultDate
@@ -36,7 +37,6 @@ extension WeatherViewController {
         
         let cityName = resultCity
         city.text = cityName
-        
     }
     
     func updateDate() {
@@ -65,6 +65,7 @@ extension WeatherViewController {
             alert(message: ErrorMessages.noTemp.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
+        
         let tempInt = Int(resultTemp)
         labelTemp.text = String(tempInt) + Constants.degrees
         
@@ -76,11 +77,13 @@ extension WeatherViewController {
             alert(message: ErrorMessages.noDescription.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
+        
         // first weather
         guard let resultWeatherLast = resultWeather.first else {
             alert(message: ErrorMessages.noDescription.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
+        
         // last description
         guard let description = resultWeatherLast.description else {
             alert(message: ErrorMessages.noDescription.rawValue, title: ErrorMessages.oupps.rawValue)
@@ -95,11 +98,13 @@ extension WeatherViewController {
             alert(message: ErrorMessages.noHumidity.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
+        
         // humidity right
         guard let result = resultMain.humidity else {
             alert(message: ErrorMessages.noHumidity.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
+        
         labelHumidity.text = Constants.humidity + String(result) + Constants.purcent
     }
 }

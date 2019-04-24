@@ -44,7 +44,7 @@ class CurrencyViewController: UIViewController {
         
         guard let money = self.currentMoneyTextField.text else { return }
         
-        let isConvertible = convertStringToDouble(number: money)
+        let isConvertible = _convertStringToDouble(number: money)
         
         guard isConvertible else { return }
         
@@ -87,17 +87,17 @@ class CurrencyViewController: UIViewController {
     private func _launchConvert(moneyDouble: Double) {
         
         let result = Converter.shared.convert(moneyToConvert: moneyDouble)
-        self.updateTextFieldWithResult(result: result)
+        self._updateTextFieldWithResult(result: result)
     }
     
     // allows you to change the text of the textField to display the result
-    private func updateTextFieldWithResult(result: Double) {
+    private func _updateTextFieldWithResult(result: Double) {
         if result < 0 { print("erreur"); return }
         resultTextField.text = "\(result)"
     }
     
     // allows to convert the parameter number to a decimal number if possible
-    func convertStringToDouble(number: String) -> Bool {
+    private func _convertStringToDouble(number: String) -> Bool {
         
         let numberFormatter = NumberFormatter()
         numberFormatter.locale = Locale.current
