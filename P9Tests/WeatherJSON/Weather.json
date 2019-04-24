@@ -1,0 +1,97 @@
+
+{
+    "cnt": 2,
+    "list": [
+        {
+            "coord": {
+                "lon": 2.35,
+                "lat": 48.86
+            },
+            "sys": {
+                "type": 1,
+                "id": 6540,
+                "message": 0.0072,
+                "country": "FR",
+                "sunrise": 1555908409,
+                "sunset": 1555959069
+            },
+            "weather": [
+                {
+                    "id": 800,
+                    "main": "Clear",
+                    "description": "ciel dégagé",
+                    "icon": "01d"
+                }
+            ],
+            "main": {
+                "temp": 25.0,
+                "pressure": 1001,
+                "humidity": 33,
+                "temp_min": 24.10,
+                "temp_max": 26.30
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 5.1,
+                "deg": 70
+            },
+            "clouds": {
+                "all": 0
+            },
+            "dt": 1555955112,
+            "id": 6455259,
+            "name": "Paris"
+        },
+        {
+            "coord": {
+                "lon": -74.01,
+                "lat": 40.71
+            },
+            "sys": {
+                "type": 1,
+                "id": 4610,
+                "message": 0.0098,
+                "country": "US",
+                "sunrise": 1555927622,
+                "sunset": 1555976505
+            },
+            "weather": [
+                {
+                    "id": 501,
+                    "main": "Rain",
+                    "description": "pluie modérée",
+                    "icon": "10d"
+                },
+                {
+                    "id": 701,
+                    "main": "Mist",
+                    "description": "brume",
+                    "icon": "50d"
+                },
+                {
+                    "id": 300,
+                    "main": "Drizzle",
+                    "description": "bruine légère",
+                    "icon": "09d"
+                }
+            ],
+            "main": {
+                "temp": 20.90,
+                "pressure": 1017,
+                "humidity": 63,
+                "temp_min": 18.15,
+                "temp_max": 21.48
+            },
+            "visibility": 16093,
+            "wind": {
+                "speed": 1.5
+            },
+            "clouds": {
+                "all": 90
+            },
+            "dt": 1555955112,
+            "id": 5128581,
+            "name": "New York"
+        }
+    ]
+}
