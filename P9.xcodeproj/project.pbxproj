@@ -17,7 +17,6 @@
 		52166DEE21E147CC007C5BEF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52166DEC21E147CC007C5BEF /* Main.storyboard */; };
 		52166DF021E147CD007C5BEF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52166DEF21E147CD007C5BEF /* Assets.xcassets */; };
 		52166DF321E147CD007C5BEF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52166DF121E147CD007C5BEF /* LaunchScreen.storyboard */; };
-		52166DFE21E147CD007C5BEF /* P9Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52166DFD21E147CD007C5BEF /* P9Tests.swift */; };
 		52166E1021E14DDE007C5BEF /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52166E0F21E14DDE007C5BEF /* CurrencyViewController.swift */; };
 		522219A821F0B1AA0058788D /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522219A721F0B1AA0058788D /* GradientView.swift */; };
 		52495291224D85B7009E9DDF /* TranslaterAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52495290224D85B7009E9DDF /* TranslaterAPIResult.swift */; };
