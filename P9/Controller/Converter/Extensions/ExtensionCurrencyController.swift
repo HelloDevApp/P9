@@ -124,7 +124,7 @@ extension CurrencyViewController {
                         let currentRateName = currencyName.value
                         // rate.value contains the value of the rate and the name. example: ("dollars" : "0.95903")
                         guard let rateDouble = rate.value as? Double else { return }
-                    Converter.shared.changeValueOfRateDestination(name: currentRateName, rates: rateDouble)
+                    Converter.shared.changeValueOfRateDestination(name: currentRateName, rate: rateDouble)
                     }
                 }
             }

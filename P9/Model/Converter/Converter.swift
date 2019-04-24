@@ -21,15 +21,15 @@ class Converter {
     }
     
     // allows you to change the values of the tuple rateValueDestination .name and .rates
-    func changeValueOfRateDestination(name: String, rates: Double) {
+    func changeValueOfRateDestination(name: String, rate: Double) {
         _rateValueDestination.name = name
-        _rateValueDestination.rates = rates
+        _rateValueDestination.rate = rate
     }
     
     // is used to calculate and return the result
     private func _convert(moneyToConvert: Double) -> Double {
         // contains the rate of the destination currency
-        let rateValueDestination = _rateValueDestination.rates
+        let rateValueDestination = _rateValueDestination.rate
         // contains the result of the operation
         let result = moneyToConvert * rateValueDestination
         Console.shared.printDescriptionResultConversion(moneyToConvert: moneyToConvert, result: result, nameCurrencyDestination: _rateValueDestination.name)
