@@ -21,8 +21,17 @@ struct Constants {
     static let defaultDescr = "Description: .."
     static let defaultHumidity = "Humidité: ..%"
     
+    // REQUEST METHOD
+    static let getMethod = "GET"
+    
     // WORDS
     static let humidity = "Humidité: "
+    static let ok = "OK"
+    static let stringEmpty = ""
+    
+    // CITIES
+    static let cityParis = "Paris,fr"
+    static let cityNewYork = "New York,us"
     
     // CHARACTERS
     static let point = "."
@@ -34,4 +43,5 @@ struct Constants {
     // OTHERS
     static let dateFormat = "dd/MM/yyyy HH:mm"
     static let allowedCharacters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ,.:=()[]?!@+-/’#Çç'"
+    static let changeQueue = "Wait, for change queue."
 }
