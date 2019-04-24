@@ -44,7 +44,7 @@ class WeatherViewController: UIViewController {
                 return
             }
             self.updateView(weatherResult: weatherResult)
-            guard let iconURLLeft = iconURL[0], let iconURLRigth = iconURL[1] else {
+            guard let iconURLLeft = iconURL?[0], let iconURLRigth = iconURL?[1] else {
                 self.alert(message: ErrorMessages.noIcon.rawValue, title: ErrorMessages.oupps.rawValue)
                 return
             }
@@ -56,10 +56,10 @@ class WeatherViewController: UIViewController {
     func getIcon(from url: URL, for imageView: UIImageView) {
         WheatherService.shared.getIcon(from: url) { (icon) in
             if let icon = icon {
+                guard let icon = UIImage(data: icon) else { return }
                 imageView.image = icon
             } else {
                 self.alert(message: ErrorMessages.noIcon.rawValue, title: ErrorMessages.oupps.rawValue)
-                
             }
         }
     }
