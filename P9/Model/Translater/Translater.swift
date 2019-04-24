@@ -14,13 +14,13 @@ class Translater {
     
     // the array that is filled using the convertToArray method in the Languages enumeration
     var arrayLanguages: [String] = []
-    //
+    
     var dictOfLanguagesCodes = [String:String]()
     // contains the names of the usual characters and the corresponding hexadecimal codes
     var dictOfSpecialCharactersAndCodes = [String:String]()
     
-    var textToTranslate = ""
-    private var _targetLang = ""
+    var textToTranslate = Constants.stringEmpty
+    private var _targetLang = Constants.stringEmpty
     
     var targetLang: String {
         return _targetLang

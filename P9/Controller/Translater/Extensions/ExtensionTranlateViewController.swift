@@ -15,7 +15,7 @@ extension TranlateViewController: UITextViewDelegate {
     
     // this method is called every time the user starts writing 
     public func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
+        textView.text = Constants.stringEmpty
     }
     
     // this method is called each time the user has finished writing
@@ -40,7 +40,7 @@ extension TranlateViewController: UITextViewDelegate {
             if textView.text.count + text.count < 100 {
                 return alphabet
             } else {
-                if text == "" {
+                if text == Constants.stringEmpty {
                     return alphabet
                 } else {
                     return false

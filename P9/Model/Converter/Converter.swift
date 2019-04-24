@@ -14,7 +14,11 @@ class Converter {
     var dictOfCurrenciesNamesShortAndFull = [String:String]()
     
     // ccontains the full name and rate of the destination currency
-    private var _rateValueDestination = (name: "", rates: 0.0)
+    private var _rateValueDestination = (name: Constants.stringEmpty, rate: 0.0)
+    
+    var rateValueDestination: (name: String, rate: Double) {
+        return _rateValueDestination
+    }
     
     // allows you to change the values of the tuple rateValueDestination .name and .rates
     func changeValueOfRateDestination(name: String, rates: Double) {

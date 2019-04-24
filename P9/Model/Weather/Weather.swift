@@ -13,7 +13,7 @@ class Weather_ {
     
     static let shared = Weather_()
     
-    private let _country = ["New york,us", "Paris,fr"]
+    private let _country = [Constants.cityNewYork, Constants.cityNewYork]
     
     var country: [String] {
         return _country

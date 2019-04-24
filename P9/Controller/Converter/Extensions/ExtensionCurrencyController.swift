@@ -14,8 +14,8 @@ extension CurrencyViewController: UITextFieldDelegate {
     
     // called when the user has started editing
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.placeholder = ""
-        textField.text = ""
+        textField.placeholder = Constants.stringEmpty
+        textField.text = Constants.stringEmpty
     }
     
     // called when the user has finished editing

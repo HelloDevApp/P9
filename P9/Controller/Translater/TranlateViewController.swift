@@ -37,7 +37,7 @@ class TranlateViewController: UIViewController {
             return
         }
         // we check that the text is not empty
-        guard textToTranslate.isEmpty == false, textToTranslate != "" else {
+        guard textToTranslate.isEmpty == false, textToTranslate != Constants.stringEmpty else {
             alert(message: ErrorMessages.isEmpty.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
