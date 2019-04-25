@@ -21,7 +21,7 @@ struct Constants {
     static let defaultDescr = "Description: .."
     static let defaultHumidity = "Humidité: ..%"
     
-    // REQUEST METHOD
+    // METHOD HTTP
     static let getMethod = "GET"
     
     // WORDS
