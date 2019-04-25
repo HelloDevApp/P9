@@ -74,11 +74,13 @@ class WheatherService {
                     callback(true, json, nil)
                     return
                 }
+                
                 guard let firstIconCodeRight = json.list?[1].weather?.first else {
                     print(ErrorMessages.errorIconsIsNil)
                     callback(true, json, nil)
                     return
                 }
+                
                 guard let iconCodeLeft = firstIconCodeLeft.icon else {
                     print(ErrorMessages.errorIconCodeIsNil)
                     callback(true, json, nil)

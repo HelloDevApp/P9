@@ -30,6 +30,7 @@ class TranslaterService {
             callback(false, nil)
             return
         }
+        
         let parameters = "?key=\(APIKey.shared.apiKeyTranslater)&q=\(textEncoded)&target=\(Translater.shared.targetLang)&source=fr"
         
         guard let urlComplete = URL(string: "\(url)\(parameters)") else {

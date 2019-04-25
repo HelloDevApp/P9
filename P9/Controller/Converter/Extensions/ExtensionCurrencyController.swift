@@ -68,7 +68,7 @@ extension CurrencyViewController: UITextFieldDelegate {
 extension CurrencyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
-        pickerView.selectRow(Currencies.allCases.count / 2, inComponent: 0, animated: false)
+        pickerView.selectRow(CurrenciesNames.allCases.count / 2, inComponent: 0, animated: false)
     }
     
     // number of pickerView components
@@ -78,19 +78,19 @@ extension CurrencyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     // number of rows in the component
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Currencies.allCases.count
+        return CurrenciesNames.allCases.count
     }
     
     // title of the selected row
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         // we change the color of the pickerView text and assign it a text
-        let attribute = NSAttributedString(string: Currencies.allCases[row].rawValue.uppercased(), attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        let attribute = NSAttributedString(string: String("\(CurrenciesNames.allCases[row])").uppercased(), attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         return attribute
     }
         
     // we update the text of the label each time the selected value of the pickerView changes
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let currentCurrency = Currencies.allCases[row].rawValue.uppercased()
+        let currentCurrency = String("\(CurrenciesNames.allCases[row])").uppercased()
         currencyLabelDestination.text = currentCurrency
     }
 }
@@ -110,7 +110,7 @@ extension CurrencyViewController {
         CurrenciesNames.convertEnumCaseToDictionnary()
         
         // we add the text that corresponding to position of pickerView
-        currencyLabelDestination.text = Currencies.allCases[Currencies.allCases.count/2].rawValue.uppercased()
+        currencyLabelDestination.text = String("\(CurrenciesNames.allCases[CurrenciesNames.allCases.count/2])").uppercased()
     }
         
     // add a value rate and names currency in rateValueDestination property

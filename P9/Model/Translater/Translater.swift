@@ -12,20 +12,15 @@ class Translater {
     
     static var shared = Translater()
     
-    // the array that is filled using the convertToArray method in the Languages enumeration
-    var arrayLanguages: [String] = []
     
-    var dictOfLanguagesCodes = [String:String]()
-    // contains the names of the usual characters and the corresponding hexadecimal codes
-    var dictOfSpecialCharactersAndCodes = [String:String]()
+    var textToTranslate = Constants.stringEmpty // is empty when initializing
     
-    var textToTranslate = Constants.stringEmpty
-    private var _targetLang = Constants.stringEmpty
+    // contains the name of the currency choosen by user
+    private var _targetLang = Constants.stringEmpty // is empty when initializing
     
     var targetLang: String {
         return _targetLang
     }
-    
     
     func getTargetLang(forSetup: Bool, row: Int?) {
         guard forSetup == false && row != nil else {

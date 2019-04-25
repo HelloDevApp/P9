@@ -99,7 +99,6 @@ extension WeatherViewController {
             return
         }
         
-        // humidity right
         guard let result = resultMain.humidity else {
             alert(message: ErrorMessages.noHumidity.rawValue, title: ErrorMessages.oupps.rawValue)
             return
