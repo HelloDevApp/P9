@@ -10,9 +10,6 @@ import Foundation
 
 class Translater {
     
-    static var shared = Translater()
-    
-    
     var textToTranslate = Constants.stringEmpty // is empty when initializing
     
     // contains the name of the currency choosen by user

@@ -8,31 +8,24 @@
 
 class Converter {
     
-    static let shared = Converter()
-    
-    // the dictionary which will contain the abbreviated names and full names of each currency
-    var dictOfCurrenciesNamesShortAndFull = [String:String]()
-    
     // ccontains the full name and rate of the destination currency
-    private var _rateValueDestination = (name: Constants.stringEmpty, rate: 0.0)
+    private var _rateValueDestination = 0.0
     
-    var rateValueDestination: (name: String, rate: Double) {
+    var rateValueDestination: Double {
         return _rateValueDestination
     }
     
     // allows you to change the values of the tuple rateValueDestination .name and .rates
-    func changeValueOfRateDestination(name: String, rate: Double) {
-        _rateValueDestination.name = name
-        _rateValueDestination.rate = rate
+    func changeValueOfRateDestination(rate: Double) {
+        _rateValueDestination = rate
     }
     
     // is used to calculate and return the result
     private func _convert(moneyToConvert: Double) -> Double {
         // contains the rate of the destination currency
-        let rateValueDestination = _rateValueDestination.rate
+        let rateValueDestination = _rateValueDestination
         // contains the result of the operation
         let result = moneyToConvert * rateValueDestination
-        Console.shared.printDescriptionResultConversion(moneyToConvert: moneyToConvert, result: result, nameCurrencyDestination: _rateValueDestination.name)
         return result
     }
     

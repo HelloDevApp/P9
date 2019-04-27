@@ -12,7 +12,7 @@ import XCTest
 class WeatherTestCase: XCTestCase {
     
     func testCountryWeather() {
-        
-        XCTAssert(Weather_.shared.country.count == 2)
+        let weather_ = Weather_()
+        XCTAssert(weather_.country.count == 2)
     }
 }

@@ -11,9 +11,6 @@ import Foundation
 
 class ConverterService {
     
-    static let shared = ConverterService()
-    
-    private init() {}
     //URL base
     private let _url = URL(string: "http://data.fixer.io/api/")!
     
@@ -26,14 +23,14 @@ class ConverterService {
     }
     
     // the session
-    private var session = URLSession(configuration: .default)
+    private var session: URLSession
     
-    init(session: URLSession) {
+    init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
     }
     
     // allow send request
-    func getRates(callback: @escaping (Bool, Rates?) -> Void) {
+    func getRates(callback: @escaping (Bool, Rates?, String?) -> Void) {
         
         // the request
         var request = URLRequest(url: _urlComplete)
@@ -45,25 +42,25 @@ class ConverterService {
                 
                 guard let data = data, error == nil else {
                     print(ErrorMessages.errorDataNilOrError_Converter)
-                    callback(false, nil)
+                    callback(false, nil, nil)
                     return
                 }
                 
                 guard let response = response as? HTTPURLResponse else {
                     print(ErrorMessages.errorResponseIsNotHTTPURLResponse_Converter)
-                    callback(true, nil)
+                    callback(true, nil, nil)
                     return
                 }
                 
                 guard response.statusCode != 500 else {
                     print(ErrorMessages.errorStatusCode500_Converter)
-                    callback(true, nil)
+                    callback(true, nil, nil)
                     return
                 }
                 
                 guard response.statusCode == 200 else {
                     print(ErrorMessages.errorStatusCode400_Converter)
-                    callback(false, nil)
+                    callback(false, nil, nil)
                     return
                 }
                 
@@ -73,20 +70,20 @@ class ConverterService {
                 // we check that the dataJSON is not nil
                 guard let json = dataJSON else {
                     print(ErrorMessages.errorJSONDecoder_Converter)
-                    callback(false, nil)
+                    callback(false, nil, nil)
                     return
                 }
                 
                 // we check that the rates is not nil
                 guard let rates = json.rates else {
                     print(ErrorMessages.errorJSONRatesIsNil_Converter)
-                    callback(false, nil)
+                    callback(false, nil, nil)
                     return
                 }
                 
-                // we get the time of update of the rates
-                self.getUpdateDateOfRates(responseJSON: json)
-                callback(true, rates)
+                let dateRates = self._getUpdateDateOfRates(responseJSON: json)
+                
+                callback(true, rates, dateRates)
                 return
             }
         }
@@ -94,12 +91,17 @@ class ConverterService {
     }
     
     // retrieve the date of the last update of the rates
-    private func getUpdateDateOfRates(responseJSON: Result) {
+    private func _getUpdateDateOfRates(responseJSON: Result) -> String? {
         
         guard let timestamp = responseJSON.timestamp else {
             print(ErrorMessages.noTimestamp)
-            return
+            return nil
         }
-        Console.shared.printLastUpdateRate(timestamp: timestamp)
+        
+        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        let dateFormat = date.returnDateFormat()
+        let dateString = "le taux a été mis à jour le: \(dateFormat)"
+        
+        return dateString
     }
 }

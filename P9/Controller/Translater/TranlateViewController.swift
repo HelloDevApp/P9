@@ -9,6 +9,8 @@
 import UIKit
 
 class TranlateViewController: UIViewController {
+    
+    let translaterService = TranslaterService()
 
     @IBOutlet weak var pickerViewTargetLang: CustomPickerView!
     
@@ -46,20 +48,20 @@ class TranlateViewController: UIViewController {
             alert(message: ErrorMessages.isEmpty.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
-        Translater.shared.textToTranslate = textToTranslate
+        translaterService.translater.textToTranslate = textToTranslate
         launchRequest()
     }
     
     func setup() {
         view.addGestureToHideKeyboard()
-        Translater.shared.getTargetLang(forSetup: true, row: nil)
-        print(Translater.shared.targetLang)
+        translaterService.translater.getTargetLang(forSetup: true, row: nil)
+        print(translaterService.translater.targetLang)
     }
     
     // allows you to launch the request
     func launchRequest() {
         
-        TranslaterService.shared.getTranslation { (success, translations) in
+        translaterService.getTranslation { (success, translations) in
             // we check that the request has been successfully completed
             guard success else {
                 self.alert(message: ErrorMessages.noSuccess.rawValue, title: ErrorMessages.oupps.rawValue)
@@ -86,7 +88,7 @@ class TranlateViewController: UIViewController {
             
         }
         // the final text after replacing the special characters
-        let translatedTextFinal = TranslaterService.shared.replaceCharactersOfTranslatedText(translatedText: translatedText)
+        let translatedTextFinal = translaterService.replaceCharactersOfTranslatedText(translatedText: translatedText)
         self.resultTextView.text = translatedTextFinal
         self.buttonTranslation.isEnabled = true
         print(translatedTextFinal)

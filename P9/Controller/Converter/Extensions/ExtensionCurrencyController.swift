@@ -106,9 +106,6 @@ extension CurrencyViewController {
         // initialization of the gesture
         view.addGestureToHideKeyboard()
         
-        // we fill the array with the different cases of enumeration
-        CurrenciesNames.convertEnumCaseToDictionnary()
-        
         // we add the text that corresponding to position of pickerView
         currencyLabelDestination.text = String("\(CurrenciesNames.allCases[CurrenciesNames.allCases.count/2])").uppercased()
     }
@@ -118,20 +115,14 @@ extension CurrencyViewController {
         // we create a mirror that reflects all the properties of the Rates structure
         // (allows to make comparisons with the name of a variable for example: if mirror.label == currentNameCurrency)
         let mirrorRates = Mirror(reflecting: reflect)
-        // contains a array with the names of all currencies (in file Data.swift)
-        let currenciesName = Converter.shared.dictOfCurrenciesNamesShortAndFull.sorted(by: <)
         // we scan the values in the array to find a match with the selected currency
         for rate in mirrorRates.children {
             // rate.label contains the short name of the currency
             if currentCurrencyName == rate.label {
-                for currencyName in currenciesName {
-                    // currencyName.key contains the short name of the currency. example: "AUD"
-                    if currentCurrencyName == currencyName.key {
-                        // currencyName.value contains the full name of the currency. example: "Australian dollard"
-                        let currentRateName = currencyName.value
-                        // rate.value contains the value of the rate. example: ("dollars" : (rate.value = "0.95903)")
+                for currencyName in CurrenciesNames.allCases {
+                    if currentCurrencyName == "\(currencyName)".uppercased() {
                         guard let rateDouble = rate.value as? Double else { return }
-                        Converter.shared.changeValueOfRateDestination(name: currentRateName, rate: rateDouble)
+                        converter.changeValueOfRateDestination(rate: rateDouble)
                     }
                 }
             }

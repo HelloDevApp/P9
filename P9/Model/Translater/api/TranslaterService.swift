@@ -9,29 +9,25 @@
 import Foundation
 
 class TranslaterService {
-    
-    static var shared = TranslaterService()
-    
-    private init() {}
-    
+    let translater = Translater()
     let url = URL(string: "https://translation.googleapis.com/language/translate/v2")!
     
-    private var session = URLSession(configuration: .default)
+    private var session: URLSession
     
     var task: URLSessionDataTask?
     
-    init(session: URLSession) {
+    init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
     }
     
     func getTranslation(callback: @escaping (Bool, Translation?) -> Void) {
         
-        guard let textEncoded = Translater.shared.textToTranslate.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed) else {
+        guard let textEncoded = translater.textToTranslate.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed) else {
             callback(false, nil)
             return
         }
         
-        let parameters = "?key=\(APIKey.shared.apiKeyTranslater)&q=\(textEncoded)&target=\(Translater.shared.targetLang)&source=fr"
+        let parameters = "?key=\(APIKey.shared.apiKeyTranslater)&q=\(textEncoded)&target=\(translater.targetLang)&source=fr"
         
         guard let urlComplete = URL(string: "\(url)\(parameters)") else {
             print(ErrorMessages.errorURLComplete_Translater)

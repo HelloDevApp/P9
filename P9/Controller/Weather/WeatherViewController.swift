@@ -10,6 +10,8 @@ import UIKit
 
 class WeatherViewController: UIViewController {
     
+    @IBOutlet weak var refreshButton: UIButton!
+    
     // Left Outlets
     @IBOutlet weak var cityLeft: CustomLabel!
     @IBOutlet weak var dateLeft: UILabel!
@@ -26,15 +28,30 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var descriptionRight: CustomLabel!
     @IBOutlet weak var humdidityRight: CustomLabel!
 
+    let weatherService = WeatherService()
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         getWeather()
     }
     
+    @IBAction func refreshButtonAction() {
+        getWeather()
+        disabledButtonWhileTwoMinutes(button: refreshButton)
+    }
+    
+    func disabledButtonWhileTwoMinutes(button: UIButton) {
+        
+        button.isUserInteractionEnabled = false
+        
+        Timer.scheduledTimer(withTimeInterval: 30, repeats: false, block: { _ in
+            button.isUserInteractionEnabled = true
+        })
+    }
+    
     func getWeather() {
         
-        WheatherService.shared.getWeather { (success, weatherResult, iconURL)   in
+        weatherService.getWeather { (success, weatherResult, iconURL)   in
             
             guard success else {
                 self.alert(message: ErrorMessages.noSuccess.rawValue, title: ErrorMessages.oupps.rawValue)
@@ -61,7 +78,7 @@ class WeatherViewController: UIViewController {
     }
     
     func getIcon(from url: URL, for imageView: UIImageView) {
-        WheatherService.shared.getIcon(from: url) { (icon) in
+        weatherService.getIcon(from: url) { (icon) in
             if let icon = icon {
                 guard let icon = UIImage(data: icon) else {
                     return

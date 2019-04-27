@@ -11,8 +11,6 @@ import Foundation
 
 class Weather_ {
     
-    static let shared = Weather_()
-    
     private let _country = [Constants.cityNewYork, Constants.cityNewYork]
     
     var country: [String] {

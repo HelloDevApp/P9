@@ -13,17 +13,17 @@ import XCTest
 class ConverterServiceTestCase: XCTestCase {
     
     let fakeResponseData = FakeResponseData()
-    
     let expectation = XCTestExpectation(description: "wait, for queue change.")
     
     func testGetRatesShouldPostFailedCallbackIfError() {
         // given
         let converterService = ConverterService(session: URLSessionFake(data: nil, response: nil, error: fakeResponseData.error))
         //when
-        converterService.getRates { (success, rates) in
+        converterService.getRates { (success, rates, datesRates)  in
             //then
             XCTAssertFalse(success)
             XCTAssertNil(rates)
+            XCTAssertNil(datesRates)
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -33,10 +33,11 @@ class ConverterServiceTestCase: XCTestCase {
         //given
         let converterService = ConverterService(session: URLSessionFake(data: nil, response: nil, error: nil))
         //when
-        converterService.getRates { (success, rates) in
+        converterService.getRates { (success, rates, datesRates) in
             //then
             XCTAssertFalse(success)
             XCTAssertNil(rates)
+            XCTAssertNil(datesRates)
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -44,9 +45,10 @@ class ConverterServiceTestCase: XCTestCase {
     
     func testGetRatesShouldPostFailedCallbackIfResponseIsNotHTTPURLResponse() {
         let converterService = ConverterService(session: URLSessionFake(data: fakeResponseData.correctDataConversion, response: fakeResponseData.responseNotTypeHTTPURLResponse, error: nil))
-        converterService.getRates { (success, rates) in
+        converterService.getRates { (success, rates, datesRates) in
             XCTAssertTrue(success)
             XCTAssertNil(rates)
+            XCTAssertNil(datesRates)
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -56,10 +58,11 @@ class ConverterServiceTestCase: XCTestCase {
         //given
         let converterService = ConverterService(session: URLSessionFake(data: fakeResponseData.correctDataConversion, response: fakeResponseData.responseNotOK, error: nil))
         //when
-        converterService.getRates { (success, rates) in
+        converterService.getRates { (success, rates, datesRates) in
             //then
             XCTAssertTrue(success)
             XCTAssertNil(rates)
+            XCTAssertNil(datesRates)
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -69,9 +72,10 @@ class ConverterServiceTestCase: XCTestCase {
         
         let converterService = ConverterService(session: URLSessionFake(data: fakeResponseData.correctDataConversion, response: fakeResponseData.responseNotOK2, error: nil))
         
-        converterService.getRates { (success, rates) in
+        converterService.getRates { (success, rates, datesRates) in
             XCTAssertFalse(success)
             XCTAssertNil(rates)
+            XCTAssertNil(datesRates)
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -81,10 +85,11 @@ class ConverterServiceTestCase: XCTestCase {
         //given
         let converterService = ConverterService(session: URLSessionFake(data: fakeResponseData.incorrectData, response: fakeResponseData.responseOK, error: nil))
         //when
-        converterService.getRates { (success, rates) in
+        converterService.getRates { (success, rates, datesRates) in
             //then
             XCTAssertFalse(success)
             XCTAssertNil(rates)
+            XCTAssertNil(datesRates)
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -92,9 +97,10 @@ class ConverterServiceTestCase: XCTestCase {
     
     func testGetRatesShouldPostFailedCallbackIfDataNotContainRates() {
         let converterService = ConverterService(session: URLSessionFake(data: fakeResponseData.dataConversionWithoutRates, response: fakeResponseData.responseOK, error: nil))
-        converterService.getRates { (success, rates) in
+        converterService.getRates { (success, rates, datesRates) in
             XCTAssertFalse(success)
             XCTAssertNil(rates)
+            XCTAssertNil(datesRates)
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -102,9 +108,10 @@ class ConverterServiceTestCase: XCTestCase {
     
     func testGetRatesShouldPostFailedCallbackIfDataNotContainTimestamp() {
         let converterService = ConverterService(session: URLSessionFake(data: fakeResponseData.dataConversionWithoutTimestamp, response: fakeResponseData.responseOK, error: nil))
-        converterService.getRates { (success, rates) in
+        converterService.getRates { (success, rates, datesRates) in
             XCTAssertTrue(success)
             XCTAssertNotNil(rates)
+            XCTAssertNil(datesRates)
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -116,10 +123,11 @@ class ConverterServiceTestCase: XCTestCase {
         
         let predictedRates = Rates(AUD: 1.571367, CAD: 1.507089, CHF: 1.141015, COP: 3540.962588, GBP: 0.865385, HKD: 8.822266, ILS: 4.042899, USD: 1.124651)
         //when
-        converterService.getRates { (success, rates) in
+        converterService.getRates { (success, rates, datesRates) in
             //then
             XCTAssertTrue(success)
             XCTAssertNotNil(rates)
+            XCTAssertNotNil(datesRates)
             XCTAssert(rates?.AUD == predictedRates.AUD)
             XCTAssert(rates?.CAD == predictedRates.CAD)
             XCTAssert(rates?.CHF == predictedRates.CHF)

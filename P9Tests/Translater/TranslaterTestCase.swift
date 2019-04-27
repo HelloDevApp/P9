@@ -11,17 +11,19 @@ import XCTest
 
 class TranslaterTestCase: XCTestCase {
     
+    let translater = Translater()
+    
     func testWhenGetTargetLangForSetup_ThenTargetLangEqualToMiddleArrayRowLanguages() {
         
-        Translater.shared.getTargetLang(forSetup: true, row: nil)
+        translater.getTargetLang(forSetup: true, row: nil)
         
-        XCTAssert(Translater.shared.targetLang == "\(Languages.allCases[Languages.allCases.count/2])")
+        XCTAssert(translater.targetLang == "\(Languages.allCases[Languages.allCases.count/2])")
     }
     
     func testWhenGetTargetLang_ThenTargetLangEqualToChooseRow() {
         
-        Translater.shared.getTargetLang(forSetup: false, row: 0)
+        translater.getTargetLang(forSetup: false, row: 0)
         
-        XCTAssert(Translater.shared.targetLang == "\(Languages.allCases[0])")
+        XCTAssert(translater.targetLang == "\(Languages.allCases[0])")
     }
 }

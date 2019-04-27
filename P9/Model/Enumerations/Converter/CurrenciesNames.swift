@@ -10,31 +10,21 @@
 //MARK:-----------------Converter----------------------
 //=====================================================
 enum CurrenciesNames: String, CaseIterable {
-    // Cannadian Dollars
-    case cad = "Dollars Canadien"
-    // United State Dollars
-    case usd = "Dollars"
-    // Australian Dollars
-    case aud = "Dollars Australien"
-    // British Pound Sterling
-    case gbp = "Livres Sterling"
-    // Israeli New Sheqel
-    case ils = "Sheckel"
-    // Swiss Franc
-    case chf = "Francs Suisse"
-    // Colombian Peso
-    case cop = "Pesos Colombien"
-    // Hong Kong Dollars
-    case hkd = "Dollars de Hong Kong"
-}
-
-extension CurrenciesNames {
     
-    // allows you to fill in a array containing all the cases of the enumeration
-    static func convertEnumCaseToDictionnary() {
-        for currencyName in CurrenciesNames.allCases {
-            Converter.shared.dictOfCurrenciesNamesShortAndFull["\(currencyName)".uppercased()] = currencyName.rawValue
-        }
-        print("\n", Converter.shared.dictOfCurrenciesNamesShortAndFull.sorted(by: <),"\n")
-    }
+    // Cannadian Dollars
+    case cad 
+    // United State Dollars
+    case usd
+    // Australian Dollars
+    case aud
+    // British Pound Sterling
+    case gbp
+    // Israeli New Sheqel
+    case ils
+    // Swiss Franc
+    case chf
+    // Colombian Peso
+    case cop
+    // Hong Kong Dollars
+    case hkd
 }

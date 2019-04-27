@@ -40,19 +40,12 @@ extension WeatherViewController {
     }
     
     func updateDate() {
-            self.dateLeft.text = self.returnCurrentDate()
-            self.dateRight.text = self.returnCurrentDate()
+        let currentDate = Date()
+            self.dateLeft.text = currentDate.returnDateFormat()
+            self.dateRight.text = currentDate.returnDateFormat()
         
     }
     
-    // returns the current date in a custom format
-    func returnCurrentDate() -> String {
-        let currentDate = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = Constants.dateFormat
-        let date = formatter.string(from: currentDate)
-        return date
-    }
     
     func updateTemp(result: List, labelTemp: UILabel) {
         
@@ -79,13 +72,13 @@ extension WeatherViewController {
         }
         
         // first weather
-        guard let resultWeatherLast = resultWeather.first else {
+        guard let resultWeatherFirst = resultWeather.first else {
             alert(message: ErrorMessages.noDescription.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
         
         // last description
-        guard let description = resultWeatherLast.description else {
+        guard let description = resultWeatherFirst.description else {
             alert(message: ErrorMessages.noDescription.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
@@ -105,5 +98,17 @@ extension WeatherViewController {
         }
         
         labelHumidity.text = Constants.humidity + String(result) + Constants.purcent
+    }
+}
+
+extension Date {
+    // returns a date in a custom format
+    func returnDateFormat() -> String {
+        let date = self
+        let formatter = DateFormatter()
+        formatter.dateFormat = Constants.dateFormat
+        let dateFormat = formatter.string(from: date)
+        
+        return dateFormat
     }
 }

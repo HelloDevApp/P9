@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class WheatherService {
+class WeatherService {
     
-    static let shared = WheatherService()
+    let weather = Weather_()
     
     private let _url = "https://api.openweathermap.org/data/2.5/group?"
     private let _appid = "appid=\(APIKey.shared.apiKeyWeather)"
