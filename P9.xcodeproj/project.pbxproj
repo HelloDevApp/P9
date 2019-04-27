@@ -47,7 +47,6 @@
 		5295BBD2225BB7380003B927 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295BBD1225BB7380003B927 /* Error.swift */; };
 		5295BBD4225F24490003B927 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295BBD3225F24490003B927 /* Constants.swift */; };
 		52AA307821F9143000D7BC3C /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AA307721F9143000D7BC3C /* CustomTextField.swift */; };
-		52B0E531223C15E6000D9052 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0E530223C15E6000D9052 /* Console.swift */; };
 		52B0E533223C38B8000D9052 /* API_Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0E532223C38B8000D9052 /* API_Key.swift */; };
 		52B9A57021F917B100D224AC /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9A56F21F917B100D224AC /* CustomPickerView.swift */; };
 		52B9A57221F91B4D00D224AC /* TranlateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9A57121F91B4D00D224AC /* TranlateViewController.swift */; };
@@ -115,7 +114,6 @@
 		5295BBD1225BB7380003B927 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		5295BBD3225F24490003B927 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		52AA307721F9143000D7BC3C /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		52B0E530223C15E6000D9052 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		52B0E532223C38B8000D9052 /* API_Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API_Key.swift; sourceTree = "<group>"; };
 		52B9A56F21F917B100D224AC /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		52B9A57121F91B4D00D224AC /* TranlateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranlateViewController.swift; sourceTree = "<group>"; };
@@ -425,7 +423,6 @@
 			isa = PBXGroup;
 			children = (
 				5295BBD0225BB7200003B927 /* Error */,
-				52E4B6AA224E72B7008DCFA8 /* Infos */,
 			);
 			path = Messages;
 			sourceTree = "<group>";
@@ -453,14 +450,6 @@
 				52E4B6A0224E6EC9008DCFA8 /* Languages.swift */,
 			);
 			path = Translater;
-			sourceTree = "<group>";
-		};
-		52E4B6AA224E72B7008DCFA8 /* Infos */ = {
-			isa = PBXGroup;
-			children = (
-				52B0E530223C15E6000D9052 /* Console.swift */,
-			);
-			path = Infos;
 			sourceTree = "<group>";
 		};
 		52E4B6AC224E72EB008DCFA8 /* Fonts */ = {
@@ -610,7 +599,6 @@
 				52FA2B4D21F906CF00F32C56 /* CustomLabel.swift in Sources */,
 				520E822D221E993F00EB2FCA /* ConverterService.swift in Sources */,
 				52AA307821F9143000D7BC3C /* CustomTextField.swift in Sources */,
-				52B0E531223C15E6000D9052 /* Console.swift in Sources */,
 				52E4B6A1224E6EC9008DCFA8 /* Languages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
