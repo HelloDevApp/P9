@@ -54,7 +54,7 @@ class TranslaterService {
                     return
                 }
                 guard response.statusCode == 200 else {
-                    print(ErrorMessages.errorStatusCode400_Translater)
+                    print(ErrorMessages.errorStatusCode_Translater)
                     callback(false, nil)
                     return
                 }
@@ -72,16 +72,5 @@ class TranslaterService {
             }
         }
         task?.resume()
-    }
-    
-    func replaceCharactersOfTranslatedText(translatedText: String) -> String {
-        var translatedText = translatedText
-        let findValue = Constants.apostropheCode
-        let replaceValue = Constants.apostrophe
-        if translatedText.contains(findValue) {
-            translatedText = translatedText.replacingOccurrences(of: findValue, with: replaceValue)
-            return translatedText
-        }
-        return translatedText
     }
 }

@@ -79,6 +79,17 @@ class TranlateViewController: UIViewController {
         }
     }
     
+    func replaceCharactersOfTranslatedText(translatedText: String) -> String {
+        var translatedText = translatedText
+        let findValue = Constants.apostropheCode
+        let replaceValue = Constants.apostrophe
+        if translatedText.contains(findValue) {
+            translatedText = translatedText.replacingOccurrences(of: findValue, with: replaceValue)
+            return translatedText
+        }
+        return translatedText
+    }
+    
     func updateView(translations: Translation) {
         
         // we check that the structure contains a translation
@@ -88,7 +99,7 @@ class TranlateViewController: UIViewController {
             
         }
         // the final text after replacing the special characters
-        let translatedTextFinal = translaterService.replaceCharactersOfTranslatedText(translatedText: translatedText)
+        let translatedTextFinal = replaceCharactersOfTranslatedText(translatedText: translatedText)
         self.resultTextView.text = translatedTextFinal
         self.buttonTranslation.isEnabled = true
         print(translatedTextFinal)

@@ -29,7 +29,7 @@ class ConverterService {
         self.session = session
     }
     
-    // allow send request
+    // allow create request
     func getRates(callback: @escaping (Bool, Rates?, String?) -> Void) {
         
         // the request
@@ -59,7 +59,7 @@ class ConverterService {
                 }
                 
                 guard response.statusCode == 200 else {
-                    print(ErrorMessages.errorStatusCode400_Converter)
+                    print(ErrorMessages.errorStatusCode_Converter)
                     callback(false, nil, nil)
                     return
                 }

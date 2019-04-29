@@ -59,7 +59,7 @@ class WeatherService {
                     return
                 }
                 guard response.statusCode == 200 else {
-                    print(ErrorMessages.errorStatusCode400_Weather)
+                    print(ErrorMessages.errorStatusCode_Weather)
                     callback(false, nil, nil)
                     return
                 }
