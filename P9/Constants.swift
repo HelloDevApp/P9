@@ -6,7 +6,6 @@
 //  Copyright © 2019 dylan. All rights reserved.
 //
 
-import Foundation
 
 struct Constants {
     

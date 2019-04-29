@@ -99,7 +99,7 @@ class ConverterService {
         }
         
         let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
-        let dateFormat = date.returnDateFormat()
+        let dateFormat = date.returnDateFormat() // ex: 15/06/2019 20:10
         let dateString = "le taux a été mis à jour le: \(dateFormat)"
         
         return dateString

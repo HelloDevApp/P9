@@ -43,6 +43,7 @@
 		52677D582245149C009A8C60 /* TranslaterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52677D572245149C009A8C60 /* TranslaterService.swift */; };
 		52777010224FCBFE00D48E3C /* Translater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5277700F224FCBFE00D48E3C /* Translater.swift */; };
 		527770162250047700D48E3C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527770152250047700D48E3C /* Weather.swift */; };
+		5290530D22773C2E00EA1ED1 /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5290530C22773C2E00EA1ED1 /* ExtensionDate.swift */; };
 		5295BBCF225BB63D0003B927 /* ExtensionUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295BBCE225BB63D0003B927 /* ExtensionUIViewController.swift */; };
 		5295BBD2225BB7380003B927 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295BBD1225BB7380003B927 /* Error.swift */; };
 		5295BBD4225F24490003B927 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5295BBD3225F24490003B927 /* Constants.swift */; };
@@ -110,6 +111,7 @@
 		52677D572245149C009A8C60 /* TranslaterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslaterService.swift; sourceTree = "<group>"; };
 		5277700F224FCBFE00D48E3C /* Translater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translater.swift; sourceTree = "<group>"; };
 		527770152250047700D48E3C /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		5290530C22773C2E00EA1ED1 /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		5295BBCE225BB63D0003B927 /* ExtensionUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIViewController.swift; sourceTree = "<group>"; };
 		5295BBD1225BB7380003B927 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		5295BBD3225F24490003B927 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -179,7 +181,8 @@
 			children = (
 				52166DE821E147CC007C5BEF /* AppDelegate.swift */,
 				5295BBD3225F24490003B927 /* Constants.swift */,
-				52E4B698224E6DB8008DCFA8 /* Messages */,
+				5295BBD1225BB7380003B927 /* Error.swift */,
+				5290530C22773C2E00EA1ED1 /* ExtensionDate.swift */,
 				520FE15C220B3DCE0099A580 /* Model */,
 				52166E0921E14B47007C5BEF /* View */,
 				52166E0821E14B38007C5BEF /* Controller */,
@@ -343,14 +346,6 @@
 			path = api;
 			sourceTree = "<group>";
 		};
-		5295BBD0225BB7200003B927 /* Error */ = {
-			isa = PBXGroup;
-			children = (
-				5295BBD1225BB7380003B927 /* Error.swift */,
-			);
-			path = Error;
-			sourceTree = "<group>";
-		};
 		52E4B68C224E69D4008DCFA8 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,14 +412,6 @@
 				520E8222221587BB00EB2FCA /* ExtensionCurrencyController.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		52E4B698224E6DB8008DCFA8 /* Messages */ = {
-			isa = PBXGroup;
-			children = (
-				5295BBD0225BB7200003B927 /* Error */,
-			);
-			path = Messages;
 			sourceTree = "<group>";
 		};
 		52E4B699224E6DE9008DCFA8 /* Enumerations */ = {
@@ -586,6 +573,7 @@
 				52777010224FCBFE00D48E3C /* Translater.swift in Sources */,
 				52677D582245149C009A8C60 /* TranslaterService.swift in Sources */,
 				52E4B695224E6C4D008DCFA8 /* ExtensionWeatherViewController.swift in Sources */,
+				5290530D22773C2E00EA1ED1 /* ExtensionDate.swift in Sources */,
 				520E821E22157E7B00EB2FCA /* ExtensionUIView.swift in Sources */,
 				522219A821F0B1AA0058788D /* GradientView.swift in Sources */,
 				52B9A57021F917B100D224AC /* CustomPickerView.swift in Sources */,

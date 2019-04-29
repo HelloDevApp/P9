@@ -100,15 +100,3 @@ extension WeatherViewController {
         labelHumidity.text = Constants.humidity + String(result) + Constants.purcent
     }
 }
-
-extension Date {
-    // returns a date in a custom format
-    func returnDateFormat() -> String {
-        let date = self
-        let formatter = DateFormatter()
-        formatter.dateFormat = Constants.dateFormat
-        let dateFormat = formatter.string(from: date)
-        
-        return dateFormat
-    }
-}

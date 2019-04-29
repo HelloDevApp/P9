@@ -27,11 +27,11 @@ class WeatherServiceTestCase: XCTestCase {
     }
     
     func testGetWeatherShouldPostFailedCalbackIfNoData() {
-        //given
+        
         let weatherService = WeatherService(session: URLSessionFake(data: nil, response: nil, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
-        //when
+        
         weatherService.getWeather { (success, weatherResult, iconURLs) in
-            //then
+            
             XCTAssertFalse(success)
             XCTAssertNil(weatherResult)
             XCTAssertNil(iconURLs)
@@ -41,10 +41,11 @@ class WeatherServiceTestCase: XCTestCase {
     }
     
     func testGetWeatherShouldPostFailedCalbackIfStatusCodeResponse500 () {
-        //given
+        
         let weatherService = WeatherService(session: URLSessionFake(data: fakeResponseData.correctDataWeather, response: fakeResponseData.responseNotOK, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
-        //when
+        
         weatherService.getWeather { (success, weatherResult, iconURLS) in
+            
             XCTAssertTrue(success)
             XCTAssertNil(weatherResult)
             XCTAssertNil(iconURLS)
@@ -54,10 +55,11 @@ class WeatherServiceTestCase: XCTestCase {
     }
     
     func testGetWeatherShouldPostFailedCalbackIfStatusCodeResponse400 () {
-        //given
+       
         let weatherService = WeatherService(session: URLSessionFake(data: fakeResponseData.correctDataWeather, response: fakeResponseData.responseNotOK2, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
-        //when
+        
         weatherService.getWeather { (success, weatherResult, iconURLS) in
+            
             XCTAssertFalse(success)
             XCTAssertNil(weatherResult)
             XCTAssertNil(iconURLS)
@@ -67,10 +69,11 @@ class WeatherServiceTestCase: XCTestCase {
     }
     
     func testGetWeatherShouldPostFailedCallbackIfIncorrectData() {
-        //given
+       
         let weatherService = WeatherService(session: URLSessionFake(data: fakeResponseData.incorrectData, response: fakeResponseData.responseOK, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
-        //when
+        
         weatherService.getWeather { (success, weatherResult, iconURLs) in
+            
             XCTAssertFalse(success)
             XCTAssertNil(weatherResult)
             XCTAssertNil(iconURLs)
@@ -82,7 +85,9 @@ class WeatherServiceTestCase: XCTestCase {
     func testGetWeatherShouldPostFailedCallbackIfResponseIsNotHHTPURLResponse() {
         
         let weatherService = WeatherService(session: URLSessionFake(data: fakeResponseData.correctDataWeather, response: fakeResponseData.responseNotTypeHTTPURLResponse, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
+        
         weatherService.getWeather { (success, weatherResult, iconsURLs) in
+            
             XCTAssertTrue(success)
             XCTAssertNil(weatherResult)
             XCTAssertNil(iconsURLs)
@@ -93,7 +98,9 @@ class WeatherServiceTestCase: XCTestCase {
     
     func testGetWeatherShouldPostFailedCallbackIfNotContainWeatherLeft() {
         let weatherService = WeatherService(session: URLSessionFake(data: fakeResponseData.weatherDataWithoutLeftWeather, response: fakeResponseData.responseOK, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
+        
         weatherService.getWeather { (success, weatherResult, urlsIcons) in
+            
             XCTAssertTrue(success)
             XCTAssertNotNil(weatherResult)
             XCTAssertNil(urlsIcons)
@@ -104,7 +111,9 @@ class WeatherServiceTestCase: XCTestCase {
     
     func testGetWeatherShouldPostFailedCallbackIfNotContainWeatherRight() {
         let weatherService = WeatherService(session: URLSessionFake(data: fakeResponseData.weatherDataWithoutRightWeather, response: fakeResponseData.responseOK, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
+        
         weatherService.getWeather { (success, weatherResult, iconsUrls) in
+            
             XCTAssertTrue(success)
             XCTAssertNotNil(weatherResult)
             XCTAssertNil(iconsUrls)
@@ -118,6 +127,7 @@ class WeatherServiceTestCase: XCTestCase {
         let weatherService = WeatherService(session: URLSessionFake(data: fakeResponseData.weatherDataWithoutLeftIcon, response: fakeResponseData.responseOK, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
         
         weatherService.getWeather { (success, weatherResult, iconURLs) in
+            
             XCTAssertTrue(success)
             XCTAssertNotNil(weatherResult)
             XCTAssertNil(iconURLs)
@@ -131,6 +141,7 @@ class WeatherServiceTestCase: XCTestCase {
         let weatherService = WeatherService(session: URLSessionFake(data: fakeResponseData.weatherDataWithoutRightIcon, response: fakeResponseData.responseOK, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
         
         weatherService.getWeather { (success, weatherAPIResult, iconURLs) in
+            
             XCTAssertTrue(success)
             XCTAssertNotNil(weatherAPIResult)
             XCTAssertNil(iconURLs)
