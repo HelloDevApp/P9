@@ -126,4 +126,22 @@ class TranslaterServiceTestCase: XCTestCase {
 
         XCTAssert(apostropheDecoded == Constants.apostrophe)
     }
+    
+    func testWhenGetTargetLangForSetup_ThenTargetLangEqualToMiddleArrayRowLanguages() {
+        
+        let translaterService = TranslaterService(session: URLSessionFake(data: nil, response: nil, error: nil))
+        
+        translaterService.getTargetLang(forSetup: true, row: nil)
+        
+        XCTAssert(translaterService.targetLang == "\(Languages.allCases[Languages.allCases.count/2])")
+    }
+    
+    func testWhenGetTargetLang_ThenTargetLangEqualToChooseRow() {
+        
+        let translaterService = TranslaterService(session: URLSessionFake(data: nil, response: nil, error: nil))
+        
+        translaterService.getTargetLang(forSetup: false, row: 0)
+        
+        XCTAssert(translaterService.targetLang == "\(Languages.allCases[0])")
+    }
 }

@@ -9,7 +9,16 @@
 import Foundation
 
 class TranslaterService {
-    let translater = Translater()
+    
+    var textToTranslate = Constants.stringEmpty // is empty when initializing
+    
+    // contains the name of the currency choosen by user
+    private var _targetLang = Constants.stringEmpty // is empty when initializing
+    
+    var targetLang: String {
+        return _targetLang
+    }
+    
     let url = URL(string: "https://translation.googleapis.com/language/translate/v2")!
     
     private var session: URLSession
@@ -20,14 +29,24 @@ class TranslaterService {
         self.session = session
     }
     
+    func getTargetLang(forSetup: Bool, row: Int?) {
+        guard forSetup == false && row != nil else {
+            guard row == nil else { return }
+            _targetLang = "\(Languages.allCases[Languages.allCases.count/2])"
+            return
+        }
+        guard let row = row else { return }
+        _targetLang = "\(Languages.allCases[row])"
+    }
+    
     func getTranslation(callback: @escaping (Bool, Translation?) -> Void) {
         
-        guard let textEncoded = translater.textToTranslate.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed) else {
+        guard let textEncoded = textToTranslate.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed) else {
             callback(false, nil)
             return
         }
         
-        let parameters = "?key=\(APIKey.shared.apiKeyTranslater)&q=\(textEncoded)&target=\(translater.targetLang)&source=fr"
+        let parameters = "?key=\(APIKey.shared.apiKeyTranslater)&q=\(textEncoded)&target=\(targetLang)&source=fr"
         
         guard let urlComplete = URL(string: "\(url)\(parameters)") else {
             print(ErrorMessages.errorURLComplete_Translater)

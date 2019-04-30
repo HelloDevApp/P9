@@ -11,7 +11,11 @@ import UIKit
 
 class WeatherService {
     
-    let weather = Weather_()
+    private let _country = [Constants.cityNewYork, Constants.cityNewYork]
+    
+    var country: [String] {
+        return _country
+    }
     
     private let _url = "https://api.openweathermap.org/data/2.5/group?"
     private let _appid = "appid=\(APIKey.shared.apiKeyWeather)"

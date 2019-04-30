@@ -241,4 +241,9 @@ class WeatherServiceTestCase: XCTestCase {
         }
         wait(for: [expectation], timeout: 0.01)
     }
+
+    func testCountryWeather() {
+        let weatherService = WeatherService()
+        XCTAssert(weatherService.country.count == 2)
+    }
 }

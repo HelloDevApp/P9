@@ -10,7 +10,6 @@ import UIKit
 
 class CurrencyViewController: UIViewController {
     
-    let converter = Converter()
     private let _converterService = ConverterService()
     
     // the pickerView of the converter part
@@ -107,7 +106,7 @@ class CurrencyViewController: UIViewController {
     // allows you to launch a conversion and update the text with the result of the conversion
     private func _launchConvert(moneyDouble: Double) {
         
-        let result = converter.convert(moneyToConvert: _moneyDouble)
+        let result = _converterService.convert(moneyToConvert: _moneyDouble)
         self._updateTextFieldWithResult(result: result)
     }
     

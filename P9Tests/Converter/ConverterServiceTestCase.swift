@@ -15,6 +15,31 @@ class ConverterServiceTestCase: XCTestCase {
     let fakeResponseData = FakeResponseData()
     let expectation = XCTestExpectation(description: "wait, for queue change.")
     
+    let rateTest = 2.0
+    let moneyToConvertTest = 10.0
+    
+    func test_ChangeValueOfRateValueDestination_CheckIfNewValueIsCorrect() {
+        
+        let converterService = ConverterService(session: URLSessionFake(data: nil, response: nil, error: nil))
+        
+        converterService.changeValueOfRateDestination(rate: rateTest)
+        
+        XCTAssert(converterService.rateValueDestination == rateTest)
+    }
+    
+    func test_ChangeValueOfRateValueDestination_StartOfTheConversion_CheckIfResultIsCorrect() {
+        
+        let converterService = ConverterService(session: URLSessionFake(data: nil, response: nil, error: nil))
+        
+        converterService.changeValueOfRateDestination(rate: rateTest)
+        
+        XCTAssert(converterService.rateValueDestination == rateTest)
+        
+        let result = converterService.convert(moneyToConvert: moneyToConvertTest)
+        
+        XCTAssert(result == moneyToConvertTest * rateTest)
+    }
+    
     func testGetRatesShouldPostFailedCallbackIfError() {
         
         let converterService = ConverterService(session: URLSessionFake(data: nil, response: nil, error: fakeResponseData.error))

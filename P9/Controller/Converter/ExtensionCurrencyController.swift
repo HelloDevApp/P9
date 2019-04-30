@@ -112,6 +112,7 @@ extension CurrencyViewController {
         
     // add a value rate and names currency in rateValueDestination property
     func affectValueRateAndNameCurrency(currentCurrencyName: String, reflect: Rates) {
+        let converterService = ConverterService()
         // we create a mirror that reflects all the properties of the Rates structure
         // (allows to make comparisons with the name of a variable for example: if mirror.label == currentNameCurrency)
         let mirrorRates = Mirror(reflecting: reflect)
@@ -122,7 +123,7 @@ extension CurrencyViewController {
                 for currencyName in CurrenciesNames.allCases {
                     if currentCurrencyName == "\(currencyName)".uppercased() {
                         guard let rateDouble = rate.value as? Double else { return }
-                        converter.changeValueOfRateDestination(rate: rateDouble)
+                        converterService.changeValueOfRateDestination(rate: rateDouble)
                     }
                 }
             }

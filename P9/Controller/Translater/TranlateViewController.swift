@@ -48,14 +48,14 @@ class TranlateViewController: UIViewController {
             alert(message: ErrorMessages.isEmpty.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
-        translaterService.translater.textToTranslate = textToTranslate
+        translaterService.textToTranslate = textToTranslate
         launchRequest()
     }
     
     func setup() {
         view.addGestureToHideKeyboard()
-        translaterService.translater.getTargetLang(forSetup: true, row: nil)
-        print(translaterService.translater.targetLang)
+        translaterService.getTargetLang(forSetup: true, row: nil)
+        print(translaterService.targetLang)
     }
     
     // allows you to launch the request
