@@ -35,27 +35,24 @@ class TranlateViewController: UIViewController {
         buttonTranslation.isEnabled = false
         // we check that the text is not nil.
         guard let textToTranslate = textToTranslate.text else {
+            buttonTranslation.isEnabled = true
             alert(message: ErrorMessages.isEmpty.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
         // we check that the text is not empty
         guard textToTranslate.isEmpty == false, textToTranslate != Constants.stringEmpty else {
+            buttonTranslation.isEnabled = true
             alert(message: ErrorMessages.isEmpty.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
         // we check that the text is different from the placeholder
         guard textToTranslate != Constants.placeholderTranslater else {
+            buttonTranslation.isEnabled = true
             alert(message: ErrorMessages.isEmpty.rawValue, title: ErrorMessages.oupps.rawValue)
             return
         }
         translaterService.textToTranslate = textToTranslate
         launchRequest()
-    }
-    
-    func setup() {
-        view.addGestureToHideKeyboard()
-        translaterService.getTargetLang(forSetup: true, row: nil)
-        print(translaterService.targetLang)
     }
     
     // allows you to launch the request
@@ -71,6 +68,7 @@ class TranlateViewController: UIViewController {
             
             // we check that we have the translation structure
             guard let translations = translations else {
+                self.buttonTranslation.isEnabled = true
                 self.alert(message: ErrorMessages.noTranslations.rawValue, title: ErrorMessages.oupps.rawValue)
                 return
             }

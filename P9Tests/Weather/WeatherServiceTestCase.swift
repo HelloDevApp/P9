@@ -14,6 +14,9 @@ class WeatherServiceTestCase: XCTestCase {
     let fakeResponseData = FakeResponseData()
     let expectation = XCTestExpectation(description: Constants.changeQueue)
     
+    //=================================================================
+    //MARK:===============Get Weather Error Test=======================
+    //=================================================================
     func testGetWeatherShouldPostFailedCallbackIfError() {
         let weatherService = WeatherService(session: URLSessionFake(data: nil, response: nil, error: fakeResponseData.error), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
 
@@ -35,6 +38,20 @@ class WeatherServiceTestCase: XCTestCase {
             XCTAssertFalse(success)
             XCTAssertNil(weatherResult)
             XCTAssertNil(iconURLs)
+            self.expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
+    func testGetWeatherShouldPostFailedCallbackIfResponseIsNotHHTPURLResponse() {
+        
+        let weatherService = WeatherService(session: URLSessionFake(data: fakeResponseData.correctDataWeather, response: fakeResponseData.responseNotTypeHTTPURLResponse, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
+        
+        weatherService.getWeather { (success, weatherResult, iconsURLs) in
+            
+            XCTAssertTrue(success)
+            XCTAssertNil(weatherResult)
+            XCTAssertNil(iconsURLs)
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -77,20 +94,6 @@ class WeatherServiceTestCase: XCTestCase {
             XCTAssertFalse(success)
             XCTAssertNil(weatherResult)
             XCTAssertNil(iconURLs)
-            self.expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
-    func testGetWeatherShouldPostFailedCallbackIfResponseIsNotHHTPURLResponse() {
-        
-        let weatherService = WeatherService(session: URLSessionFake(data: fakeResponseData.correctDataWeather, response: fakeResponseData.responseNotTypeHTTPURLResponse, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
-        
-        weatherService.getWeather { (success, weatherResult, iconsURLs) in
-            
-            XCTAssertTrue(success)
-            XCTAssertNil(weatherResult)
-            XCTAssertNil(iconsURLs)
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
@@ -150,6 +153,9 @@ class WeatherServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
+    //=================================================================
+    //MARK:==============Get Weather Success Tests=====================
+    //=================================================================
     func testGetWeatherShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         
         let weatherService = WeatherService(session: URLSessionFake(data: fakeResponseData.correctDataWeather, response: fakeResponseData.responseOK, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
@@ -195,20 +201,9 @@ class WeatherServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetIconShouldPostSuccessCallbackIfCorrectImageDataAndResponseOK() {
-        
-        let weatherService = WeatherService(session: URLSessionFake(data: nil, response: nil, error: nil), imageSession: URLSessionFake(data: fakeResponseData.image, response: fakeResponseData.responseOK, error: nil))
-        let imageData = "image".data(using: .utf8)
-        
-        weatherService.getIcon(from: URL(string: "www.urlTest.com")!) { (iconData) in
-            XCTAssertNotNil(iconData)
-            XCTAssert(iconData == imageData)
-            print(imageData == iconData)
-            self.expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 0.01)
-    }
-    
+    //=================================================================
+    //MARK:==================Get Icon Error Tests======================
+    //=================================================================
     func testGetIconShouldPostFailedCallbackIfError() {
         
         let weatherService = WeatherService(session: URLSessionFake(data: nil, response: nil, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: fakeResponseData.error))
@@ -219,6 +214,18 @@ class WeatherServiceTestCase: XCTestCase {
         }
         wait(for: [expectation], timeout: 0.01)
     }
+    
+    func testGetIconShouldPostFailedCalbackIfNoData() {
+        
+        let weatherService = WeatherService(session: URLSessionFake(data: nil, response: nil, error: nil), imageSession: URLSessionFake(data: nil, response: nil, error: nil))
+        
+        weatherService.getIcon(from: URL(string: "www.urlTest.com")!) { (data) in
+            XCTAssertNil(data)
+            self.expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
+    }
+    
     
     func testGetIconShouldPostFailedCallbackIfIncorrectData() {
         
@@ -231,7 +238,7 @@ class WeatherServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetIconShouldPostFailedCallbackIfResponseNotOK() {
+    func testGetIconShouldPostFailedCallbackIfIncorrectResponse() {
         
         let weatherService = WeatherService(session: URLSessionFake(data: nil, response: nil, error: nil), imageSession: URLSessionFake(data: fakeResponseData.correctDataWeather, response: fakeResponseData.responseNotOK, error: nil))
     
@@ -241,9 +248,21 @@ class WeatherServiceTestCase: XCTestCase {
         }
         wait(for: [expectation], timeout: 0.01)
     }
-
-    func testCountryWeather() {
-        let weatherService = WeatherService()
-        XCTAssert(weatherService.country.count == 2)
+    
+    //=================================================================
+    //MARK:================Get Icon Success Tests======================
+    //=================================================================
+    func testGetIconShouldPostSuccessCallbackIfCorrectImageDataAndResponseOK() {
+        
+        let weatherService = WeatherService(session: URLSessionFake(data: nil, response: nil, error: nil), imageSession: URLSessionFake(data: fakeResponseData.image, response: fakeResponseData.responseOK, error: nil))
+        let imageData = "image".data(using: .utf8)
+        
+        weatherService.getIcon(from: URL(string: "www.urlTest.com")!) { (iconData) in
+            XCTAssertNotNil(iconData)
+            XCTAssert(iconData == imageData)
+            print(imageData == iconData)
+            self.expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 0.01)
     }
 }

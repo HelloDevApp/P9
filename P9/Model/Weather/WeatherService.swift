@@ -11,22 +11,13 @@ import UIKit
 
 class WeatherService {
     
-    private let _country = [Constants.cityNewYork, Constants.cityNewYork]
-    
-    var country: [String] {
-        return _country
-    }
-    
-    private let _url = "https://api.openweathermap.org/data/2.5/group?"
-    private let _appid = "appid=\(APIKey.shared.apiKeyWeather)"
-    private let _lang = "&lang=fr"
-    private let _units = "&units=metric"
-    private let _city_id = "&id=6455259,5128581"
-    
     private var session: URLSession
     private var imageSession: URLSession
     
     private var task: URLSessionDataTask?
+    
+    // url base
+    let url = "https://api.openweathermap.org/data/2.5/group?"
     
     init(session: URLSession = URLSession(configuration: .default), imageSession: URLSession = URLSession(configuration: .default)) {
         self.session = session
@@ -35,10 +26,15 @@ class WeatherService {
     
     func getWeather(callback: @escaping (Bool, WeatherAPIResult?, [URL?]?) -> Void) {
         
-        let parameters = _appid + _lang + _units + _city_id
+        let appid = "appid=\(APIKey.shared.apiKeyWeather)"
+        let lang = "&lang=fr"
+        let units = "&units=metric"
+        let city_id = "&id=6455259,5128581"
         
-        guard let urlComplete: URL = URL(string: _url + parameters) else {
-            print("url no ok")
+        let parameters = appid + lang + units + city_id
+        
+        guard let urlComplete: URL = URL(string: url + parameters) else {
+            print(ErrorMessages.errorURLComplete_Weather.rawValue)
             callback(false, nil, nil)
             return
         }

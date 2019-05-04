@@ -54,7 +54,7 @@ class CurrencyViewController: UIViewController {
         guard _requestIsLaunch == false else {
             // the values of each contained rate of _mirorStructRates are copied into a new instance
             guard let mirorStructRates = _mirorStructRates else { return }
-            affectValueRateAndNameCurrency(currentCurrencyName: currentCurrency, reflect: mirorStructRates)
+            affectValueRateDestination(currentCurrencyName: currentCurrency, reflect: mirorStructRates)
             // start the conversion and enjoy the display of the result
             _launchConvert(moneyDouble: _moneyDouble)
             return
@@ -77,7 +77,7 @@ class CurrencyViewController: UIViewController {
             self._mirorStructRates = rates
             
             // a name and a rate are assigned to rateValueDestination(nameCurrency: String, rate: Double?) depending on the currency chosen
-            self.affectValueRateAndNameCurrency(currentCurrencyName: currentCurrency, reflect: rates)
+            self.affectValueRateDestination(currentCurrencyName: currentCurrency, reflect: rates)
             
             self._launchConvert(moneyDouble: self._moneyDouble)
             
@@ -101,6 +101,25 @@ class CurrencyViewController: UIViewController {
         }
         _moneyDouble = numberFormatted.doubleValue
         return true
+    }
+    
+    // add a value rate currency in rateValueDestination property
+    func affectValueRateDestination(currentCurrencyName: String, reflect: Rates) {
+        
+        // (allows to make comparisons with the name of a variable for example: if mirror.label == \(currentNameCurrency)
+        let mirrorRates = Mirror(reflecting: reflect)
+        // we scan the values in the array to find a match with the selected currency
+        for rate in mirrorRates.children {
+            // rate.label contains the short name of the currency
+            if currentCurrencyName == rate.label {
+                for currencyName in CurrenciesNames.allCases {
+                    if currentCurrencyName == "\(currencyName)".uppercased() {
+                        guard let rateDouble = rate.value as? Double else { return }
+                        _converterService.changeValueOfRateDestination(rate: rateDouble)
+                    }
+                }
+            }
+        }
     }
     
     // allows you to launch a conversion and update the text with the result of the conversion

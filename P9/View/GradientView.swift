@@ -10,7 +10,7 @@ import UIKit
 //@IBDesignable
 class GradientView: UIView {
     
-    var gradientLayer: CAGradientLayer!
+    var gradientLayer: CAGradientLayer?
     
     @IBInspectable var firstColor: UIColor = .white {
         didSet {
@@ -71,10 +71,10 @@ class GradientView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         gradientLayer = layer as? CAGradientLayer
-        gradientLayer.colors = [firstColor.cgColor,secondColor.cgColor]
-        gradientLayer.startPoint = CGPoint(x: startPointX, y: startPointY)
-        gradientLayer.endPoint = CGPoint(x: endPointX, y: endPointY)
-        gradientLayer.cornerRadius = cornerRadius
+        gradientLayer?.colors = [firstColor.cgColor,secondColor.cgColor]
+        gradientLayer?.startPoint = CGPoint(x: startPointX, y: startPointY)
+        gradientLayer?.endPoint = CGPoint(x: endPointX, y: endPointY)
+        gradientLayer?.cornerRadius = cornerRadius
     }
     
 }

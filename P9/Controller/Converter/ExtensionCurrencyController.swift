@@ -109,24 +109,4 @@ extension CurrencyViewController {
         // we add the text that corresponding to position of pickerView
         currencyLabelDestination.text = String("\(CurrenciesNames.allCases[CurrenciesNames.allCases.count/2])").uppercased()
     }
-        
-    // add a value rate and names currency in rateValueDestination property
-    func affectValueRateAndNameCurrency(currentCurrencyName: String, reflect: Rates) {
-        let converterService = ConverterService()
-        // we create a mirror that reflects all the properties of the Rates structure
-        // (allows to make comparisons with the name of a variable for example: if mirror.label == currentNameCurrency)
-        let mirrorRates = Mirror(reflecting: reflect)
-        // we scan the values in the array to find a match with the selected currency
-        for rate in mirrorRates.children {
-            // rate.label contains the short name of the currency
-            if currentCurrencyName == rate.label {
-                for currencyName in CurrenciesNames.allCases {
-                    if currentCurrencyName == "\(currencyName)".uppercased() {
-                        guard let rateDouble = rate.value as? Double else { return }
-                        converterService.changeValueOfRateDestination(rate: rateDouble)
-                    }
-                }
-            }
-        }
-    }
 }

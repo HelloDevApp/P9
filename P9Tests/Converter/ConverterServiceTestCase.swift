@@ -18,28 +18,9 @@ class ConverterServiceTestCase: XCTestCase {
     let rateTest = 2.0
     let moneyToConvertTest = 10.0
     
-    func test_ChangeValueOfRateValueDestination_CheckIfNewValueIsCorrect() {
-        
-        let converterService = ConverterService(session: URLSessionFake(data: nil, response: nil, error: nil))
-        
-        converterService.changeValueOfRateDestination(rate: rateTest)
-        
-        XCTAssert(converterService.rateValueDestination == rateTest)
-    }
-    
-    func test_ChangeValueOfRateValueDestination_StartOfTheConversion_CheckIfResultIsCorrect() {
-        
-        let converterService = ConverterService(session: URLSessionFake(data: nil, response: nil, error: nil))
-        
-        converterService.changeValueOfRateDestination(rate: rateTest)
-        
-        XCTAssert(converterService.rateValueDestination == rateTest)
-        
-        let result = converterService.convert(moneyToConvert: moneyToConvertTest)
-        
-        XCTAssert(result == moneyToConvertTest * rateTest)
-    }
-    
+    //=================================================================
+    //MARK:===============Get Rates Error Tests========================
+    //=================================================================
     func testGetRatesShouldPostFailedCallbackIfError() {
         
         let converterService = ConverterService(session: URLSessionFake(data: nil, response: nil, error: fakeResponseData.error))
@@ -93,7 +74,7 @@ class ConverterServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetRatesShouldPostFailedCallbackIfStatusCode400() {
+    func testGetRatesShouldPostFailedCallbackIfStatusCodeResponse400() {
         
         let converterService = ConverterService(session: URLSessionFake(data: fakeResponseData.correctDataConversion, response: fakeResponseData.responseNotOK2, error: nil))
         
@@ -106,7 +87,7 @@ class ConverterServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
-    func testGetRatesShouldPostFailedCallbackIfDataIncorrect() {
+    func testGetRatesShouldPostFailedCallbackIfIncorrectData() {
         
         let converterService = ConverterService(session: URLSessionFake(data: fakeResponseData.incorrectData, response: fakeResponseData.responseOK, error: nil))
         
@@ -142,6 +123,9 @@ class ConverterServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
+    //=================================================================
+    //MARK:===============Get Rates Success Tests======================
+    //=================================================================
     func testGetRatesShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
     
         let converterService = ConverterService(session: URLSessionFake(data: fakeResponseData.correctDataConversion, response: fakeResponseData.responseOK, error: nil))
@@ -165,5 +149,29 @@ class ConverterServiceTestCase: XCTestCase {
             self.expectation.fulfill()
         }
         wait(for: [expectation], timeout: 0.01)
+    }
+    //=================================================================
+    //MARK:==================Others Tests==============================
+    //=================================================================
+    func test_ChangeValueOfRateValueDestination_CheckIfNewValueIsCorrect() {
+        
+        let converterService = ConverterService(session: URLSessionFake(data: nil, response: nil, error: nil))
+        
+        converterService.changeValueOfRateDestination(rate: rateTest)
+        
+        XCTAssert(converterService.rateValueDestination == rateTest)
+    }
+    
+    func test_ChangeValueOfRateValueDestination_StartOfTheConversion_CheckIfResultIsCorrect() {
+        
+        let converterService = ConverterService(session: URLSessionFake(data: nil, response: nil, error: nil))
+        
+        converterService.changeValueOfRateDestination(rate: rateTest)
+        
+        XCTAssert(converterService.rateValueDestination == rateTest)
+        
+        let result = converterService.convert(moneyToConvert: moneyToConvertTest)
+        
+        XCTAssert(result == moneyToConvertTest * rateTest)
     }
 }

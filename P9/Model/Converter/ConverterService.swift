@@ -11,7 +11,7 @@ import Foundation
 
 class ConverterService {
     
-    // ccontains the full name and rate of the destination currency
+    // contains the full name and rate of the destination currency
     private var _rateValueDestination = 0.0
     
     var rateValueDestination: Double {
@@ -19,15 +19,7 @@ class ConverterService {
     }
     
     //URL base
-    private let _url = URL(string: "http://data.fixer.io/api/")!
-    
-    //parameters request
-    private let _parameters = "latest?access_key=\(APIKey.shared.apiKeyConverter)&symbols=CAD,EUR,USD,BTC,AUD,GBP,ILS,CHF,COP,HKD"
-    
-    // complete URL
-    private var _urlComplete: URL {
-        return URL(string: "\(_url)\(_parameters)")!
-    }
+    private let _url = "http://data.fixer.io/api/latest?"
     
     // the session
     private var session: URLSession
@@ -39,8 +31,21 @@ class ConverterService {
     // allow create request
     func getRates(callback: @escaping (Bool, Rates?, String?) -> Void) {
         
+        // parameters
+        let accessKey = "access_key=\(APIKey.shared.apiKeyConverter)"
+        // parameters
+        let symbols = "&symbols=CAD,EUR,USD,BTC,AUD,GBP,ILS,CHF,COP,HKD"
+        // all parameters
+        let parameters = accessKey + symbols
+        
+        // complete URL
+        guard let urlComplete = URL(string: _url + parameters) else {
+            print(ErrorMessages.errorURLComplete_Converter)
+            return
+        }
+        
         // the request
-        var request = URLRequest(url: _urlComplete)
+        var request = URLRequest(url: urlComplete)
         request.httpMethod = Constants.getMethod
         
         // the task
@@ -107,7 +112,7 @@ class ConverterService {
         
         let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
         let dateFormat = date.returnDateFormat() // ex: 15/06/2019 20:10
-        let dateString = "le taux a été mis à jour le: \(dateFormat)"
+        let dateString = "les taux ont été mis à jour le: \(dateFormat)"
         
         return dateString
     }

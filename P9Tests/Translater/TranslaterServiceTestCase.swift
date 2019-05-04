@@ -14,6 +14,9 @@ class TranslaterServiceTestCase: XCTestCase {
     let fakeResponseData = FakeResponseData()
     let expectation = XCTestExpectation(description: "Wait, for queue change")
     
+    //=================================================================
+    //MARK:============Get Translations Error Tests====================
+    //=================================================================
     func testGetTranslationShouldPostFailedCallbackIfError() {
 
         let translaterService = TranslaterService(session: URLSessionFake(data: nil, response: nil, error: fakeResponseData.error))
@@ -98,6 +101,9 @@ class TranslaterServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
     
+    //=================================================================
+    //MARK:===========Get Translations Success Tests===================
+    //=================================================================
     func testGetTranslationShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         
         let translaterService = TranslaterService(session: URLSessionFake(data: fakeResponseData.correctDataTranslation, response: fakeResponseData.responseOK, error: nil))
@@ -115,16 +121,16 @@ class TranslaterServiceTestCase: XCTestCase {
         wait(for: [expectation], timeout: 0.01)
     }
 
-    func testPlacementOfAnApostropheEncodedInHTML_ChecksThatTheApostropheHasBeenDecoded() {
+    //=================================================================
+    //MARK:====================Others Tests============================
+    //=================================================================
+    func testGetTargetLangShouldExecuteReturnLine() {
         
-        let translateViewController = TranlateViewController()
+        let translaterService = TranslaterService(session: URLSessionFake(data: nil, response: nil, error: nil))
         
-        let textWithoutApostrophe = translateViewController.replaceCharactersOfTranslatedText(translatedText: "Text without apostrophe")
-        XCTAssert(textWithoutApostrophe == "Text without apostrophe")
-
-        let apostropheDecoded = translateViewController.replaceCharactersOfTranslatedText(translatedText: Constants.apostropheCode)
-
-        XCTAssert(apostropheDecoded == Constants.apostrophe)
+        translaterService.getTargetLang(forSetup: true, row: 1)
+        
+        XCTAssert(translaterService.targetLang == Constants.stringEmpty)
     }
     
     func testWhenGetTargetLangForSetup_ThenTargetLangEqualToMiddleArrayRowLanguages() {

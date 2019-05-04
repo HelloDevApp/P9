@@ -11,9 +11,9 @@
 //=====================================================
 enum CurrenciesNames: String, CaseIterable {
     
-    // Cannadian Dollars
+    // Canadian Dollars
     case cad 
-    // United State Dollars
+    // United States Dollars
     case usd
     // Australian Dollars
     case aud

@@ -13,7 +13,7 @@ enum ErrorMessages: String {
     
     case oupps = "Oups" // title of message alert
     
-    // CCONVERTER-TRASNLATER-WEATHER _ (Interface) (Messages Alert)
+    // CONVERTER-TRASNLATER-WEATHER _ (Interface) (Messages Alert)
     case noSuccess = "La requête a echoué."
     case isEmpty = "Entrer une valeur."
     case problem = "Erreur, veuillez réessayer."
@@ -39,6 +39,7 @@ enum ErrorMessages: String {
     // Translater _ (Interface) (Message Alert)
     case ValueTooLong = "Vous avez atteint la limite des caractères."
     case noTranslations = "Les traductions ne sont pas disponibles pour le moment."
+    case illegalCharacter = "Le caractere n'est pas autorisé."
     // error code Translater _ (Request) (Error Code)
     case errorURLComplete_Translater = "Erreur 2000"
     case errorDataNilOrError_Translater = "Erreur 2001"

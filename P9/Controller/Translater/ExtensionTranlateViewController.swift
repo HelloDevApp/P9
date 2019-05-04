@@ -83,3 +83,12 @@ extension TranlateViewController: UIPickerViewDataSource, UIPickerViewDelegate {
         languageDestinationLabel.text = currentLanguage
     }
 }
+
+extension TranlateViewController {
+    
+    func setup() {
+        view.addGestureToHideKeyboard()
+        translaterService.getTargetLang(forSetup: true, row: nil)
+        print(translaterService.targetLang)
+    }
+}

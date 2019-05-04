@@ -28,10 +28,6 @@ struct Constants {
     static let ok = "OK"
     static let stringEmpty = ""
     
-    // CITIES
-    static let cityParis = "Paris,fr"
-    static let cityNewYork = "New York,us"
-    
     // CHARACTERS
     static let point = "."
     static let degrees = "°"

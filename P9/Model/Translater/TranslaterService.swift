@@ -18,8 +18,8 @@ class TranslaterService {
     var targetLang: String {
         return _targetLang
     }
-    
-    let url = URL(string: "https://translation.googleapis.com/language/translate/v2")!
+    //url base
+    let url = "https://translation.googleapis.com/language/translate/v2?"
     
     private var session: URLSession
     
@@ -46,9 +46,14 @@ class TranslaterService {
             return
         }
         
-        let parameters = "?key=\(APIKey.shared.apiKeyTranslater)&q=\(textEncoded)&target=\(targetLang)&source=fr"
+        let accessKey = "key=\(APIKey.shared.apiKeyTranslater)"
+        let toTranslate = "&q=\(textEncoded)"
+        let source = "&source=fr"
+        let target = "&target=\(targetLang)"
         
-        guard let urlComplete = URL(string: "\(url)\(parameters)") else {
+        let parameters = accessKey + toTranslate + source + target
+        
+        guard let urlComplete = URL(string: url + parameters) else {
             print(ErrorMessages.errorURLComplete_Translater)
             return
         }
